@@ -1,0 +1,4 @@
+Titutlos - #FF0066
+Background - #F85C68
+2º tom bg - #F95C68 / #FF6C6F
+Bg titles - #FDE7D0
