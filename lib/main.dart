@@ -5,6 +5,7 @@ import 'package:arretadas/screens/home.dart';
 import 'package:arretadas/screens/info.dart';
 import 'package:arretadas/screens/cadastro.dart';
 
+
 void main() {
   runApp(MaterialApp(
     title: 'Routes',

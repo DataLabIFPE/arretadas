@@ -66,7 +66,7 @@ class Home extends StatelessWidget{
                   ),
                   child: FlatButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/login');
+                      Navigator.pushNamed(context, '/menu');
                     },
                     child: Center(
                       child: Text(

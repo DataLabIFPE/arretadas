@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
-
+  
   Widget criaCampo(Color color, String labelText, bool obscure){
     return Container(
-                  child: TextField(
-                    scrollPadding: EdgeInsets.all(10.0),
-                    style: TextStyle(
-                      color: color,
-                    ),
-                    obscureText: obscure,
-                    decoration: InputDecoration(
-                      labelText: '$labelText',
-                      labelStyle: TextStyle(
-                        color: color,
-                      )
-                    ),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  margin: EdgeInsets.only(top: 10),
-                );
+      child: TextField(
+        scrollPadding: EdgeInsets.all(10.0),
+        style: TextStyle(
+          color: color,
+        ),
+        obscureText: obscure,
+        decoration: InputDecoration(
+          labelText: '$labelText',
+          labelStyle: TextStyle(
+            color: color,
+          )
+        ),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      margin: EdgeInsets.only(top: 10),
+    );
   }
 
 
