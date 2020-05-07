@@ -41,7 +41,9 @@ class Home extends StatelessWidget{
                     )
                   ),
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/cadastro');
+                    },
                     child: Center(
                       child: Text(
                       'CADASTRAR',
