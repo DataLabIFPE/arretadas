@@ -1,6 +1,33 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Cadastro extends StatelessWidget {
+
+  Widget criaBotao(Color color, String rota, String labelText, Color background, context){
+    return Container(
+                  margin: EdgeInsets.only(top: 50.0),
+                  height: 70.0,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40.0),
+                    color: color,
+                  ),
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/$rota');
+                    },
+                    child: Center(
+                      child: Text(
+                      '$labelText',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15.0,
+                        color: background,
+                      ),
+                      ),
+                    ),
+                  ),
+                );
+  }
 
   Widget criaCampo(Color color, String labelText, bool obscure){
     return Container(
@@ -21,7 +48,6 @@ class Login extends StatelessWidget {
                   margin: EdgeInsets.only(top: 10),
                 );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -53,30 +79,9 @@ class Login extends StatelessWidget {
                 ),
                 criaCampo(Colors.white, 'Nickname', false),
                 criaCampo(Colors.white, 'Senha', true),
-                Container(
-                  margin: EdgeInsets.only(top: 50.0),
-                  height: 70.0,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40.0),
-                    color: Colors.white,
-                  ),
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/menu');
-                    },
-                    child: Center(
-                      child: Text(
-                      'ENTRAR',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0,
-                        color: Color.fromRGBO(248, 92, 104, 1),
-                      ),
-                      ),
-                    ),
-                  ),
-                ),
+                criaCampo(Colors.white, 'Confirme sua Senha', true),
+                criaCampo(Colors.white, 'Código de Proteção', false),
+                criaBotao(Colors.white, 'menu', 'CADASTRAR', Color.fromRGBO(248, 92, 104, 1), context)
               ],
             ),
           ],

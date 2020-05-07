@@ -3,6 +3,7 @@ import 'package:arretadas/screens/menu.dart';
 import 'package:arretadas/screens/login.dart';
 import 'package:arretadas/screens/home.dart';
 import 'package:arretadas/screens/info.dart';
+import 'package:arretadas/screens/cadastro.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,6 +12,7 @@ void main() {
     routes: {
       '/': (context) => Home(),
       '/menu': (context) => Menu(),
+      '/cadastro': (context) => Cadastro(),
       '/info' : (context) => Info(),
       '/login' : (context) => Login(),
     },

@@ -1,6 +1,72 @@
 import 'package:flutter/material.dart';
 
 class Info extends StatelessWidget {
+  
+  Widget criaLinha({String lei,String numero ,String previa}){
+    return FlatButton(
+            onPressed: () {},
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(253, 231, 208, 1),
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                        ),
+                        padding: EdgeInsets.fromLTRB(5, 3, 10, 3),
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          '$lei',
+                          style: TextStyle(
+                            color: Color.fromRGBO(255, 0, 102, 1),
+                            fontSize: 18.0,
+                            fontFamily: 'Exo',
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(253, 231, 208, 1),
+                          borderRadius: const BorderRadius.all(const Radius.circular(8))
+                        ),
+                        padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
+                        margin: EdgeInsets.only(bottom: 4),
+                        child: Text(
+                          '$numero',
+                          style: TextStyle(
+                            color: Color.fromRGBO(255, 0, 102, 1),
+                            fontSize: 12.0,
+                            fontFamily: 'Exo',
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ),
+                  Text(
+                    '$previa',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                    overflow: TextOverflow.visible,
+                  ),
+                ],
+              ),
+              height: 120,
+              padding: EdgeInsets.fromLTRB(10, 8, 8,0),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(const Radius.circular(20)),
+                color: Color.fromRGBO(245,245, 245, 1)
+              ),
+              margin: const EdgeInsets.fromLTRB(15, 15, 15, 0)
+            ),
+          );
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,316 +108,11 @@ class Info extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          FlatButton(
-            onPressed: () {},
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 3, 10, 3),
-                        margin: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          'Lei Maria da Penha',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 18.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: const BorderRadius.all(const Radius.circular(8))
-                        ),
-                        padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
-                        margin: EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          'Lei 11.130/44',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 12.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  ),
-                  Text(
-                    'blablablablablabbalablalbalbalbalblalbabalbalblaabllablablablablablablablablablablablablablablablablablblablablablablablalbalbbalblablablablablablabla',
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    overflow: TextOverflow.visible,
-                  ),
-                ],
-              ),
-              height: 120,
-              padding: EdgeInsets.fromLTRB(10, 8, 8,0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                color: Color.fromRGBO(245,245, 245, 1)
-              ),
-              margin: const EdgeInsets.fromLTRB(15, 15, 15, 0)
-            ),
-          ),
-          FlatButton(
-            onPressed: () {},
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 3, 10, 3),
-                        margin: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          'Lei Maria da Penha',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 18.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: const BorderRadius.all(const Radius.circular(8))
-                        ),
-                        padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
-                        margin: EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          'Lei 11.130/44',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 12.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  ),
-                  Text(
-                    'blablablablablabbalablalbalbalbalblalbabalbalblaabllablablablablablablablablablablablablablablablablablblablablablablablalbalbbalblablablablablablabla',
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    overflow: TextOverflow.visible,
-                  ),
-                ],
-              ),
-              height: 120,
-              padding: EdgeInsets.fromLTRB(10, 8, 8,0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                color: Color.fromRGBO(245,245, 245, 1)
-              ),
-              margin: const EdgeInsets.fromLTRB(15,15,15,0),
-            ),
-          ),
-          FlatButton(
-            onPressed: () {},
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 3, 10, 3),
-                        margin: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          'Lei Maria da Penha',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 18.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: const BorderRadius.all(const Radius.circular(8))
-                        ),
-                        padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
-                        margin: EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          'Lei 11.130/44',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 12.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  ),
-                  Text(
-                    'blablablablablabbalablalbalbalbalblalbabalbalblaabllablablablablablablablablablablablablablablablablablblablablablablablalbalbbalblablablablablablabla',
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    overflow: TextOverflow.visible,
-                  ),
-                ],
-              ),
-              height: 120,
-              padding: EdgeInsets.fromLTRB(10, 8, 8,0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                color: Color.fromRGBO(245,245, 245, 1)
-              ),
-              margin: const EdgeInsets.fromLTRB(15,15,15,0),
-            ),
-          ),
-          FlatButton(
-            onPressed: () {},
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 3, 10, 3),
-                        margin: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          'Lei Maria da Penha',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 18.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: const BorderRadius.all(const Radius.circular(8))
-                        ),
-                        padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
-                        margin: EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          'Lei 11.130/44',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 12.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  ),
-                  Text(
-                    'blablablablablabbalablalbalbalbalblalbabalbalblaabllablablablablablablablablablablablablablablablablablblablablablablablalbalbbalblablablablablablabla',
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    overflow: TextOverflow.visible,
-                  ),
-                ],
-              ),
-              height: 120,
-              padding: EdgeInsets.fromLTRB(10, 8, 8,0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                color: Color.fromRGBO(245,245, 245, 1)
-              ),
-              margin: const EdgeInsets.fromLTRB(15,15,15,0),
-            ),
-          ),
-          FlatButton(
-            onPressed: () {},
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 3, 10, 3),
-                        margin: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          'Lei Maria da Penha',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 18.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(253, 231, 208, 1),
-                          borderRadius: const BorderRadius.all(const Radius.circular(8))
-                        ),
-                        padding: EdgeInsets.fromLTRB(3, 3, 3, 3),
-                        margin: EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          'Lei 11.130/44',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 0, 102, 1),
-                            fontSize: 12.0,
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  ),
-                  Text(
-                    'blablablablablabbalablalbalbalbalblalbabalbalblaabllablablablablablablablablablablablablablablablablablblablablablablablalbalbbalblablablablablablabla',
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
-                    overflow: TextOverflow.visible,
-                  ),
-                ],
-              ),
-              height: 120,
-              padding: EdgeInsets.fromLTRB(10, 8, 8,0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                color: Color.fromRGBO(245,245, 245, 1)
-              ),
-              margin: const EdgeInsets.fromLTRB(15,15,15,0),
-            ),
-          ),
+          criaLinha(lei: 'Lei Maria da Penha',numero: 'Lei 10.512/12' ,previa: 'blablalbalbalblablablalbalbalblalbalbalblablablalbalbalblablalbalbalblablalbalbalblalbal'),
+          criaLinha(lei: 'Lei Maria da Penha',numero: 'Lei 10.512/12' ,previa: 'blablalbalbalblablablalbalbalblalbalbalblablablalbalbalblablalbalbalblablalbalbalblalbal'),
+          criaLinha(lei: 'Lei Maria da Penha',numero: 'Lei 10.512/12' ,previa: 'blablalbalbalblablablalbalbalblalbalbalblablablalbalbalblablalbalbalblablalbalbalblalbal'),
+          criaLinha(lei: 'Lei Maria da Penha',numero: 'Lei 10.512/12' ,previa: 'blablalbalbalblablablalbalbalblalbalbalblablablalbalbalblablalbalbalblablalbalbalblalbal'),
+          criaLinha(lei: 'Lei Maria da Penha',numero: 'Lei 10.512/12' ,previa: 'blablalbalbalblablablalbalbalblalbalbalblablablalbalbalblablalbalbalblablalbalbalblalbal'),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -375,7 +136,7 @@ class Info extends StatelessWidget {
               ),
             ),
             title: Text(
-              'Back',
+              'Voltar',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -384,7 +145,7 @@ class Info extends StatelessWidget {
           BottomNavigationBarItem(
             icon: FlatButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/menu');
               },
               child: Icon(
                 Icons.home,
@@ -393,7 +154,7 @@ class Info extends StatelessWidget {
               ),
             ),
             title: Text(
-              'Back',
+              'Menu',
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -411,7 +172,7 @@ class Info extends StatelessWidget {
               ),
             ),
             title: Text(
-              'Back',
+              'Buscar',
               style: TextStyle(
                 color: Colors.white,
               ),
