@@ -190,7 +190,9 @@ class Menu extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: FlatButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/contacts');
+                          },
                           child: Icon(
                             Icons.group,
                             size: 70,
