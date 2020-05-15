@@ -4,7 +4,7 @@ import 'package:arretadas/screens/login.dart';
 import 'package:arretadas/screens/home.dart';
 import 'package:arretadas/screens/info.dart';
 import 'package:arretadas/screens/cadastro.dart';
-
+import 'package:arretadas/UIcontacts/HomeContactsPage.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -16,6 +16,7 @@ void main() {
       '/cadastro': (context) => Cadastro(),
       '/info' : (context) => Info(),
       '/login' : (context) => Login(),
+      '/contacts': (context) => HomeContactsPage(),
     },
   ));
 }
