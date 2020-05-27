@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'alerta.dart';
+
+
 
 class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+  return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
@@ -73,17 +77,26 @@ class Menu extends StatelessWidget {
                       children: <Widget>[
                         Icon(
                           Icons.warning,
-                          size: 70,
+                          size: 60,
                         ),
-                        Text(
-                          'DENUNCIAR',
-                          style: TextStyle(
-                            fontFamily: 'Exo',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 40,
-                            letterSpacing: 2,
-                          ),
-                        )
+                          FlatButton(
+                          color: Colors.yellowAccent,
+                          textColor:Colors.black ,
+                          disabledColor: Colors.grey,
+                          padding: EdgeInsets.all(35.0),
+                          splashColor: Colors.white,
+                          onPressed: ()  {
+
+                          
+                         showAlertDialog2(context);
+                          
+                           
+                },
+                          child: Text(
+                            "PEDIR SOCORRO",
+                            style: TextStyle(fontSize: 22.0),
+               ),
+             ),
                       ],
                     ),
                   ),
@@ -277,3 +290,8 @@ class Menu extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
