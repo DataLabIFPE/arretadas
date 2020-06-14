@@ -66,11 +66,11 @@ class Menu extends StatelessWidget {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 150.0,
+                    height: 120.0,
                     margin: EdgeInsets.only(left: 6, right: 6, top: 15),
                     decoration: BoxDecoration(
                       color: Colors.yellowAccent,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(90),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,6 +99,43 @@ class Menu extends StatelessWidget {
              ),
                       ],
                     ),
+                  ),
+                  //Botão denunciar 
+                  Container(
+                     width: MediaQuery.of(context).size.width,
+                    height: 120.0,
+                    margin: EdgeInsets.only(left: 6, right: 6, top: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.yellowAccent,
+                      borderRadius: BorderRadius.circular(90),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                       
+                          FlatButton(
+                          color: Colors.yellowAccent,
+                          textColor:Colors.black ,
+                          disabledColor: Colors.grey,
+                          padding: EdgeInsets.all(35.0),
+                          splashColor: Colors.white,
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/denuncias');
+                          },
+
+                          
+                         
+                          
+                           
+               
+                          child: Text(
+                            "DENUNCIAR",
+                            style: TextStyle(fontSize: 22.0),
+               ),
+             ),
+                      ],
+                    ),
+
                   ),
                   SizedBox(height: 20,),
                   Container(
@@ -241,7 +278,7 @@ class Menu extends StatelessWidget {
                 ),
               ),
               title: Text(
-                'Back',
+                'Voltar',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -277,7 +314,7 @@ class Menu extends StatelessWidget {
                 ),
               ),
               title: Text(
-                'Back',
+                'Pesquisar',
                 style: TextStyle(
                   color: Colors.white,
                 ),
