@@ -17,7 +17,7 @@ showAlertDialog2(BuildContext context) {
   
   AlertDialog alert = AlertDialog(
     title: Text("Atenção"),
-    content: Text("Deseja continuar o pedido ?"),
+    content: Text("Deseja continuar o pedido de socorro ?"),
     actions: [
       cancelaButton,
       continuaButton,
