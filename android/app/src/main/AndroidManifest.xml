@@ -7,8 +7,14 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="hello_world"
+        android:label="Arretadas"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- Adicionar a chave da API Google e Mapbox -->
+        
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="YOUR-KEY-HERE"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -28,3 +34,5 @@
             android:value="2" />
     </application>
 </manifest>
+
+ 

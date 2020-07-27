@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'mapa.dart';
+
 
  class Denuncias extends StatelessWidget{
    
@@ -18,26 +20,18 @@ import 'package:flutter/material.dart';
    }
  }
 
+
 class Widgets1 extends StatefulWidget{
   @override
   _Widgets1State createState() => _Widgets1State();
 }
 
 class _Widgets1State extends State<Widgets1> {
-   FocusNode myFocusNode;
+  
+  
+ 
+   
 
-  @override
-  void initState() {
-    super.initState();
-    myFocusNode = FocusNode();
-  }
-
-  @override
-  void dispose() {
-    // limpa o no focus quando o form for liberado.
-    myFocusNode.dispose();
-    super.dispose();
-  }
   @override 
   Widget build(BuildContext context){
     return DefaultTabController(
@@ -48,8 +42,9 @@ class _Widgets1State extends State<Widgets1> {
         title: Text("Fazer Denúncias"),
         bottom: TabBar(tabs: 
          <Widget>[
-           Text("Relato"),
            Text("Localização"),
+           Text("Instruções"),
+           
 
         ]),
 
@@ -63,8 +58,10 @@ class _Widgets1State extends State<Widgets1> {
        
       TabBarView(
               children: <Widget>[
-                
-                widgetTextField(),
+
+                Mapa1(),
+               
+                 
       
                 
                 new Container(child:
@@ -72,7 +69,7 @@ class _Widgets1State extends State<Widgets1> {
                    child: FlatButton.icon(
                      color: Color.fromRGBO(248,92,104,1),
                      icon: Icon(Icons.add_location),
-                     label: Text("Localizar"),
+                     label: Text("Essa tela vai exibir informações sobre o uso do mapa"),
                      onPressed: ()  {
 
                        debugPrint("Localizando");
@@ -83,36 +80,25 @@ class _Widgets1State extends State<Widgets1> {
                
                 
               ],
-            ),
-       
-      /*new Container(
-       child: Row(
-         children: <Widget>[
-            Flexible(
-               child: new Text("Poderá denunciar ocorrências acontecidas com você ou testemunhar.",
-               style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),
-               ),
-               )
-                ],
-        )),*/
-      
-  
-
-
-      
-
-      
-
-
-      
-      
-       
-           
-       
-            
+            ),      
+                      
           ],
     ),),
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    Navegação entre telas 
     bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Color.fromRGBO(248,92,104,1),
           selectedIconTheme: const IconThemeData(
@@ -162,87 +148,4 @@ class _Widgets1State extends State<Widgets1> {
             ),
             
             
-          ],)));}
-
-
-
-
-
-
-
-
-// Texto: Relato do acontecimento
- Padding widgetTextField(){
-  return Padding (
-    padding: const EdgeInsets.all(70),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-
-
-         Flexible(child: 
-          TextField(
-            focusNode: myFocusNode,
-             decoration:
-             InputDecoration(border: 
-             InputBorder.none,
-             icon: Icon(Icons.warning),
-             hintText: "Escreva um relato"),
-          ),),
-
-
-
-
-  // Botão para salvar o relato           
- new Container(
-                   
-                    
-                    width: MediaQuery.of(context).size.width,
-                    height: 60.0,
-                    margin: EdgeInsets.only(left: 6, right: 6, top: 365),
-                    decoration: BoxDecoration(
-                      color:Color.fromRGBO(248,92,104,1),
-                      borderRadius: BorderRadius.circular(120),
-                    ),
-
-          child: Column(
-
-        
-        ///crossAxisAlignment:CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        
-        
-        
-        children:[
-          FlatButton(
-                          
-                          color: Color.fromRGBO(248,92,104,1),
-                          textColor:Colors.white,
-                          disabledColor: Colors.grey,
-                          padding: EdgeInsets.all(15.0),
-                          splashColor: Colors.white,
-                          onPressed: () {
-                           debugPrint("SALVANDO");
-                          },
-                          child: Text(
-                            "SALVAR",
-                            style: TextStyle(fontSize: 22.0),
-        
-               
-                          
-               ),
-             ),
-          
-        ]),
-       
-),
-
-           
-          
-          
-        
-        ],
-      ),
-    );
-  }
-}
+          ],)));}}
