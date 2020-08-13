@@ -28,7 +28,7 @@ class _ButtonState extends State<Button> {
       width: 300,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40.0),
-        color: widget.txtColor,
+        color: widget.btnColor,
       ),
       child: FlatButton(
         onPressed: () {
@@ -40,7 +40,7 @@ class _ButtonState extends State<Button> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 15.0,
-              color: widget.btnColor,
+              color: widget.txtColor,
             ),
           ),
         ),

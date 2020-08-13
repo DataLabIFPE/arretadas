@@ -1,35 +1,8 @@
+import 'package:arretadas/components/Button.dart';
 import 'package:flutter/material.dart';
 import 'package:arretadas/components/Input.dart';
 
 class Cadastro extends StatelessWidget {
-  Widget criaBotao(
-      Color color, String rota, String labelText, Color background, context) {
-    return Container(
-      margin: EdgeInsets.only(top: 50.0),
-      height: 70.0,
-      width: 300,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40.0),
-        color: color,
-      ),
-      child: FlatButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/$rota');
-        },
-        child: Center(
-          child: Text(
-            '$labelText',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15.0,
-              color: background,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,8 +35,13 @@ class Cadastro extends StatelessWidget {
                 Input(color: Colors.white, labelText: 'Senha'),
                 Input(color: Colors.white, labelText: 'Confirme sua Senha'),
                 Input(color: Colors.white, labelText: 'Código de Proteção'),
-                criaBotao(Colors.white, 'menu', 'CADASTRAR',
-                    Color.fromRGBO(248, 92, 104, 1), context)
+                Button(
+                  btnColor: Colors.white,
+                  txtColor: Colors.redAccent,
+                  labelText: 'CADASTRAR',
+                  rota: '/menu',
+                  context: context,
+                ),
               ],
             ),
           ],
