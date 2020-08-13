@@ -1,28 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:arretadas/components/Input.dart';
 
 class Login extends StatelessWidget {
-  
-  Widget criaCampo(Color color, String labelText, bool obscure){
-    return Container(
-      child: TextField(
-        scrollPadding: EdgeInsets.all(10.0),
-        style: TextStyle(
-          color: color,
-        ),
-        obscureText: obscure,
-        decoration: InputDecoration(
-          labelText: '$labelText',
-          labelStyle: TextStyle(
-            color: color,
-          )
-        ),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      margin: EdgeInsets.only(top: 10),
-    );
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,8 +30,8 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
-                criaCampo(Colors.white, 'Nickname', false),
-                criaCampo(Colors.white, 'Senha', true),
+                Input(color: Colors.white, labelText: 'Nickname'),
+                Input(color: Colors.white, labelText: 'Senha'),
                 Container(
                   margin: EdgeInsets.only(top: 50.0),
                   height: 70.0,
@@ -67,12 +46,12 @@ class Login extends StatelessWidget {
                     },
                     child: Center(
                       child: Text(
-                      'ENTRAR',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0,
-                        color: Color.fromRGBO(248, 92, 104, 1),
-                      ),
+                        'ENTRAR',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0,
+                          color: Color.fromRGBO(248, 92, 104, 1),
+                        ),
                       ),
                     ),
                   ),
@@ -81,7 +60,7 @@ class Login extends StatelessWidget {
             ),
           ],
         ),
-      ),      
+      ),
     );
   }
 }
