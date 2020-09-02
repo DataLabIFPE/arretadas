@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
                   txtColor: Colors.redAccent,
                   btnColor: Colors.white,
                   context: context,
-                  rota: '/menu',
+                  rota: '/login',
                   labelText: 'ENTRAR',
                 ),
               ],

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Button extends StatefulWidget {
   Button(
       {Key key,
+      this.type,
+      this.email,
+      this.password,
       this.txtColor,
       this.btnColor,
       this.context,
@@ -15,11 +19,24 @@ class Button extends StatefulWidget {
   final String rota;
   final String labelText;
   final BuildContext context;
+  final String type;
+  final String email;
+  final String password;
   @override
   _ButtonState createState() => _ButtonState();
 }
 
 class _ButtonState extends State<Button> {
+  Future<dynamic> _checkUser(email, password) async {
+    final url = 'http://10.0.2.2:3000/exists';
+    final isLogged =
+        await http.post(url, body: {'email': email, 'password': password});
+
+    print(isLogged.statusCode);
+
+    return isLogged.statusCode;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +49,15 @@ class _ButtonState extends State<Button> {
       ),
       child: FlatButton(
         onPressed: () {
-          Navigator.pushNamed(widget.context, widget.rota);
+          if (widget.type == 'login') {
+            var status = _checkUser(widget.email, widget.password);
+            print(status);
+            if (status.toString() != null) {
+              Navigator.pushNamed(widget.context, widget.rota);
+            }
+          } else {
+            Navigator.pushNamed(widget.context, widget.rota);
+          }
         },
         child: Center(
           child: Text(
