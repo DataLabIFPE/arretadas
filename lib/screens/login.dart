@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:arretadas/components/Input.dart';
+import 'package:arretadas/components/Button.dart';
+import 'package:arretadas/components/Form.dart';
 
 class Login extends StatelessWidget {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,31 +35,29 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
-                Input(color: Colors.white, labelText: 'Nickname'),
-                Input(color: Colors.white, labelText: 'Senha'),
-                Container(
-                  margin: EdgeInsets.only(top: 50.0),
-                  height: 70.0,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40.0),
-                    color: Colors.white,
-                  ),
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/menu');
-                    },
-                    child: Center(
-                      child: Text(
-                        'ENTRAR',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15.0,
-                          color: Color.fromRGBO(248, 92, 104, 1),
-                        ),
-                      ),
-                    ),
-                  ),
+                CustomForm(
+                  fields: <Widget>[
+                    Input(
+                        controller: emailController,
+                        type: 'username',
+                        color: Colors.white,
+                        labelText: 'Nickname'),
+                    Input(
+                        controller: passwordController,
+                        type: 'password',
+                        color: Colors.white,
+                        labelText: 'Senha'),
+                  ],
+                ),
+                Button(
+                  type: 'login',
+                  email: emailController.text,
+                  password: passwordController.text,
+                  txtColor: Colors.redAccent,
+                  btnColor: Colors.white,
+                  context: context,
+                  rota: '/menu',
+                  labelText: 'LOGIN',
                 ),
               ],
             ),

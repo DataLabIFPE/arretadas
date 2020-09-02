@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'alerta.dart';
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
+  @override
+  _MenuState createState() => _MenuState();
+}
+
+class _MenuState extends State<Menu> {
+  void _getLocation() async {
+    final location = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(location);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -82,6 +94,7 @@ class Menu extends StatelessWidget {
                             padding: EdgeInsets.all(35.0),
                             splashColor: Colors.white,
                             onPressed: () {
+                              _getLocation();
                               showAlertDialog2(context);
                             },
                             child: Text(
