@@ -39,8 +39,9 @@ class Cadastro extends StatelessWidget {
                   btnColor: Colors.white,
                   txtColor: Colors.redAccent,
                   labelText: 'CADASTRAR',
-                  rota: '/menu',
-                  context: context,
+                  callback: () {
+                    Navigator.pushNamed(context, '/menu');
+                  },
                 ),
               ],
             ),

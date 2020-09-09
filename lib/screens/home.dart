@@ -35,16 +35,18 @@ class Home extends StatelessWidget {
                 Button(
                   txtColor: Colors.white,
                   btnColor: Colors.redAccent,
-                  context: context,
-                  rota: '/cadastro',
                   labelText: 'CADASTRAR',
+                  callback: () {
+                    Navigator.pushNamed(context, '/cadastro');
+                  },
                 ),
                 Button(
                   txtColor: Colors.redAccent,
                   btnColor: Colors.white,
-                  context: context,
-                  rota: '/login',
                   labelText: 'ENTRAR',
+                  callback: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
                 ),
               ],
             ),
