@@ -109,9 +109,10 @@ class _MenuState extends State<Menu> {
                       type: 'help',
                       txtColor: Colors.redAccent,
                       btnColor: Colors.white,
-                      context: context,
-                      rota: '',
                       labelText: 'PEDIR SOCORRO',
+                      callback: () {
+                        Navigator.pushNamed(context, '');
+                      },
                     ),
                     //Botão denunciar
                     Container(

@@ -50,14 +50,14 @@ class Login extends StatelessWidget {
                   ],
                 ),
                 Button(
-                  type: 'login',
                   email: emailController.text,
                   password: passwordController.text,
                   txtColor: Colors.redAccent,
                   btnColor: Colors.white,
-                  context: context,
-                  rota: '/menu',
                   labelText: 'LOGIN',
+                  callback: () {
+                    Navigator.pushNamed(context, '/menu');
+                  },
                 ),
               ],
             ),
