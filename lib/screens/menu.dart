@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 // import 'package:geolocator/geolocator.dart';
 
 class Menu extends StatefulWidget {
+  Menu({Key key, this.name});
+  final String name;
   @override
   _MenuState createState() => _MenuState();
 }
@@ -53,7 +55,7 @@ class _MenuState extends State<Menu> {
                             Container(
                               padding: EdgeInsets.only(top: 5),
                               child: Text(
-                                'Beltrana da Silva',
+                                widget.name,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.0,
