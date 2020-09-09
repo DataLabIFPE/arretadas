@@ -49,15 +49,7 @@ class _ButtonState extends State<Button> {
       ),
       child: FlatButton(
         onPressed: () {
-          if (widget.type == 'login') {
-            var status = _checkUser(widget.email, widget.password);
-            print(status);
-            if (status.toString() != null) {
-              Navigator.pushNamed(widget.context, widget.rota);
-            }
-          } else {
-            Navigator.pushNamed(widget.context, widget.rota);
-          }
+          Navigator.pushNamed(widget.context, widget.rota);
         },
         child: Center(
           child: Text(
