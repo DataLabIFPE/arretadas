@@ -1,3 +1,4 @@
+import 'package:arretadas/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:arretadas/components/Input.dart';
 import 'package:arretadas/components/Button.dart';
@@ -50,14 +51,18 @@ class Login extends StatelessWidget {
                   ],
                 ),
                 Button(
-                  type: 'login',
                   email: emailController.text,
                   password: passwordController.text,
                   txtColor: Colors.redAccent,
                   btnColor: Colors.white,
-                  context: context,
-                  rota: '/menu',
                   labelText: 'LOGIN',
+                  callback: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Menu(name: emailController.text)));
+                  },
                 ),
               ],
             ),

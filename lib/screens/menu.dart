@@ -1,18 +1,20 @@
+import 'package:arretadas/components/Button.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'alerta.dart';
+// import 'package:geolocator/geolocator.dart';
 
 class Menu extends StatefulWidget {
+  Menu({Key key, this.name});
+  final String name;
   @override
   _MenuState createState() => _MenuState();
 }
 
 class _MenuState extends State<Menu> {
-  void _getLocation() async {
-    final location = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    print(location);
-  }
+  // void _getLocation() async {
+  //   final location = await Geolocator()
+  //       .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  //   print(location);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class _MenuState extends State<Menu> {
                             Container(
                               padding: EdgeInsets.only(top: 5),
                               child: Text(
-                                'Beltrana da Silva',
+                                widget.name,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.0,
@@ -72,38 +74,47 @@ class _MenuState extends State<Menu> {
                             child: Image.asset('assets/icon-person.png')),
                       ],
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 90.0,
-                      margin: EdgeInsets.only(left: 6, right: 6, top: 15),
-                      decoration: BoxDecoration(
-                        color: Colors.yellowAccent,
-                        borderRadius: BorderRadius.circular(90),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Icon(
-                            Icons.warning,
-                            size: 60,
-                          ),
-                          FlatButton(
-                            color: Colors.yellowAccent,
-                            textColor: Colors.black,
-                            disabledColor: Colors.grey,
-                            padding: EdgeInsets.all(35.0),
-                            splashColor: Colors.white,
-                            onPressed: () {
-                              _getLocation();
-                              showAlertDialog2(context);
-                            },
-                            child: Text(
-                              "PEDIR SOCORRO",
-                              style: TextStyle(fontSize: 22.0),
-                            ),
-                          ),
-                        ],
-                      ),
+                    // Container(
+                    //   width: MediaQuery.of(context).size.width,
+                    //   height: 90.0,
+                    //   margin: EdgeInsets.only(left: 6, right: 6, top: 15),
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.yellowAccent,
+                    //     borderRadius: BorderRadius.circular(90),
+                    //   ),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //     children: <Widget>[
+                    //       Icon(
+                    //         Icons.warning,
+                    //         size: 60,
+                    //       ),
+                    //       FlatButton(
+                    //         color: Colors.yellowAccent,
+                    //         textColor: Colors.black,
+                    //         disabledColor: Colors.grey,
+                    //         padding: EdgeInsets.all(35.0),
+                    //         splashColor: Colors.white,
+                    //         onPressed: () {
+                    //           _getLocation();
+                    //           showAlertDialog2(context);
+                    //         },
+                    //         child: Text(
+                    //           "PEDIR SOCORRO",
+                    //           style: TextStyle(fontSize: 22.0),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    Button(
+                      type: 'help',
+                      txtColor: Colors.redAccent,
+                      btnColor: Colors.white,
+                      labelText: 'PEDIR SOCORRO',
+                      callback: () {
+                        Navigator.pushNamed(context, '');
+                      },
                     ),
                     //Botão denunciar
                     Container(
