@@ -108,7 +108,6 @@ class _MenuState extends State<Menu> {
                     //   ),
                     // ),
                     Button(
-                      type: 'help',
                       txtColor: Colors.redAccent,
                       btnColor: Colors.white,
                       labelText: 'PEDIR SOCORRO',

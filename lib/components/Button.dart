@@ -1,24 +1,28 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 class Button extends StatefulWidget {
   Button(
       {Key key,
-      this.type,
-      this.email,
-      this.password,
+      this.margin,
+      this.width,
+      this.height,
       this.txtColor,
       this.btnColor,
       this.labelText,
+      this.fontSize,
       this.callback})
       : super(key: key);
 
+  final EdgeInsets margin;
+  final MediaQuery width;
+  final Double height;
   final Color txtColor;
   final Color btnColor;
   final String labelText;
-  final String type;
-  final String email;
-  final String password;
+  final Double fontSize;
   final Function callback;
   @override
   _ButtonState createState() => _ButtonState();
@@ -50,14 +54,25 @@ class _ButtonState extends State<Button> {
 
   @override
   Widget build(BuildContext context) {
+    final bgColor =
+        widget.btnColor != null ? widget.btnColor : Colors.transparent;
+    final txtColor = widget.txtColor != null ? widget.txtColor : Colors.white;
+    final fontSize = widget.fontSize != null ? widget.fontSize : 15.0;
+    final width = widget.width != null
+        ? widget.width
+        : (MediaQuery.of(context).size.width * 0.55);
+    final height = widget.height != null ? widget.height : 50.0;
+
     return Container(
-      margin: EdgeInsets.only(top: 50.0),
-      height: 70.0,
-      width: 300,
+      margin: widget.margin,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40.0),
-        color: widget.btnColor,
-      ),
+          borderRadius: BorderRadius.circular(10.0),
+          color: bgColor,
+          border: Border.all(
+            color: Colors.white,
+          )),
       child: FlatButton(
         onPressed: widget.callback,
         child: Center(
@@ -65,8 +80,8 @@ class _ButtonState extends State<Button> {
             widget.labelText,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 15.0,
-              color: widget.txtColor,
+              fontSize: fontSize,
+              color: txtColor,
             ),
           ),
         ),
