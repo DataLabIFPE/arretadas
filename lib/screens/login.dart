@@ -39,11 +39,15 @@ class Login extends StatelessWidget {
                 CustomForm(
                   fields: <Widget>[
                     Input(
+                        margin:
+                            EdgeInsets.only(top: 60.0, left: 10.0, right: 10.0),
                         controller: emailController,
                         type: 'username',
                         color: Colors.white,
                         labelText: 'Nickname'),
                     Input(
+                        margin:
+                            EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
                         controller: passwordController,
                         type: 'password',
                         color: Colors.white,
@@ -54,7 +58,7 @@ class Login extends StatelessWidget {
                   txtColor: Colors.redAccent,
                   btnColor: Colors.white,
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.2),
+                      top: MediaQuery.of(context).size.height * 0.1),
                   child: Text(
                     'ENTRAR',
                     style: TextStyle(
