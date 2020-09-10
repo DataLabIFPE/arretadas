@@ -1,4 +1,3 @@
-
 import 'package:arretadas/components/Header.dart';
 
 import 'package:arretadas/components/Button.dart';
@@ -40,10 +39,8 @@ class _MenuState extends State<Menu> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-
                         Header(
-                          userName: 'Raffael',
-
+                          userName: widget.name,
                         ),
                         Container(
                             margin: EdgeInsets.only(top: 10),
