@@ -51,10 +51,10 @@ class Login extends StatelessWidget {
                   ],
                 ),
                 Button(
-                  email: emailController.text,
-                  password: passwordController.text,
                   txtColor: Colors.redAccent,
                   btnColor: Colors.white,
+                  margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.2),
                   labelText: 'LOGIN',
                   callback: () {
                     Navigator.push(

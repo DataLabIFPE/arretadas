@@ -31,9 +31,10 @@ class Home extends StatelessWidget {
                   ],
                 ),
                 Button(
-                  txtColor: Colors.white,
-                  btnColor: Colors.redAccent,
                   labelText: 'CADASTRAR',
+                  margin: EdgeInsets.only(
+                      top: (MediaQuery.of(context).size.height * 0.2),
+                      bottom: (MediaQuery.of(context).size.height * 0.03)),
                   callback: () {
                     Navigator.pushNamed(context, '/cadastro');
                   },
