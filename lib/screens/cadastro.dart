@@ -1,8 +1,10 @@
 import 'package:arretadas/components/Button.dart';
+import 'package:arretadas/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:arretadas/components/Input.dart';
 
 class Cadastro extends StatelessWidget {
+  final nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,10 +33,29 @@ class Cadastro extends StatelessWidget {
                     ),
                   ],
                 ),
-                Input(color: Colors.white, labelText: 'Nome'),
-                Input(color: Colors.white, labelText: 'Senha'),
-                Input(color: Colors.white, labelText: 'Confirme sua Senha'),
-                Input(color: Colors.white, labelText: 'Código de Proteção'),
+                Input(
+                  color: Colors.white,
+                  labelText: 'Nome',
+                  margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+                  controller: nameController,
+                ),
+                Input(
+                  color: Colors.white,
+                  labelText: 'Senha',
+                  margin: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+                  type: 'password',
+                ),
+                Input(
+                  color: Colors.white,
+                  labelText: 'Confirme sua Senha',
+                  margin: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+                  type: 'password',
+                ),
+                Input(
+                  color: Colors.white,
+                  labelText: 'Código de Proteção (OPCIONAL)',
+                  margin: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
+                ),
                 Button(
                   btnColor: Colors.white,
                   txtColor: Colors.redAccent,
@@ -48,7 +69,13 @@ class Cadastro extends StatelessWidget {
                     ),
                   ),
                   callback: () {
-                    Navigator.pushNamed(context, '/menu');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Menu(
+                            name: nameController.text,
+                          ),
+                        ));
                   },
                 ),
               ],
