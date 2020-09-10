@@ -21,19 +21,7 @@ class _HeaderState extends State<Header> {
         Container(
           padding: EdgeInsets.only(top: 10),
           child: Text(
-            'Olá, Boa tarde !',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Exo',
-            ),
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 5),
-          child: Text(
-            widget.userName,
+            'Olá, ${widget.userName}',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20.0,
