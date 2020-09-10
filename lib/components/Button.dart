@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 // import 'package:http/http.dart' as http;
 
@@ -11,19 +9,21 @@ class Button extends StatefulWidget {
       this.height,
       this.txtColor,
       this.btnColor,
-      this.labelText,
+      this.child,
       this.fontSize,
-      this.callback})
+      this.callback,
+      this.fontWeight})
       : super(key: key);
 
   final EdgeInsets margin;
-  final MediaQuery width;
-  final Double height;
+  final double width;
+  final double height;
   final Color txtColor;
   final Color btnColor;
-  final String labelText;
-  final Double fontSize;
+  final Widget child;
+  final double fontSize;
   final Function callback;
+  final FontWeight fontWeight;
   @override
   _ButtonState createState() => _ButtonState();
 }
@@ -56,8 +56,6 @@ class _ButtonState extends State<Button> {
   Widget build(BuildContext context) {
     final bgColor =
         widget.btnColor != null ? widget.btnColor : Colors.transparent;
-    final txtColor = widget.txtColor != null ? widget.txtColor : Colors.white;
-    final fontSize = widget.fontSize != null ? widget.fontSize : 15.0;
     final width = widget.width != null
         ? widget.width
         : (MediaQuery.of(context).size.width * 0.55);
@@ -76,14 +74,7 @@ class _ButtonState extends State<Button> {
       child: FlatButton(
         onPressed: widget.callback,
         child: Center(
-          child: Text(
-            widget.labelText,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: fontSize,
-              color: txtColor,
-            ),
-          ),
+          child: widget.child,
         ),
       ),
     );
