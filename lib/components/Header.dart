@@ -23,8 +23,8 @@ class _HeaderState extends State<Header> {
           child: Text(
             'Olá, ${widget.userName}',
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0,
+              color: Colors.redAccent,
+              fontSize: 25.0,
               fontWeight: FontWeight.bold,
               fontFamily: 'Exo',
             ),

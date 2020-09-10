@@ -38,7 +38,15 @@ class Cadastro extends StatelessWidget {
                 Button(
                   btnColor: Colors.white,
                   txtColor: Colors.redAccent,
-                  labelText: 'CADASTRAR',
+                  margin: EdgeInsets.only(top: 30.0),
+                  child: Text(
+                    'CADASTRAR',
+                    style: TextStyle(
+                      color: Colors.redAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15.0,
+                    ),
+                  ),
                   callback: () {
                     Navigator.pushNamed(context, '/menu');
                   },

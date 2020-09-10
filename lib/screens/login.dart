@@ -55,7 +55,14 @@ class Login extends StatelessWidget {
                   btnColor: Colors.white,
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.2),
-                  labelText: 'LOGIN',
+                  child: Text(
+                    'ENTRAR',
+                    style: TextStyle(
+                      color: Colors.redAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15.0,
+                    ),
+                  ),
                   callback: () {
                     Navigator.push(
                         context,
