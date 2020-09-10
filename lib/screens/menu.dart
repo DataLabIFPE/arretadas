@@ -1,4 +1,8 @@
+
+import 'package:arretadas/components/Header.dart';
+
 import 'package:arretadas/components/Button.dart';
+
 import 'package:flutter/material.dart';
 // import 'package:geolocator/geolocator.dart';
 
@@ -36,35 +40,10 @@ class _MenuState extends State<Menu> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.only(top: 10),
-                              child: Text(
-                                'Olá, Boa tarde !',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Exo',
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(top: 5),
-                              child: Text(
-                                widget.name,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Exo',
-                                ),
-                              ),
-                            ),
-                          ],
+
+                        Header(
+                          userName: 'Raffael',
+
                         ),
                         Container(
                             margin: EdgeInsets.only(top: 10),
@@ -173,7 +152,7 @@ class _MenuState extends State<Menu> {
                             ),
                             subtitle: Container(
                               child: Text(
-                                'BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA',
+                                'This is a Test',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'Exo',
@@ -287,71 +266,6 @@ class _MenuState extends State<Menu> {
               ],
             ),
           ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color.fromRGBO(248, 92, 104, 1),
-          selectedIconTheme: const IconThemeData(
-            color: Colors.white,
-          ),
-          unselectedIconTheme: const IconThemeData(
-            color: Colors.white,
-          ),
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: FlatButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 30.0,
-                  color: Colors.white,
-                ),
-              ),
-              title: Text(
-                'Voltar',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: FlatButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.home,
-                  size: 30.0,
-                  color: Colors.white,
-                ),
-              ),
-              title: Text(
-                'Back',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: FlatButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.search,
-                  size: 30,
-                  color: Colors.white,
-                ),
-              ),
-              title: Text(
-                'Pesquisar',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
         ),
       ),
     );

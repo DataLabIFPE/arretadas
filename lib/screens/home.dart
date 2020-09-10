@@ -24,7 +24,9 @@ class Home extends StatelessWidget {
                     Column(
                       children: <Widget>[
                         Image(
-                          image: AssetImage('assets/logo-white.png'),
+                          image: AssetImage('assets/logo-white.png', 
+                          ),
+                          
                         ),
                       ],
                     ),
