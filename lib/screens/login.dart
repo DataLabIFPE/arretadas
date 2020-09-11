@@ -5,7 +5,7 @@ import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/components/Form.dart';
 
 class Login extends StatelessWidget {
-  final emailController = TextEditingController();
+  final nameController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
@@ -41,7 +41,7 @@ class Login extends StatelessWidget {
                     Input(
                         margin:
                             EdgeInsets.only(top: 60.0, left: 10.0, right: 10.0),
-                        controller: emailController,
+                        controller: nameController,
                         type: 'username',
                         color: Colors.white,
                         labelText: 'Nickname'),
@@ -68,11 +68,38 @@ class Login extends StatelessWidget {
                     ),
                   ),
                   callback: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                Menu(name: emailController.text)));
+                    if (nameController.text != '' &&
+                        passwordController.text != '') {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Menu(name: nameController.text)));
+                      return;
+                    }
+                    showModalBottomSheet<String>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: 150.0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.0),
+                                      topRight: Radius.circular(20.0))),
+                              child: Center(
+                                child: Text(
+                                  'Usuário e Senha inválidos',
+                                  style: TextStyle(
+                                    fontFamily: 'Exo',
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        });
                   },
                 ),
               ],
