@@ -83,6 +83,7 @@ class Cadastro extends StatelessWidget {
                               name: nameController.text,
                             ),
                           ));
+                      return;
                     }
                     showModalBottomSheet<String>(
                         context: context,

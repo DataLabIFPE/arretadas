@@ -75,6 +75,7 @@ class Login extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) =>
                                   Menu(name: nameController.text)));
+                      return;
                     }
                     showModalBottomSheet<String>(
                         context: context,
