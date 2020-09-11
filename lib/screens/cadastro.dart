@@ -5,6 +5,9 @@ import 'package:arretadas/components/Input.dart';
 
 class Cadastro extends StatelessWidget {
   final nameController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,12 +47,14 @@ class Cadastro extends StatelessWidget {
                   labelText: 'Senha',
                   margin: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
                   type: 'password',
+                  controller: passwordController,
                 ),
                 Input(
                   color: Colors.white,
                   labelText: 'Confirme sua Senha',
                   margin: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
                   type: 'password',
+                  controller: confirmPasswordController,
                 ),
                 Input(
                   color: Colors.white,
@@ -69,13 +74,39 @@ class Cadastro extends StatelessWidget {
                     ),
                   ),
                   callback: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Menu(
-                            name: nameController.text,
-                          ),
-                        ));
+                    if (passwordController.text ==
+                        confirmPasswordController.text) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Menu(
+                              name: nameController.text,
+                            ),
+                          ));
+                    }
+                    showModalBottomSheet<String>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: 150.0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.0),
+                                      topRight: Radius.circular(20.0))),
+                              child: Center(
+                                child: Text(
+                                  'Senhas Divergentes!',
+                                  style: TextStyle(
+                                    fontFamily: 'Exo',
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        });
                   },
                 ),
               ],
