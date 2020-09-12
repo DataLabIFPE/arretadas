@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
 
 class Button extends StatefulWidget {
   Button(
@@ -29,29 +28,6 @@ class Button extends StatefulWidget {
 }
 
 class _ButtonState extends State<Button> {
-  // Future<dynamic> _checkUser(email, password) async {
-  //   final url = 'http://10.0.2.2:3000/exists';
-  //   final isLogged =
-  //       await http.post(url, body: {'email': email, 'password': password});
-
-  //   print(isLogged.statusCode);
-
-  //   return isLogged.statusCode;
-  // }
-
-  // Future<dynamic> _sendMessage() async {
-  //   final url = 'http://10.0.2.2:3000/help';
-  //   final send = await http.post(url, body: {
-  //     'num1': '5583996292935',
-  //     'num2': '5587999429510',
-  //     'num3': '5587999914901',
-  //     'num4': '5581992882988',
-  //     'num5': '5587981090745'
-  //   });
-  //   print('enviou');
-  //   return send.statusCode;
-  // }
-
   @override
   Widget build(BuildContext context) {
     final bgColor =
