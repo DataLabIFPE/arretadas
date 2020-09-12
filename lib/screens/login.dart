@@ -1,37 +1,51 @@
 import 'dart:convert';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 
+import 'package:arretadas/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:arretadas/components/Input.dart';
 import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/components/Form.dart';
-import 'package:http/http.dart' as http;
 
-User userFromJson(String str) {
-  final jsonData = json.decode(str);
-  return User.fromJson(jsonData);
-}
-
-class User {
-  User({this.name, this.token});
-
-  String name;
-  String token;
-
-  factory User.fromJson(Map<dynamic, dynamic> json) =>
-      User(name: json["name"], token: json["token"]);
+Future<String> showModal(BuildContext context, String error) {
+  return showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 150.0,
+          child: Container(
+            child: Center(
+              child: Text(
+                error,
+                style: TextStyle(
+                  fontFamily: 'Exo',
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        );
+      });
 }
 
 class Login extends StatelessWidget {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  Future<dynamic> _checkUser(String name, String password) async {
+  Future<Map<String, dynamic>> _checkUser(String name, String password) async {
     // final url = 'https://infinite-escarpment-35695.herokuapp.com/user/login';
     final url = 'http://10.0.2.2:3000/user/login';
     final response =
         await http.post(url, body: {"name": name, "password": password});
 
-    return userFromJson(response.body);
+    if (password == '') {
+      print('password em branco');
+      return json.decode(response.body);
+    }
+
+    return json.decode(response.body);
   }
 
   @override
@@ -93,39 +107,20 @@ class Login extends StatelessWidget {
                         fontSize: 15.0,
                       ),
                     ),
-                    callback: () {
-                      _checkUser(nameController.text, passwordController.text)
-                          .then((resp) {
-                        print(resp);
-                        if (resp != null) {
-                          Navigator.pushNamed(context, '/menu');
-                          return;
-                        } else {
-                          showModalBottomSheet<String>(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return Container(
-                                  height: 150.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0))),
-                                    child: Center(
-                                      child: Text(
-                                        'Campos inválidos',
-                                        style: TextStyle(
-                                          fontFamily: 'Exo',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              });
-                        }
-                      }).catchError((e) => print(e));
+                    callback: () async {
+                      Map<String, dynamic> resp = await _checkUser(
+                          nameController.text, passwordController.text);
+                      if (resp['error'] == 'senha inválida') {
+                        showModal(context, resp['error']);
+                      }
+
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Menu(
+                            name: resp['user']['name'],
+                          );
+                        },
+                      ));
                     }),
               ],
             ),
