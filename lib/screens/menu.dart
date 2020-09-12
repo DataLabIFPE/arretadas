@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:arretadas/components/Header.dart';
 
 import 'package:arretadas/components/Button.dart';
 
 import 'package:flutter/material.dart';
-// import 'package:geolocator/geolocator.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 
 class Menu extends StatefulWidget {
   Menu({Key key, this.name});
@@ -13,11 +16,33 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  // void _getLocation() async {
-  //   final location = await Geolocator()
-  //       .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  //   print(location);
-  // }
+  dynamic _getLocation() async {
+    final location = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(location);
+
+    return location;
+  }
+
+  Future<dynamic> _sendMessage(data) async {
+    final url = 'http://10.0.2.2:3000/help';
+    final send = await http.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'num1': '5583996292935',
+          'num2': '5587999429510',
+          'num3': '5587999914901',
+          'num4': '5581992882988',
+          'num5': '5587981090745',
+          'lat': data.lat,
+          'long': data.long
+        }));
+
+    print('enviou');
+    return send.statusCode;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +85,9 @@ class _MenuState extends State<Menu> {
                           fontSize: 18.0,
                         ),
                       ),
-                      callback: () {
-                        Navigator.pushNamed(context, '');
+                      callback: () async {
+                        var coordinators = await _getLocation();
+                        await _sendMessage(coordinators);
                       },
                     ),
                     //Botão denunciar
