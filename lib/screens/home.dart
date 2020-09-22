@@ -24,25 +24,44 @@ class Home extends StatelessWidget {
                     Column(
                       children: <Widget>[
                         Image(
-                          image: AssetImage('assets/logo-white.png'),
+                          image: AssetImage(
+                            'assets/logo-white.png',
+                          ),
                         ),
                       ],
                     ),
                   ],
                 ),
                 Button(
-                  txtColor: Colors.white,
-                  btnColor: Colors.redAccent,
-                  context: context,
-                  rota: '/cadastro',
-                  labelText: 'CADASTRAR',
+                  child: Text(
+                    'CADASTRAR',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                  margin: EdgeInsets.only(
+                      top: (MediaQuery.of(context).size.height * 0.2),
+                      bottom: (MediaQuery.of(context).size.height * 0.03)),
+                  callback: () {
+                    Navigator.pushNamed(context, '/cadastro');
+                  },
                 ),
                 Button(
                   txtColor: Colors.redAccent,
                   btnColor: Colors.white,
-                  context: context,
-                  rota: '/login',
-                  labelText: 'ENTRAR',
+                  child: Text(
+                    'ENTRAR',
+                    style: TextStyle(
+                      color: Colors.redAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                  callback: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
                 ),
               ],
             ),

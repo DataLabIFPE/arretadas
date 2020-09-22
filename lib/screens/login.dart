@@ -1,11 +1,52 @@
+import 'dart:convert';
+import 'dart:async';
+import 'package:http/http.dart' as http;
+
+import 'package:arretadas/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:arretadas/components/Input.dart';
 import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/components/Form.dart';
 
+Future<String> showModal(BuildContext context, String error) {
+  return showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 150.0,
+          child: Container(
+            child: Center(
+              child: Text(
+                error,
+                style: TextStyle(
+                  fontFamily: 'Exo',
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        );
+      });
+}
+
 class Login extends StatelessWidget {
-  final emailController = TextEditingController();
+  final nameController = TextEditingController();
   final passwordController = TextEditingController();
+
+  Future<Map<String, dynamic>> _checkUser(String name, String password) async {
+    // final url = 'https://infinite-escarpment-35695.herokuapp.com/user/login';
+    final url = 'http://10.0.2.2:3000/user/login';
+    final response =
+        await http.post(url, body: {"name": name, "password": password});
+
+    if (password == '') {
+      print('password em branco');
+      return json.decode(response.body);
+    }
+
+    return json.decode(response.body);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +79,15 @@ class Login extends StatelessWidget {
                 CustomForm(
                   fields: <Widget>[
                     Input(
-                        controller: emailController,
+                        margin:
+                            EdgeInsets.only(top: 60.0, left: 10.0, right: 10.0),
+                        controller: nameController,
                         type: 'username',
                         color: Colors.white,
                         labelText: 'Nickname'),
                     Input(
+                        margin:
+                            EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
                         controller: passwordController,
                         type: 'password',
                         color: Colors.white,
@@ -50,15 +95,33 @@ class Login extends StatelessWidget {
                   ],
                 ),
                 Button(
-                  type: 'login',
-                  email: emailController.text,
-                  password: passwordController.text,
-                  txtColor: Colors.redAccent,
-                  btnColor: Colors.white,
-                  context: context,
-                  rota: '/menu',
-                  labelText: 'LOGIN',
-                ),
+                    txtColor: Colors.redAccent,
+                    btnColor: Colors.white,
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.1),
+                    child: Text(
+                      'ENTRAR',
+                      style: TextStyle(
+                        color: Colors.redAccent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    callback: () async {
+                      Map<String, dynamic> resp = await _checkUser(
+                          nameController.text, passwordController.text);
+                      if (resp['error'] == 'senha inválida') {
+                        showModal(context, resp['error']);
+                      }
+
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Menu(
+                            name: resp['user']['name'],
+                          );
+                        },
+                      ));
+                    }),
               ],
             ),
           ],

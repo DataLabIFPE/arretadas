@@ -1,73 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class Button extends StatefulWidget {
   Button(
       {Key key,
-      this.type,
-      this.email,
-      this.password,
+      this.margin,
+      this.width,
+      this.height,
       this.txtColor,
       this.btnColor,
-      this.context,
-      this.rota,
-      this.labelText})
+      this.child,
+      this.fontSize,
+      this.callback,
+      this.fontWeight})
       : super(key: key);
 
+  final EdgeInsets margin;
+  final double width;
+  final double height;
   final Color txtColor;
   final Color btnColor;
-  final String rota;
-  final String labelText;
-  final BuildContext context;
-  final String type;
-  final String email;
-  final String password;
+  final Widget child;
+  final double fontSize;
+  final Function callback;
+  final FontWeight fontWeight;
   @override
   _ButtonState createState() => _ButtonState();
 }
 
 class _ButtonState extends State<Button> {
-  Future<dynamic> _checkUser(email, password) async {
-    final url = 'http://10.0.2.2:3000/exists';
-    final isLogged =
-        await http.post(url, body: {'email': email, 'password': password});
-
-    print(isLogged.statusCode);
-
-    return isLogged.statusCode;
-  }
-
   @override
   Widget build(BuildContext context) {
+    final bgColor =
+        widget.btnColor != null ? widget.btnColor : Colors.transparent;
+    final width = widget.width != null
+        ? widget.width
+        : (MediaQuery.of(context).size.width * 0.55);
+    final height = widget.height != null ? widget.height : 50.0;
+
     return Container(
-      margin: EdgeInsets.only(top: 50.0),
-      height: 70.0,
-      width: 300,
+      margin: widget.margin,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40.0),
-        color: widget.btnColor,
-      ),
+          borderRadius: BorderRadius.circular(10.0),
+          color: bgColor,
+          border: Border.all(
+            color: Colors.white,
+          )),
       child: FlatButton(
-        onPressed: () {
-          if (widget.type == 'login') {
-            var status = _checkUser(widget.email, widget.password);
-            print(status);
-            if (status.toString() != null) {
-              Navigator.pushNamed(widget.context, widget.rota);
-            }
-          } else {
-            Navigator.pushNamed(widget.context, widget.rota);
-          }
-        },
+        onPressed: widget.callback,
         child: Center(
-          child: Text(
-            widget.labelText,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15.0,
-              color: widget.txtColor,
-            ),
-          ),
+          child: widget.child,
         ),
       ),
     );
