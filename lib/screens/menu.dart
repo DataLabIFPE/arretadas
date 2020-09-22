@@ -163,7 +163,7 @@ class _MenuState extends State<Menu> {
                             ),
                             subtitle: Container(
                               child: Text(
-                                'BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA',
+                                '...',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'Exo',
