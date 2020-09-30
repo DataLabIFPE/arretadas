@@ -139,7 +139,7 @@ class _MenuState extends State<Menu> {
                             ),
                             subtitle: Container(
                               child: Text(
-
+                                'Teste',
                                 style: TextStyle(
                                   color: Colors.red[400],
                                   fontFamily: 'Exo',

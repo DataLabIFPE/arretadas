@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'mapa.dart';
+import 'package:arretadas/screens/mapa.dart';
 
 class Denuncias extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class Denuncias extends StatelessWidget {
         appBar: AppBar(
           title: Text("Fazer Denúncias"),
         ),
-        body: MapaDenunciar(),
+        body: Map(),
       ),
     );
   }
