@@ -2,11 +2,35 @@ import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:arretadas/components/Input.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 
 class Cadastro extends StatelessWidget {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  var checkCreateUser;
+
+  Future<dynamic> _createUser(String name, String password) async {
+    final url = 'https://arretadas-api.herokuapp.com/user';
+    final response = await http.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, dynamic>{
+          "nickname": name,
+          "password": password,
+          "aleatory_questions": [],
+          "roles": ["admin"]
+        }));
+    checkCreateUser = json.decode(response.body);
+    if (password == '') {
+      print('password em branco');
+      return json.decode(response.body);
+    }
+    return json.decode(response.body);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,16 +97,24 @@ class Cadastro extends StatelessWidget {
                       fontSize: 15.0,
                     ),
                   ),
-                  callback: () {
+                  callback: () async {
                     if (passwordController.text ==
                         confirmPasswordController.text) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Menu(
-                              name: nameController.text,
-                            ),
-                          ));
+                      var resp = await _createUser(
+                          nameController.text, passwordController.text);
+                      print(resp["message"]);
+                      print(checkCreateUser["message"]);
+                      print(resp["message"] == checkCreateUser["message"]);
+                      if (resp["message"] == checkCreateUser["message"]) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Menu(
+                                name: nameController.text,
+                              ),
+                            ));
+                        return;
+                      }
                       return;
                     }
                     showModalBottomSheet<String>(
