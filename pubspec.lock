@@ -28,8 +28,20 @@ packages:
       name: cached_network_image
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< Updated upstream
     version: "2.2.0+1"
   characters:
+=======
+    version: "2.0.0"
+  characters:
+    dependency: transitive
+    description:
+      name: characters
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  charcode:
+>>>>>>> Stashed changes
     dependency: transitive
     description:
       name: characters
@@ -478,4 +490,8 @@ packages:
     version: "0.1.0"
 sdks:
   dart: ">=2.9.0-14.0.dev <3.0.0"
+<<<<<<< Updated upstream
   flutter: ">=1.12.13+hotfix.6 <2.0.0"
+=======
+  flutter: ">=1.17.0 <2.0.0"
+>>>>>>> Stashed changes
