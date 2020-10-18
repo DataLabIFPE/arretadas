@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:arretadas/screens/menu.dart';
 import 'package:arretadas/screens/login.dart';
 import 'package:arretadas/screens/home.dart';
-import 'package:arretadas/screens/info.dart';
+import 'package:arretadas/screens/info/info.dart';
 import 'package:arretadas/screens/cadastro.dart';
 import 'package:arretadas/UIcontacts/HomeContactsPage.dart';
 // import 'package:arretadas/screens/denuncias.dart';
