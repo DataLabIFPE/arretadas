@@ -5,7 +5,7 @@ import 'package:arretadas/screens/home.dart';
 import 'package:arretadas/screens/info/info.dart';
 import 'package:arretadas/screens/cadastro.dart';
 import 'package:arretadas/UIcontacts/HomeContactsPage.dart';
-import 'package:arretadas/screens/denuncias.dart';
+// import 'package:arretadas/screens/denuncias.dart';
 import 'package:arretadas/screens/mapa.dart';
 
 void main() {
@@ -19,8 +19,9 @@ void main() {
       '/info': (context) => Info(),
       '/login': (context) => Login(),
       '/contacts': (context) => HomeContactsPage(),
-      '/denuncias': (context) => Denuncias(),
+      '/denuncias': (context) => Map(),
       '/map': (context) => Map(),
     },
   ));
 }
+

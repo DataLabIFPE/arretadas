@@ -1,10 +1,12 @@
+import 'dart:convert';
 
 import 'package:arretadas/components/Header.dart';
 
 import 'package:arretadas/components/Button.dart';
 
 import 'package:flutter/material.dart';
-// import 'package:geolocator/geolocator.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 
 class Menu extends StatefulWidget {
   Menu({Key key, this.name});
@@ -14,11 +16,33 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  // void _getLocation() async {
-  //   final location = await Geolocator()
-  //       .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  //   print(location);
-  // }
+  dynamic _getLocation() async {
+    final location = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(location);
+
+    return location;
+  }
+
+  Future<dynamic> _sendMessage(data) async {
+    final url = 'http://10.0.2.2:3000/help';
+    final send = await http.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'num1': '5583996292935',
+          'num2': '5587999429510',
+          'num3': '5587999914901',
+          'num4': '5581992882988',
+          'num5': '5587981090745',
+          'lat': data.lat,
+          'long': data.long
+        }));
+
+    print('enviou');
+    return send.statusCode;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +53,14 @@ class _MenuState extends State<Menu> {
           child: SafeArea(
             child: Stack(
               children: <Widget>[
-                Image.asset(
-                  "assets/Background.jpg",
-                  height: MediaQuery.of(context).size.height,
-                  fit: BoxFit.cover,
-                ),
                 Column(
                   children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-
                         Header(
-                          userName: 'Raffael',
-
+                          userName: widget.name,
                         ),
                         Container(
                             margin: EdgeInsets.only(top: 10),
@@ -53,76 +70,45 @@ class _MenuState extends State<Menu> {
                             child: Image.asset('assets/icon-person.png')),
                       ],
                     ),
-                    // Container(
-                    //   width: MediaQuery.of(context).size.width,
-                    //   height: 90.0,
-                    //   margin: EdgeInsets.only(left: 6, right: 6, top: 15),
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.yellowAccent,
-                    //     borderRadius: BorderRadius.circular(90),
-                    //   ),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //     children: <Widget>[
-                    //       Icon(
-                    //         Icons.warning,
-                    //         size: 60,
-                    //       ),
-                    //       FlatButton(
-                    //         color: Colors.yellowAccent,
-                    //         textColor: Colors.black,
-                    //         disabledColor: Colors.grey,
-                    //         padding: EdgeInsets.all(35.0),
-                    //         splashColor: Colors.white,
-                    //         onPressed: () {
-                    //           _getLocation();
-                    //           showAlertDialog2(context);
-                    //         },
-                    //         child: Text(
-                    //           "PEDIR SOCORRO",
-                    //           style: TextStyle(fontSize: 22.0),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                     Button(
-                      type: 'help',
-                      txtColor: Colors.redAccent,
-                      btnColor: Colors.white,
-                      labelText: 'PEDIR SOCORRO',
-                      callback: () {
-                        Navigator.pushNamed(context, '');
+                      width: (MediaQuery.of(context).size.width * 0.95),
+                      margin: EdgeInsets.only(top: 20.0),
+                      height: 70.0,
+                      txtColor: Colors.white,
+                      btnColor: Colors.redAccent,
+                      fontSize: 20.0,
+                      child: Text(
+                        'PEDIR SOCORRO',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                      callback: () async {
+                        var coordinators = await _getLocation();
+                        await _sendMessage(coordinators);
                       },
                     ),
                     //Botão denunciar
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 90.0,
-                      margin: EdgeInsets.only(left: 6, right: 6, top: 15),
-                      decoration: BoxDecoration(
-                        color: Colors.yellowAccent,
-                        borderRadius: BorderRadius.circular(90),
+                    Button(
+                      width: (MediaQuery.of(context).size.width * 0.95),
+                      height: 70.0,
+                      margin: EdgeInsets.only(top: 20.0),
+                      txtColor: Colors.white,
+                      btnColor: Colors.red[600],
+                      fontSize: 18.0,
+                      child: Text(
+                        'DENUNCIAR',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          FlatButton(
-                            color: Colors.yellowAccent,
-                            textColor: Colors.black,
-                            disabledColor: Colors.grey,
-                            padding: EdgeInsets.all(35.0),
-                            splashColor: Colors.white,
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/denuncias');
-                            },
-                            child: Text(
-                              "DENUNCIAR",
-                              style: TextStyle(fontSize: 22.0),
-                            ),
-                          ),
-                        ],
-                      ),
+                      callback: () {
+                        Navigator.pushNamed(context, '/denuncias');
+                      },
                     ),
                     SizedBox(
                       height: 20,
@@ -133,7 +119,7 @@ class _MenuState extends State<Menu> {
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Color.fromRGBO(188, 32, 224, 1),
+                        color: Color.fromRGBO(255, 209, 209, 1),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,7 +130,7 @@ class _MenuState extends State<Menu> {
                               child: Text(
                                 'Novidades',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.red[500],
                                   fontSize: 20,
                                   fontFamily: 'Exo',
                                   fontWeight: FontWeight.bold,
@@ -153,9 +139,9 @@ class _MenuState extends State<Menu> {
                             ),
                             subtitle: Container(
                               child: Text(
-                                'This is a Test',
+                                'Teste',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.red[400],
                                   fontFamily: 'Exo',
                                 ),
                               ),
@@ -168,7 +154,7 @@ class _MenuState extends State<Menu> {
                                 child: Text(
                                   'TUTORIAL >',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.red[200],
                                     fontSize: 22.0,
                                     fontFamily: 'Exo',
                                     fontWeight: FontWeight.bold,
@@ -186,79 +172,57 @@ class _MenuState extends State<Menu> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        Container(
-                          // Informacoes
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.purple[500],
-                            borderRadius: BorderRadius.circular(10),
+                        Button(
+                          child: Icon(
+                            Icons.import_contacts,
+                            size: 50,
+                            color: Colors.white,
                           ),
-                          child: FlatButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/info');
-                            },
-                            child: Icon(
-                              Icons.import_contacts,
-                              size: 50,
-                              color: Colors.white,
-                            ),
-                          ),
+                          btnColor: Colors.red[300],
+                          width: 80.0,
+                          height: 80.0,
+                          callback: () {
+                            Navigator.pushNamed(context, '/info');
+                          },
                         ),
-                        Container(
-                          // Contatos
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.purple[500],
-                            borderRadius: BorderRadius.circular(10),
+                        Button(
+                          child: Icon(
+                            Icons.local_phone,
+                            size: 50,
+                            color: Colors.white,
                           ),
-                          child: FlatButton(
-                            onPressed: () {},
-                            child: Icon(
-                              Icons.local_phone,
-                              size: 50,
-                              color: Colors.white,
-                            ),
-                          ),
+                          btnColor: Colors.red[300],
+                          width: 80.0,
+                          height: 80.0,
+                          callback: () {
+                            Navigator.pushNamed(context, '');
+                          },
                         ),
-                        Container(
-                          // Agenda
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.purple[500],
-                            borderRadius: BorderRadius.circular(10),
+                        Button(
+                          child: Icon(
+                            Icons.group,
+                            size: 50,
+                            color: Colors.white,
                           ),
-                          child: FlatButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/contacts');
-                            },
-                            child: Icon(
-                              Icons.group,
-                              size: 50,
-                              color: Colors.white,
-                            ),
-                          ),
+                          btnColor: Colors.red[300],
+                          width: 80.0,
+                          height: 80.0,
+                          callback: () {
+                            Navigator.pushNamed(context, '/contacts');
+                          },
                         ),
-                        Container(
-                          // Agenda
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.purple[500],
-                            borderRadius: BorderRadius.circular(10),
+                        Button(
+                          child: Icon(
+                            Icons.map,
+                            size: 50,
+                            color: Colors.white,
                           ),
-                          child: FlatButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/map');
-                            },
-                            child: Icon(
-                              Icons.map,
-                              size: 50,
-                              color: Colors.white,
-                            ),
-                          ),
+                          btnColor: Colors.red[300],
+                          width: 80.0,
+                          height: 80.0,
+                          callback: () {
+                            Navigator.pushNamed(context, '/map');
+                          },
                         ),
                       ],
                     ),
