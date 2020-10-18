@@ -35,10 +35,9 @@ class Login extends StatelessWidget {
   final passwordController = TextEditingController();
 
   Future<Map<String, dynamic>> _checkUser(String name, String password) async {
-    // final url = 'https://infinite-escarpment-35695.herokuapp.com/user/login';
-    final url = 'http://10.0.2.2:3000/user/login';
+    final url = 'https://arretadas-api.herokuapp.com/user/authenticate';
     final response =
-        await http.post(url, body: {"name": name, "password": password});
+        await http.post(url, body: {"nickname": name, "password": password});
 
     if (password == '') {
       print('password em branco');
@@ -117,7 +116,7 @@ class Login extends StatelessWidget {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
                           return Menu(
-                            name: resp['user']['name'],
+                            name: resp['data']['nickname'],
                           );
                         },
                       ));
