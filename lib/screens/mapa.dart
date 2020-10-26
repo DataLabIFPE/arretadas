@@ -50,7 +50,7 @@ class _MapState extends State<Map> {
         point: points[pointIndex],
         builder: (ctx) => Icon(Icons.pin_drop),
       ),
-      /* Magano
+      /* Magano */
       Marker(
         anchorPos: AnchorPos.align(AnchorAlign.center),
         height: 30,
@@ -89,7 +89,7 @@ class _MapState extends State<Map> {
         width: 30,
         point: LatLng(-8.88524126, -36.46521091),
         builder: (ctx) => Icon(Icons.pin_drop),
-      ),*/
+      ),
     ];
 
     super.initState();
@@ -98,29 +98,6 @@ class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.refresh),
-        onPressed: () {
-          pointIndex++;
-          if (pointIndex >= points.length) {
-            pointIndex = 0;
-          }
-          setState(() {
-            markers[0] = Marker(
-              point: points[pointIndex],
-              anchorPos: AnchorPos.align(AnchorAlign.center),
-              height: 30,
-              width: 30,
-              builder: (ctx) => Icon(Icons.pin_drop),
-            );
-
-            // one of this
-            markers = List.from(markers);
-            // markers = [...markers];
-            // markers = []..addAll(markers);
-          });
-        },
-      ),
       body: FlutterMap(
         options: MapOptions(
           center: points[0],
@@ -138,7 +115,7 @@ class _MapState extends State<Map> {
           ),
           MarkerClusterLayerOptions(
             maxClusterRadius: 120,
-            disableClusteringAtZoom: 6,
+            disableClusteringAtZoom: 12,
             size: Size(40, 40),
             anchor: AnchorPos.align(AnchorAlign.center),
             fitBoundsOptions: FitBoundsOptions(

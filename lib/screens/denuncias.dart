@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'dart:async';
 import 'package:intl/intl.dart';
 import 'mapa.dart';
+
+import 'package:arretadas/screens/mapa.dart';
+
 
 void funcao_temporaria() {
   Map();
@@ -25,7 +29,7 @@ class Denuncias extends StatelessWidget {
         appBar: AppBar(
           title: Text("Fazer Denúncias"),
         ),
-        body: MapaDenunciar(),
+        body: Map(),
       ),
     );
   }

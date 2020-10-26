@@ -131,71 +131,7 @@ class Info extends StatelessWidget {
                   'blablalbalbalblablablalbalbalblalbalbalblablablalbalbalblablalbalbalblablalbalbalblalbal'),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(248, 92, 104, 1),
-        selectedIconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-        unselectedIconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: FlatButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back,
-                size: 30.0,
-                color: Colors.white,
-              ),
-            ),
-            title: Text(
-              'Voltar',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: FlatButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/menu');
-              },
-              child: Icon(
-                Icons.home,
-                size: 30.0,
-                color: Colors.white,
-              ),
-            ),
-            title: Text(
-              'Menu',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: FlatButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.search,
-                size: 30,
-                color: Colors.white,
-              ),
-            ),
-            title: Text(
-              'Buscar',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ),
+
     );
   }
 }
