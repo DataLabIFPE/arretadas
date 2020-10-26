@@ -20,7 +20,7 @@ void main() {
       '/login': (context) => Login(),
       '/contacts': (context) => HomeContactsPage(),
       '/denuncias': (context) => Denuncias(),
-      '/map': (context) => Map(),
+      '/mapa': (context) => SetMap(),
     },
   ));
 }

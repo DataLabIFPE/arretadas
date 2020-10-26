@@ -10,9 +10,13 @@ environment:
 dependencies:
    
   mapbox_gl: ^0.0.1
+  flutter_gallery: ^2.4.0+20400
   
   flutter:
     sdk: flutter
+  
+    
+  
   flutter_map: any
   flutter_map_marker_cluster: any
   flutter_map_location_marker: any 
@@ -27,6 +31,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  intl_translation: # added
 
 
 # For information on the generic Dart part of this file, see the
