@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'dart:async';
 import 'package:intl/intl.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
 import 'mapa.dart';
 
 import 'package:arretadas/screens/mapa.dart';
-
 
 void funcao_temporaria() {
   Map();
@@ -16,7 +16,33 @@ Widget icone_alerta = Icon(
   size: 10,
 );
 
-class Denuncias extends StatelessWidget {
+// class Denuncias extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: "Fazer Denúncias",
+//       theme: ThemeData(
+//         primaryColor: Color.fromRGBO(248, 92, 104, 1),
+//       ),
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text("Fazer Denúncias"),
+//         ),
+//         body: MapaDenunciar(),
+//       ),
+//     );
+//   }
+// }
+
+class Denuncias extends StatefulWidget {
+  Denuncias({Key key, this.point});
+  final point;
+  @override
+  _DenunciasState createState() => _DenunciasState();
+}
+
+class _DenunciasState extends State<Denuncias> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,14 +55,15 @@ class Denuncias extends StatelessWidget {
         appBar: AppBar(
           title: Text("Fazer Denúncias"),
         ),
-        body: Map(),
+        body: MapaDenunciar(point: widget.point),
       ),
     );
   }
 }
 
 class MapaDenunciar extends StatefulWidget {
-  MapaDenunciar({Key key}) : super(key: key);
+  MapaDenunciar({Key key, this.point}) : super(key: key);
+  final point;
 
   @override
   _MapaDenunciarState createState() => _MapaDenunciarState();
@@ -158,16 +185,10 @@ class _MapaDenunciarState extends State<MapaDenunciar> {
             },
             child: Image(
               image: AssetImage('assets/foto_mapa.png'),
-              width: 250,
-              fit: BoxFit.cover,
+              height: 250,
+              fit: BoxFit.contain,
             ),
           ),
-          Text("     "),
-          Text("     "),
-          Text("     "),
-          Text("     "),
-          Text("     "),
-          Text("     "),
           FloatingActionButton.extended(
             onPressed: () {
               print("Onde enviará os dados ");
@@ -177,21 +198,6 @@ class _MapaDenunciarState extends State<MapaDenunciar> {
             backgroundColor: Colors.black,
             elevation: 0,
           ),
-          /* FlatButton(
-            color: Colors.white,
-            textColor: Colors.black,
-            disabledColor: Colors.grey,
-            padding: EdgeInsets.all(35.0),
-            splashColor: Colors.white,
-            onPressed: () {
-              SetMap();
-              //Navigator.pushNamed(context, '/mapa');
-            },
-            child: Text(
-              "Enviar",
-              style: TextStyle(fontSize: 22.0),
-            ),
-          ),*/
         ],
       )),
     );
