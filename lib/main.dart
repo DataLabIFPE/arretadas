@@ -19,8 +19,13 @@ void main() {
       '/info': (context) => Info(),
       '/login': (context) => Login(),
       '/contacts': (context) => HomeContactsPage(),
+
+      '/denuncias': (context) => Denuncias(),
+      '/mapa': (context) => SetMap(),
+
       '/denuncias': (context) => Map(),
       '/map': (context) => Map(),
+
     },
   ));
 }

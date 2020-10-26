@@ -3,6 +3,25 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong/latlong.dart';
 
+class SetMap extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Fazer Denúncias",
+      theme: ThemeData(
+        primaryColor: Color.fromRGBO(248, 92, 104, 1),
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Fazer Denúncias"),
+        ),
+        body: Map(),
+      ),
+    );
+  }
+}
+
 class Map extends StatefulWidget {
   @override
   _MapState createState() => _MapState();
@@ -117,7 +136,7 @@ class _MapState extends State<Map> {
                       child: GestureDetector(
                         onTap: () => debugPrint("Popup tap!"),
                         child: Text(
-                          "Container popup for marker at ${marker.point}",
+                          "Informação da localização ${marker.point}",
                         ),
                       ),
                     )),
