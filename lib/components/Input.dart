@@ -6,6 +6,10 @@ class Input extends StatefulWidget {
   final String type;
   final TextEditingController controller;
   final EdgeInsets margin;
+  final Icon suffixIcon;
+  final Function suffixIconOnPressed;
+  final bool obscureText;
+  final FormFieldValidator validator;
 
   Input(
       {Key key,
@@ -13,7 +17,11 @@ class Input extends StatefulWidget {
       this.color,
       this.labelText,
       this.controller,
-      this.margin});
+      this.margin,
+      this.suffixIcon,
+      this.suffixIconOnPressed,
+      this.obscureText = false,
+      this.validator});
   @override
   _InputState createState() => _InputState();
 }
@@ -22,14 +30,21 @@ class _InputState extends State<Input> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: TextField(
+        child: TextFormField(
           controller: widget.controller,
+          validator: widget.validator,
           scrollPadding: EdgeInsets.all(10.0),
           style: TextStyle(
             color: widget.color,
           ),
-          obscureText: widget.type == 'password' ? true : false,
+          obscureText: widget.obscureText,
           decoration: InputDecoration(
+              suffixIcon: widget.suffixIcon != null
+                  ? IconButton(
+                      icon: widget.suffixIcon,
+                      onPressed: widget.suffixIconOnPressed,
+                    )
+                  : null,
               labelText: widget.labelText,
               labelStyle: TextStyle(
                 color: widget.color,
