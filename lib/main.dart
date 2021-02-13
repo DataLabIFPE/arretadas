@@ -4,7 +4,7 @@ import 'package:arretadas/screens/menu.dart';
 import 'package:arretadas/screens/info/info.dart';
 import 'package:arretadas/screens/cadastro.dart';
 import 'package:arretadas/UIcontacts/HomeContactsPage.dart';
-// import 'package:arretadas/screens/denuncias.dart';
+import 'package:arretadas/screens/denuncias.dart';
 import 'package:arretadas/screens/mapa.dart';
 
 import 'package:arretadas/modules/auth/view/home_page.dart';

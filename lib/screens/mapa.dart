@@ -3,18 +3,20 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong/latlong.dart';
 
+import 'denuncias.dart';
+
 class SetMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Fazer Denúncias",
+      title: "Selecione o local",
       theme: ThemeData(
         primaryColor: Color.fromRGBO(248, 92, 104, 1),
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Fazer Denúncias"),
+          title: Text("Selecione o local"),
         ),
         body: Map(),
       ),
@@ -43,37 +45,6 @@ class _MapState extends State<Map> {
   void initState() {
     pointIndex = 0;
     markers = [
-      Marker(
-        anchorPos: AnchorPos.align(AnchorAlign.center),
-        height: 30,
-        width: 30,
-        point: points[pointIndex],
-        builder: (ctx) => Icon(Icons.pin_drop),
-      ),
-      /* Magano */
-      Marker(
-        anchorPos: AnchorPos.align(AnchorAlign.center),
-        height: 30,
-        width: 30,
-        point: LatLng(-8.88439326, -36.50439262),
-        builder: (ctx) => Icon(Icons.pin_drop),
-      ),
-      // Indiano
-      Marker(
-        anchorPos: AnchorPos.align(AnchorAlign.center),
-        height: 30,
-        width: 30,
-        point: LatLng(-8.87871155, -36.46941662),
-        builder: (ctx) => Icon(Icons.pin_drop),
-      ),
-      //Aloiso Pinto
-      Marker(
-        anchorPos: AnchorPos.align(AnchorAlign.center),
-        height: 30,
-        width: 30,
-        point: LatLng(-8.90003869, -36.49958611),
-        builder: (ctx) => Icon(Icons.pin_drop),
-      ),
       // São josé
       Marker(
         anchorPos: AnchorPos.align(AnchorAlign.center),
@@ -95,18 +66,31 @@ class _MapState extends State<Map> {
     super.initState();
   }
 
+  void setUserChoice(point) {
+    print(point is LatLng);
+    Navigator.push(
+      context,
+      new MaterialPageRoute(
+        builder: (context) => MapaDenunciar(
+          point: point,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FlutterMap(
         options: MapOptions(
           center: points[0],
-          zoom: 5,
+          zoom: 13,
           plugins: [
             MarkerClusterPlugin(),
           ],
           onTap: (_) => _popupController
               .hidePopup(), // Esconde o popup quando o mapa  é clicado (Opções de bairro)
+          onLongPress: (point) => setUserChoice(point),
         ),
         layers: [
           TileLayerOptions(
