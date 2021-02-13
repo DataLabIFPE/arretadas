@@ -1,12 +1,11 @@
 import 'dart:convert';
-
 import 'package:arretadas/components/Header.dart';
-
 import 'package:arretadas/components/Button.dart';
-
+import 'package:arretadas/modules/splash/view/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Menu extends StatefulWidget {
   Menu({Key key, this.name});
@@ -224,6 +223,22 @@ class _MenuState extends State<Menu> {
                             Navigator.pushNamed(context, '/map');
                           },
                         ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: FlatButton(
+                            onPressed: () {
+                              SharedPreferences.getInstance().then((sp) {
+                                sp.clear();
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    SplashPage.router, (route) => false);
+                              });
+                            },
+                            child: Text('Sair'),
+                          ),
+                        )
                       ],
                     ),
                   ],
