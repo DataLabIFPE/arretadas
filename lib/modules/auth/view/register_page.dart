@@ -6,9 +6,9 @@ import 'package:validators/validators.dart';
 import 'package:arretadas/mixins/messages_mixin.dart';
 import 'package:arretadas/components/Input.dart';
 import 'package:arretadas/components/Button.dart';
-import 'package:arretadas/components/Form.dart';
+//import 'package:arretadas/components/Form.dart';
 import 'package:arretadas/mixins/loader_mixin.dart';
-import 'package:arretadas/modules/splash/view/splash_page.dart';
+//import 'package:arretadas/modules/splash/view/splash_page.dart';
 
 class RegisterPage extends StatelessWidget {
   static const router = '/register';

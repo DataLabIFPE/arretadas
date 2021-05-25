@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 import 'dart:async';
-import 'package:intl/intl.dart';
-import 'package:mapbox_gl/mapbox_gl.dart';
+//import 'package:intl/intl.dart';
+//import 'package:mapbox_gl/mapbox_gl.dart';
 import 'mapa.dart';
 
 import 'package:arretadas/screens/mapa.dart';
 
-void funcao_temporaria() {
-  Map();
-}
+//void funcao_temporaria() {
+//  Map();
+//}
 
-Widget icone_alerta = Icon(
+/*Widget icone_alerta = Icon(
   Icons.warning,
   size: 10,
-);
+);*/
 
 // class Denuncias extends StatelessWidget {
 //   @override
@@ -133,7 +136,7 @@ class _MapaDenunciarState extends State<MapaDenunciar> {
   }*/
 
   List<DropdownMenuItem<String>> getDropDownMenuItems() {
-    List<DropdownMenuItem<String>> items = new List();
+    List<DropdownMenuItem<String>> items = [];
     for (String violencia in _tiposViolencias) {
       items.add(
           new DropdownMenuItem(value: violencia, child: new Text(violencia)));
@@ -143,63 +146,65 @@ class _MapaDenunciarState extends State<MapaDenunciar> {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      color: Colors.white,
-      child: new Center(
-          child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new Text("Selecione o tipo de violência"),
-          new Container(
-            padding: new EdgeInsets.all(14.0),
-          ),
-          new DropdownButton(
-            isExpanded: true,
-            value: _currentViolencia,
-            items: _dropDownMenuItems,
-            onChanged: changedDropDownItem,
-          ),
-          Icon(Icons.calendar_today),
-          ListTile(
-            title: Text(
-                "Data: ${pickedDate.day}/${pickedDate.month}/${pickedDate.year}"),
-            trailing: Icon(Icons.keyboard_arrow_down),
-            onTap: _pickDate,
-          ),
-          Icon(Icons.access_time),
-          ListTile(
-            title: Text("Hora: ${time.hour}:${time.minute}"),
-            trailing: Icon(Icons.keyboard_arrow_down),
-            onTap: _pickTime,
-          ),
-          Text("Clique no mapa para adicionar a localização"),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                new MaterialPageRoute(
-                  builder: (context) => SetMap(),
-                ),
-              );
-            },
-            child: Image(
-              image: AssetImage('assets/foto_mapa.png'),
-              height: 250,
-              fit: BoxFit.contain,
+    return Material(
+      child: new Container(
+        color: Colors.white,
+        child: new Center(
+            child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Text("Selecione o tipo de violência"),
+            new Container(
+              padding: new EdgeInsets.all(14.0),
             ),
-          ),
-          FloatingActionButton.extended(
-            onPressed: () {
-              print("Onde enviará os dados ");
-            },
-            label: Text("Enviar"),
-            icon: Icon(Icons.navigation),
-            backgroundColor: Colors.black,
-            elevation: 0,
-          ),
-        ],
-      )),
+            new DropdownButton(
+              isExpanded: true,
+              value: _currentViolencia,
+              items: _dropDownMenuItems,
+              onChanged: changedDropDownItem,
+            ),
+            Icon(Icons.calendar_today),
+            ListTile(
+              title: Text(
+                  "Data: ${pickedDate.day}/${pickedDate.month}/${pickedDate.year}"),
+              trailing: Icon(Icons.keyboard_arrow_down),
+              onTap: _pickDate,
+            ),
+            Icon(Icons.access_time),
+            ListTile(
+              title: Text("Hora: ${time.hour}:${time.minute}"),
+              trailing: Icon(Icons.keyboard_arrow_down),
+              onTap: _pickTime,
+            ),
+            Text("Clique no mapa para adicionar a localização"),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (context) => SetMap(),
+                  ),
+                );
+              },
+              child: Image(
+                image: AssetImage('assets/foto_mapa.png'),
+                height: 250,
+                fit: BoxFit.contain,
+              ),
+            ),
+            FloatingActionButton.extended(
+              onPressed: () {
+                //TODO
+              },
+              label: Text("Enviar"),
+              icon: Icon(Icons.navigation),
+              backgroundColor: Colors.black,
+              elevation: 0,
+            ),
+          ],
+        )),
+      ),
     );
   }
 

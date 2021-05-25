@@ -25,9 +25,9 @@ abstract class MessagesMixin {
     final snackbar = SnackBar(backgroundColor: color, content: Text(message));
 
     if (key != null) {
-      key.currentState.showSnackBar(snackbar);
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
     } else {
-      Scaffold.of(context).showSnackBar(snackbar);
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }
 }

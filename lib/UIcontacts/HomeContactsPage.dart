@@ -12,7 +12,7 @@ class HomeContactsPage extends StatefulWidget {
 
 class _HomeContactsPageState extends State<HomeContactsPage> {
   ContactHelper helper = ContactHelper();
-  List<Contact> contacts = List();
+  List<Contact> contacts = [];
 
   @override
   void initState() {
@@ -41,13 +41,13 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
         padding: EdgeInsets.all(10),
         itemCount: contacts.length,
         itemBuilder: (context, index) {
-          return _ContactCart(context, index);
+          return _contactCart(context, index);
         },
       ),
     );
   }
 
-  Widget _ContactCart(BuildContext, int index) {
+  Widget _contactCart(BuildContext context, int index) {
     return GestureDetector(
       child: Card(
         child: Padding(
@@ -109,14 +109,14 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                   padding: EdgeInsets.all(10.0),
                   child: Column(
                     children: <Widget>[
-                      FlatButton(
+                      TextButton(
                         child: Text(
                           "Ligar",
                           style: TextStyle(color: Colors.pink, fontSize: 20.0),
                         ),
                         onPressed: () {},
                       ),
-                      FlatButton(
+                      TextButton(
                         child: Text(
                           "Ligar",
                           style: TextStyle(color: Colors.pink, fontSize: 20.0),
@@ -217,13 +217,13 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                                                   fontSize: 18.0,
                                                   fontStyle: FontStyle.italic))
                                         ]),
-                                                                            ],
+                                      ],
                                     )),
                               ))),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          FlatButton(
+                          TextButton(
                             child: Column(children: <Widget>[
                               Icon(
                                 Icons.phone,
@@ -238,13 +238,12 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                             onPressed: () {
                               launch("tel:${contacts[index].phone}");
                               Navigator.pop(context);
-
                             },
                           ),
-                          FlatButton(
+                          TextButton(
                             child: Column(children: <Widget>[
                               Icon(
-                                Icons.map,   //mode_edit,
+                                Icons.map, //mode_edit,
                                 color: Colors.pink,
                               ),
                               Text(
@@ -254,11 +253,11 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                               )
                             ]),
                             onPressed: () {
-                              // Navigator.pop(context);
-                              // _showContactPage(contact: contacts[index]);
+                              Navigator.pop(context);
+                              _showContactPage(contact: contacts[index]);
                             },
                           ),
-                          FlatButton(
+                          TextButton(
                             child: Column(children: <Widget>[
                               Icon(
                                 Icons.email, //delete,
@@ -271,11 +270,11 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                               )
                             ]),
                             onPressed: () {
-                              // helper.deleteContact(contacts[index].id);
-                              // setState(() {
-                              //   contacts.removeAt(index);
-                              //   Navigator.pop(context);
-                              // });
+                              helper.deleteContact(contacts[index].id);
+                              setState(() {
+                                contacts.removeAt(index);
+                                Navigator.pop(context);
+                              });
                             },
                           ),
                         ],

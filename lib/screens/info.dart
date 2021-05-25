@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Info extends StatelessWidget {
   Widget criaLinha({String lei, String numero, String previa}) {
-    return FlatButton(
+    return TextButton(
       onPressed: () {},
       child: Container(
           child: Column(
@@ -131,7 +131,6 @@ class Info extends StatelessWidget {
                   'blablalbalbalblablablalbalbalblalbalbalblablablalbalbalblablalbalbalblablalbalbalblalbal'),
         ],
       ),
-
     );
   }
 }

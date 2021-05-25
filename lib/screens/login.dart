@@ -43,7 +43,7 @@ class Login extends StatelessWidget {
       print('password em branco');
       return json.decode(response.body);
     }
-
+    print(json.decode(response.body));
     return json.decode(response.body);
   }
 

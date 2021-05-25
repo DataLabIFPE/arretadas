@@ -1,4 +1,4 @@
-import 'package:arretadas/components/Button.dart';
+/*import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:arretadas/components/Input.dart';
@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
+// ignore: must_be_immutable
 class Cadastro extends StatelessWidget {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -150,3 +151,4 @@ class Cadastro extends StatelessWidget {
     );
   }
 }
+*/

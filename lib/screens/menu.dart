@@ -10,12 +10,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Menu extends StatefulWidget {
   Menu({Key key, this.name});
   final String name;
+
   @override
   _MenuState createState() => _MenuState();
 }
 
 class _MenuState extends State<Menu> {
-  dynamic _getLocation() async {
+  Future<Position> _getLocation() async {
     final location = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     print(location);
@@ -23,20 +24,20 @@ class _MenuState extends State<Menu> {
     return location;
   }
 
-  Future<dynamic> _sendMessage(data) async {
-    final url = 'http://10.0.2.2:3000/help';
+  Future<dynamic> _sendMessage(Position data) async {
+    final url = 'https://arretadas-api.herokuapp.com/help';
     final send = await http.post(url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: jsonEncode(<String, String>{
-          'num1': '5583996292935',
-          'num2': '5587999429510',
-          'num3': '5587999914901',
-          'num4': '5581992882988',
-          'num5': '5587981090745',
-          'lat': data.lat,
-          'long': data.long
+        body: jsonEncode(<String, dynamic>{
+          'num1': '5587999980822',
+          'num2': '5587000000000',
+          'num3': '5587000000000',
+          'num4': '5581000000000',
+          'num5': '5587000000000',
+          'lat': data.latitude,
+          'long': data.longitude,
         }));
 
     print('enviou');
@@ -148,7 +149,7 @@ class _MenuState extends State<Menu> {
                           ),
                           ButtonBar(
                             children: <Widget>[
-                              FlatButton(
+                              TextButton(
                                 onPressed: () {},
                                 child: Text(
                                   'TUTORIAL >',
@@ -212,7 +213,7 @@ class _MenuState extends State<Menu> {
                         ),
                         Button(
                           child: Icon(
-                            Icons.map,
+                            Icons.location_on_rounded,
                             size: 50,
                             color: Colors.white,
                           ),
@@ -228,7 +229,7 @@ class _MenuState extends State<Menu> {
                     Row(
                       children: [
                         Container(
-                          child: FlatButton(
+                          child: TextButton(
                             onPressed: () {
                               SharedPreferences.getInstance().then((sp) {
                                 sp.clear();

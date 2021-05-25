@@ -47,7 +47,7 @@ class _ButtonState extends State<Button> {
           border: Border.all(
             color: Colors.white,
           )),
-      child: FlatButton(
+      child: TextButton(
         onPressed: widget.callback,
         child: Center(
           child: widget.child,

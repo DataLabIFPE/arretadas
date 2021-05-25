@@ -9,9 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   cupertino_icons: ^0.1.2
   dio: ^3.0.10
-  flutter_gallery: ^2.4.0+20400
+  #dio: ^4.0.0
+  #flutter_gallery: ^2.4.0+20400
   flutter_icons: ^1.1.0
   flutter_map: any
   flutter_map_location_marker: any
