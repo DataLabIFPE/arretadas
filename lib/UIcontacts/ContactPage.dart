@@ -11,14 +11,13 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
-  
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
   final _endressController = TextEditingController();
 
   final _nameFocus = FocusNode();
-  
+
   bool _userEdited = false;
   Contact _editedContact;
 
@@ -48,14 +47,14 @@ class _ContactPageState extends State<ContactPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if(_editedContact.name != null && _editedContact.name.isNotEmpty){
+          if (_editedContact.name != null && _editedContact.name.isNotEmpty) {
             Navigator.pop(context, _editedContact);
           } else {
-           FocusScope.of(context).requestFocus(_nameFocus);
-
+            FocusScope.of(context).requestFocus(_nameFocus);
           }
         },
         child: Icon(Icons.save),
+        //TODO
         backgroundColor: Colors.pink,
       ),
       body: SingleChildScrollView(
@@ -71,7 +70,7 @@ class _ContactPageState extends State<ContactPage> {
                   image: DecorationImage(
                       image: _editedContact.img != null
                           ? FileImage(File(_editedContact.img))
-                          : AssetImage("image/Icon.png")),
+                          : AssetImage("assets/icon-person.png")),
                 ),
               ),
             ),

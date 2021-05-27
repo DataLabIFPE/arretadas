@@ -2,7 +2,7 @@ import 'package:arretadas/exceptions/rest_exception.dart';
 import 'package:arretadas/repositories/auth_repository.dart';
 import 'package:arretadas/view_models/register_input_model.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterController extends ChangeNotifier {
   bool loading;

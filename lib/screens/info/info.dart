@@ -60,7 +60,7 @@ class _InfoState extends State<Info> {
                       ButtonBar(
                         alignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          FlatButton(
+                          TextButton(
                             child: Text('Ver Mais'),
                             onPressed: () {
                               Navigator.push(
@@ -108,7 +108,7 @@ class _InfoState extends State<Info> {
                       ButtonBar(
                         alignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          FlatButton(
+                          TextButton(
                             child: Text('Ver Mais'),
                             onPressed: () {
                               Navigator.push(
@@ -156,7 +156,7 @@ class _InfoState extends State<Info> {
                       ButtonBar(
                         alignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          FlatButton(
+                          TextButton(
                             child: Text('Ver Mais'),
                             onPressed: () {
                               Navigator.push(
@@ -204,7 +204,7 @@ class _InfoState extends State<Info> {
                       ButtonBar(
                         alignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          FlatButton(
+                          TextButton(
                             child: Text('Ver Mais'),
                             onPressed: () {
                               Navigator.push(
@@ -254,7 +254,7 @@ class _InfoState extends State<Info> {
                       ButtonBar(
                         alignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          FlatButton(
+                          TextButton(
                             child: Text('Ver Mais'),
                             onPressed: () {
                               Navigator.push(

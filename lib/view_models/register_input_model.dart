@@ -1,8 +1,8 @@
 class RegisterInputModel {
   String nickname;
   String password;
-  var aleatory_questions = new List();
-  var roles = new List();
+  var aleatory_questions = [];
+  var roles = [];
   RegisterInputModel({
     this.nickname,
     this.password,
