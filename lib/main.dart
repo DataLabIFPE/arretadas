@@ -9,6 +9,9 @@ import 'package:arretadas/screens/mapa.dart';
 import 'package:arretadas/modules/auth/view/home_page.dart';
 import 'package:arretadas/modules/auth/view/login_page.dart';
 import 'package:arretadas/modules/auth/view/register_page.dart';
+import 'package:arretadas/modules/usefulcontacts/view/usefulcontacts_page.dart';
+
+import 'package:arretadas/core/app_colors.dart';
 
 //import 'package:arretadas/screens/denuncias.dart';
 //import 'package:arretadas/screens/cadastro.dart';
@@ -22,6 +25,10 @@ class Main extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Arretadas',
+      theme: ThemeData(
+        primaryColor: AppColors.primaria,
+        accentColor: AppColors.secundaria,
+      ),
       initialRoute: SplashPage.router,
       routes: {
         '/menu': (context) => Menu(),
@@ -40,6 +47,7 @@ class Main extends StatelessWidget {
         HomePage.router: (_) => HomePage(),
         LoginPage.router: (_) => LoginPage(),
         RegisterPage.router: (_) => RegisterPage(),
+        UsefulcontactsPage.router: (_) => UsefulcontactsPage(),
       },
     );
   }
