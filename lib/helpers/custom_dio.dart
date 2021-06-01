@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,8 +16,10 @@ class CustomDio {
 
   _onRequest(RequestOptions options) async {
     var prefs = await SharedPreferences.getInstance();
-    var token = (prefs.getString('token') ?? "");
-    options.headers['x-access-token'];
+    var user = (prefs.getString('user') ?? "");
+    var userMap = json.decode(user);
+    var token = userMap['token'];
+    options.headers['x-access-token'] = token;
   }
 
   _onError(DioError e) {

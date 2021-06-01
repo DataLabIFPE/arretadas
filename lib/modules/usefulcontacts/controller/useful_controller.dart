@@ -12,7 +12,9 @@ class UsefulController extends ChangeNotifier {
     loading = true;
     error = null;
     notifyListeners();
-    try {} catch (e) {
+    try {
+      usefulcontacts = await _repository.findAll();
+    } catch (e) {
       print(e);
       error = 'Erro ao carregar contatos';
     } finally {
