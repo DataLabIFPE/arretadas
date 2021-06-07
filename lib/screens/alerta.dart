@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 showAlertDialog2(BuildContext context) {
   Widget cancelaButton = TextButton(
     child: Text("Cancelar"),
-    onPressed: () {},
+    onPressed: () {
+      Navigator.pop(context);
+    },
   );
   Widget continuaButton = TextButton(
-    child: Text("Continar"),
+    child: Text("Enviar"),
     onPressed: () {},
   );
 
   AlertDialog alert = AlertDialog(
     title: Text("Atenção"),
-    content: Text("Deseja continuar o pedido de socorro?"),
+    content: Text("Deseja enviar o pedido de socorro?"),
     actions: [
       cancelaButton,
       continuaButton,

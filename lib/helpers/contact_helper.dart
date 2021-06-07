@@ -4,10 +4,10 @@ import 'package:path/path.dart';
 final String contactTable = 'contactTable';
 final String idColumn = 'idColumn';
 final String nameColumn = 'nomeColumn';
-final String emailColumn = 'emailColumn';
+//final String emailColumn = 'emailColumn';
 final String phoneColumn = 'phomeColumn';
-final String endressColumn = 'endressColumn';
-final String imgColumn = 'imgColumn';
+//final String endressColumn = 'endressColumn';
+//final String imgColumn = 'imgColumn';
 
 class ContactHelper {
   static final ContactHelper _instance = ContactHelper.internal();
@@ -32,8 +32,9 @@ class ContactHelper {
     return await openDatabase(path, version: 1,
         onCreate: (Database db, int newerVersion) async {
       await db.execute(
-          "CREATE TABLE $contactTable($idColumn INTEGER PRIMARY KEY, $nameColumn TEXT, $emailColumn TEXT,"
-          "$endressColumn TEXT, $phoneColumn TEXT, $imgColumn TEXT)");
+          /*"CREATE TABLE $contactTable($idColumn INTEGER PRIMARY KEY, $nameColumn TEXT, $emailColumn TEXT,"
+          "$endressColumn TEXT, $phoneColumn TEXT, $imgColumn TEXT)");*/
+          "CREATE TABLE $contactTable($idColumn INTEGER PRIMARY KEY, $nameColumn TEXT, $phoneColumn TEXT)");
     });
   }
 
@@ -51,10 +52,10 @@ class ContactHelper {
         columns: [
           idColumn,
           nameColumn,
-          emailColumn,
+          //emailColumn,
           phoneColumn,
-          endressColumn,
-          imgColumn
+          // endressColumn,
+          // imgColumn
         ],
         where: "$idColumn = ?",
         whereArgs: [id]);
@@ -102,28 +103,28 @@ class ContactHelper {
 class Contact {
   int id;
   String name;
-  String email;
+  //String email;
   String phone;
-  String endress;
-  String img;
+  //String endress;
+  //String img;
 
   Contact();
 
   Contact.fromMap(Map map) {
     id = map[idColumn];
     name = map[nameColumn];
-    email = map[emailColumn];
+    //email = map[emailColumn];
     phone = map[phoneColumn];
-    endress = map[endressColumn];
-    img = map[imgColumn];
+    //endress = map[endressColumn];
+    //  img = map[imgColumn];
   }
   Map toMap() {
     Map<String, dynamic> map = {
       nameColumn: name,
-      emailColumn: email,
+      // emailColumn: email,
       phoneColumn: phone,
-      endressColumn: endress,
-      imgColumn: img
+      // endressColumn: endress,
+      //imgColumn: img
     };
     if (id != null) {
       map[idColumn] = id;
@@ -133,6 +134,7 @@ class Contact {
 
   @override
   String toString() {
-    return 'Contact(id: $id, nome: $name, email: $email, Fone: $phone, Endereco: $endress, Imag: $img';
+    return 'Contact(id: $id, nome: $name, Fone: $phone)';
+    // return 'Contact(id: $id, nome: $name, email: $email, Fone: $phone, Endereco: $endress, Imag: $img';
   }
 }
