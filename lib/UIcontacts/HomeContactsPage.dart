@@ -17,7 +17,6 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
   @override
   void initState() {
     super.initState();
-
     _getAllContacts();
   }
 
@@ -26,7 +25,6 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Contatos"),
-        backgroundColor: Colors.pink,
         centerTitle: true,
       ),
       backgroundColor: Colors.white,
@@ -35,7 +33,7 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
           _showContactPage();
         },
         child: Icon(Icons.add),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.redAccent,
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(10),
@@ -60,9 +58,7 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: contacts[index].img != null
-                          ? FileImage(File(contacts[index].img))
-                          : AssetImage("assets/logo-white.png")),
+                      image: AssetImage("assets/logo-white.png")),
                 ),
               ),
               Padding(
@@ -75,12 +71,12 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                       style: TextStyle(
                           fontSize: 22.0, fontWeight: FontWeight.bold),
                     ),
-                    Text(
+                    /*Text(
                       contacts[index].email ?? "",
                       style: TextStyle(
                         fontSize: 18.0,
                       ),
-                    ),
+                    ),*/
                     Text(contacts[index].phone ?? "",
                         style: TextStyle(
                           fontSize: 18.0,
@@ -98,7 +94,7 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
     );
   }
 
-  void _showOptions(BuildContext context, index) {
+  /*void _showOptions(BuildContext context, index) {
     showModalBottomSheet(
         context: context,
         builder: (context) {
@@ -129,8 +125,9 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
               });
         });
   }
+  */
 
-  void _showContactPage({Contact contact}) async {
+  Future<void> _showContactPage({Contact contact}) async {
     final recContact = await Navigator.push(context,
         MaterialPageRoute(builder: (context) => ContactPage(contact: contact)));
     if (recContact != null) {
@@ -189,7 +186,7 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                                                   fontSize: 20.0,
                                                   fontStyle: FontStyle.italic))
                                         ]),
-                                        Row(children: <Widget>[
+                                        /*Row(children: <Widget>[
                                           Padding(
                                               padding: EdgeInsets.all(10),
                                               child: Icon(Icons.place,
@@ -203,7 +200,7 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                                                       fontSize: 18.0,
                                                       fontStyle:
                                                           FontStyle.italic))),
-                                        ]),
+                                        ]),*/
                                         Row(children: <Widget>[
                                           Padding(
                                               padding: EdgeInsets.all(10),
@@ -243,11 +240,11 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                           TextButton(
                             child: Column(children: <Widget>[
                               Icon(
-                                Icons.map, //mode_edit,
+                                Icons.cached, //mode_edit,
                                 color: Colors.pink,
                               ),
                               Text(
-                                "Mapa",
+                                "Editar",
                                 style: TextStyle(
                                     color: Colors.pink, fontSize: 20.0),
                               )
@@ -260,11 +257,11 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
                           TextButton(
                             child: Column(children: <Widget>[
                               Icon(
-                                Icons.email, //delete,
+                                Icons.delete, //delete,
                                 color: Colors.pink,
                               ),
                               Text(
-                                "Email",
+                                "Deletar",
                                 style: TextStyle(
                                     color: Colors.pink, fontSize: 20.0),
                               )

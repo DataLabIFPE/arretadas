@@ -1,3 +1,4 @@
+import 'package:arretadas/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
@@ -8,18 +9,13 @@ import 'denuncias.dart';
 class SetMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Selecione o local",
-      theme: ThemeData(
-        primaryColor: Color.fromRGBO(248, 92, 104, 1),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Selecione o local"),
+        centerTitle: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Selecione o local"),
-        ),
-        body: Map(),
-      ),
+      body: Map(),
+      //),
     );
   }
 }
@@ -67,15 +63,24 @@ class _MapState extends State<Map> {
   }
 
   void setUserChoice(point) {
-    print(point is LatLng);
+    //print(point);
+    Navigator.pop(context);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+          builder: (context) => Denuncias(
+                point: point,
+              )),
+    );
+
+    /*
     Navigator.push(
       context,
       new MaterialPageRoute(
-        builder: (context) => MapaDenunciar(
+        builder: (context) => Denuncias(
           point: point,
         ),
       ),
-    );
+    );*/
   }
 
   @override

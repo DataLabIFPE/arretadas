@@ -9,7 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
 
+  
   cupertino_icons: ^0.1.2
   dio: ^3.0.10
   #dio: ^4.0.0
@@ -26,12 +30,14 @@ dependencies:
   sqflite: any
   url_launcher: 5.4.2
   validators: ^2.0.1
+  brasil_fields: ^1.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  intl_translation: # added
-    null
+    
+  #intl_translation: # added
+  #  null
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

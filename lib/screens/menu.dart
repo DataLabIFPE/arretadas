@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:arretadas/components/Header.dart';
 import 'package:arretadas/components/Button.dart';
+import 'package:arretadas/mixins/messages_mixin.dart';
 import 'package:arretadas/modules/splash/view/splash_page.dart';
 import 'package:arretadas/modules/usefulcontacts/view/usefulcontacts_page.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class Menu extends StatefulWidget {
   _MenuState createState() => _MenuState();
 }
 
-class _MenuState extends State<Menu> {
+class _MenuState extends State<Menu> with MessagesMixin {
   Future<Position> _getLocation() async {
     final location = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
@@ -25,6 +26,12 @@ class _MenuState extends State<Menu> {
     return location;
   }
 
+/*
+  Future<void> _sendMessage(Position data) async {
+    var dio = CustomDio().instance;
+    try {
+  }
+*/
   Future<dynamic> _sendMessage(Position data) async {
     final url = 'https://arretadas-api.herokuapp.com/help';
     final send = await http.post(url,
@@ -41,7 +48,7 @@ class _MenuState extends State<Menu> {
           'long': data.longitude,
         }));
 
-    print('enviou');
+    print(send.statusCode);
     return send.statusCode;
   }
 
@@ -87,8 +94,7 @@ class _MenuState extends State<Menu> {
                         ),
                       ),
                       callback: () async {
-                        var coordinators = await _getLocation();
-                        await _sendMessage(coordinators);
+                        _showAlertDialog2(context);
                       },
                     ),
                     //Botão denunciar
@@ -108,7 +114,7 @@ class _MenuState extends State<Menu> {
                         ),
                       ),
                       callback: () {
-                        Navigator.pushNamed(context, '/denuncias');
+                        Navigator.pushNamed(context, '/mapa');
                       },
                     ),
                     SizedBox(
@@ -251,6 +257,39 @@ class _MenuState extends State<Menu> {
           ),
         ),
       ),
+    );
+  }
+
+  _showAlertDialog2(BuildContext context) {
+    Widget cancelaButton = TextButton(
+      child: Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    Widget continuaButton = TextButton(
+      child: Text("Enviar"),
+      onPressed: () async {
+        Navigator.pop(context);
+        var coordinators = await _getLocation();
+        await _sendMessage(coordinators);
+      },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: Text("Atenção"),
+      content: Text("Deseja enviar o pedido de socorro?"),
+      actions: [
+        cancelaButton,
+        continuaButton,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

@@ -21,7 +21,7 @@ class _HeaderState extends State<Header> {
         Container(
           padding: EdgeInsets.only(top: 10),
           child: Text(
-            'Olá, ${widget.userName}',
+            'Arretadas',
             style: TextStyle(
               color: Colors.redAccent,
               fontSize: 25.0,

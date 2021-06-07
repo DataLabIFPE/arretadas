@@ -14,10 +14,12 @@ class Info extends StatefulWidget {
 class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            body: Stack(children: <Widget>[
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Informações'),
+          centerTitle: true,
+        ),
+        body: Stack(children: <Widget>[
           Image.asset(
             "assets/Background.jpg",
             height: MediaQuery.of(context).size.height,
@@ -270,6 +272,6 @@ class _InfoState extends State<Info> {
                   )),
             ],
           )
-        ])));
+        ]));
   }
 }

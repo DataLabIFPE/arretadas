@@ -11,7 +11,8 @@ class UsefulcontactsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contatos'),
+        title: Text('Agenda'),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: ChangeNotifierProvider(
@@ -73,6 +74,7 @@ class _UsefulContentState extends State<UsefulContent> {
                   trailing: IconButton(
                     icon: Icon(Icons.phone),
                     iconSize: 30,
+                    onPressed: () {},
                   ),
                 ),
               ),
@@ -159,7 +161,7 @@ void _showUsefulContacts(BuildContext context, number, name) {
                             )
                           ]),
                           onPressed: () {
-                            launch("tel:${number}");
+                            launch("tel:$number");
                             Navigator.pop(context);
                           },
                         ),

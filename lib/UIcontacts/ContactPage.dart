@@ -12,9 +12,9 @@ class ContactPage extends StatefulWidget {
 
 class _ContactPageState extends State<ContactPage> {
   final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
+  //final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
-  final _endressController = TextEditingController();
+  //final _endressController = TextEditingController();
 
   final _nameFocus = FocusNode();
 
@@ -32,8 +32,8 @@ class _ContactPageState extends State<ContactPage> {
 
       _nameController.text = _editedContact.name;
       _phoneController.text = _editedContact.phone;
-      _emailController.text = _editedContact.email;
-      _endressController.text = _editedContact.endress;
+      //_emailController.text = _editedContact.email;
+      //_endressController.text = _editedContact.endress;
     }
   }
 
@@ -41,7 +41,7 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pink,
+        //backgroundColor: Colors.redAccent,
         title: Text(_editedContact.name ?? "Novo Contato"),
         centerTitle: true,
       ),
@@ -55,7 +55,7 @@ class _ContactPageState extends State<ContactPage> {
         },
         child: Icon(Icons.save),
         //TODO
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.redAccent,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
@@ -68,12 +68,14 @@ class _ContactPageState extends State<ContactPage> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: _editedContact.img != null
+                      /*image: _editedContact.img != null
                           ? FileImage(File(_editedContact.img))
-                          : AssetImage("assets/icon-person.png")),
+                          : AssetImage("assets/icon-person.png")),*/
+                      image: AssetImage("assets/icon-person.png")),
                 ),
               ),
             ),
+            //),
             TextField(
               controller: _nameController,
               focusNode: _nameFocus,
@@ -85,7 +87,7 @@ class _ContactPageState extends State<ContactPage> {
                 });
               },
             ),
-            TextField(
+            /*TextField(
               controller: _emailController,
               decoration: InputDecoration(labelText: "Email"),
               onChanged: (text) {
@@ -93,7 +95,7 @@ class _ContactPageState extends State<ContactPage> {
                 _editedContact.email = text;
               },
               keyboardType: TextInputType.emailAddress,
-            ),
+            ),*/
             TextField(
               controller: _phoneController,
               decoration: InputDecoration(labelText: "Telefone"),
@@ -103,7 +105,7 @@ class _ContactPageState extends State<ContactPage> {
               },
               keyboardType: TextInputType.phone,
             ),
-            TextField(
+            /*TextField(
               controller: _endressController,
               decoration: InputDecoration(labelText: "Endereço"),
               onChanged: (text) {
@@ -111,7 +113,7 @@ class _ContactPageState extends State<ContactPage> {
                 _editedContact.endress = text;
               },
               keyboardType: TextInputType.text,
-            ),
+            ),*/
           ],
         ),
       ),
