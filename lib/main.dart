@@ -1,3 +1,4 @@
+import 'package:arretadas/UIcontacts/ContactPage.dart';
 import 'package:arretadas/screens/denuncias.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ import 'package:arretadas/modules/auth/view/home_page.dart';
 import 'package:arretadas/modules/auth/view/login_page.dart';
 import 'package:arretadas/modules/auth/view/register_page.dart';
 import 'package:arretadas/modules/usefulcontacts/view/usefulcontacts_page.dart';
-
+import 'package:arretadas/modules/contacts/view/contacts_page.dart';
 import 'package:arretadas/core/app_colors.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -56,6 +57,7 @@ class Main extends StatelessWidget {
         LoginPage.router: (_) => LoginPage(),
         RegisterPage.router: (_) => RegisterPage(),
         UsefulcontactsPage.router: (_) => UsefulcontactsPage(),
+        ContactsPage.router: (_) => ContactsPage(),
         //DenunciasPage.router: (_) => DenunciasPage(),
       },
     );

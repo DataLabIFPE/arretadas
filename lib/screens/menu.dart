@@ -4,6 +4,7 @@ import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/mixins/messages_mixin.dart';
 import 'package:arretadas/modules/splash/view/splash_page.dart';
 import 'package:arretadas/modules/usefulcontacts/view/usefulcontacts_page.dart';
+import 'package:arretadas/modules/contacts/view/contacts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
@@ -216,7 +217,7 @@ class _MenuState extends State<Menu> with MessagesMixin {
                           width: 80.0,
                           height: 80.0,
                           callback: () {
-                            Navigator.pushNamed(context, '/contacts');
+                            Navigator.pushNamed(context, ContactsPage.router);
                           },
                         ),
                         Button(
