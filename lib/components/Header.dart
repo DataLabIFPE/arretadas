@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class Header extends StatefulWidget {
   Header({
     Key key,
-    this.userName,
+    this.title,
   });
-  final String userName;
+  final String title;
 
   @override
   _HeaderState createState() => _HeaderState();
@@ -21,7 +21,7 @@ class _HeaderState extends State<Header> {
         Container(
           padding: EdgeInsets.only(top: 10),
           child: Text(
-            'Arretadas',
+            widget.title,
             style: TextStyle(
               color: Colors.redAccent,
               fontSize: 25.0,

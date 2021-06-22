@@ -30,6 +30,7 @@ class AuthRepository {
         'aleatory_questions': registerInputModel.aleatory_questions,
         'roles': registerInputModel.roles
       });
+      print('sucesso!');
     } on DioError catch (e) {
       print(e);
       throw RestException('Erro ao registrar usuário');

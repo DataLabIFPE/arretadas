@@ -1,11 +1,11 @@
-import 'package:arretadas/screens/denuncias.dart';
+import 'package:arretadas/modules/complaints/view/complaints_page.dart';
+import 'package:arretadas/modules/map/view/map_page.dart';
+import 'package:arretadas/modules/menu/view/menu_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:arretadas/modules/splash/view/splash_page.dart';
-import 'package:arretadas/screens/menu.dart';
 import 'package:arretadas/screens/info/info.dart';
 import 'package:arretadas/UIcontacts/HomeContactsPage.dart';
-import 'package:arretadas/screens/mapa.dart';
 
 import 'package:arretadas/modules/auth/view/home_page.dart';
 import 'package:arretadas/modules/auth/view/login_page.dart';
@@ -15,9 +15,6 @@ import 'package:arretadas/modules/usefulcontacts/view/usefulcontacts_page.dart';
 import 'package:arretadas/core/app_colors.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-//import 'package:arretadas/screens/denuncias.dart';
-//import 'package:arretadas/screens/cadastro.dart';
 
 void main() {
   runApp(Main());
@@ -39,16 +36,9 @@ class Main extends StatelessWidget {
       ),
       initialRoute: SplashPage.router,
       routes: {
-        '/menu': (context) => Menu(),
+        //'/menu': (context) => Menu(),
         '/info': (context) => Info(),
         '/contacts': (context) => HomeContactsPage(),
-        '/mapa': (context) => SetMap(),
-        '/denuncias': (context) => Denuncias(),
-        '/map': (context) => Map(),
-
-        //'/cadastro': (context) => Cadastro(),
-        //'/login': (context) => Login(),
-        //'/denuncias': (context) => Denuncias(),
 
         //novas rotas
         SplashPage.router: (_) => SplashPage(),
@@ -56,7 +46,9 @@ class Main extends StatelessWidget {
         LoginPage.router: (_) => LoginPage(),
         RegisterPage.router: (_) => RegisterPage(),
         UsefulcontactsPage.router: (_) => UsefulcontactsPage(),
-        //DenunciasPage.router: (_) => DenunciasPage(),
+        ComplaintsPage.router: (_) => ComplaintsPage(),
+        MapPage.router: (_) => MapPage(),
+        MenuPage.router: (_) => MenuPage(),
       },
     );
   }

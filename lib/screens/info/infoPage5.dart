@@ -1,11 +1,4 @@
-//import 'package:arretadas/components/Button.dart';
 import 'package:flutter/material.dart';
-
-// class InforPage1 extends StatefulWidget {
-//   const InforPage1({Kay, key}) : super(key: key);
-//   @override
-//   _InforPage1State createState() => _InforPage1State();
-// }
 
 class InforPage5 extends StatelessWidget {
   @override
@@ -41,9 +34,6 @@ class _InforPage1State extends State<InfoPageContent> {
               text: 'LEI - MARIA DA PENA.\n\n',
               style: DefaultTextStyle.of(context).style,
               children: <TextSpan>[
-                TextSpan(
-                    text: '!\n\n',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
                 TextSpan(
                     text:
                         'Art. 1º Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.\n\n'

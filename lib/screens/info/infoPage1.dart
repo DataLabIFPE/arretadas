@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-// class InforPage1 extends StatefulWidget {
-//   const InforPage1({Kay, key}) : super(key: key);
-//   @override
-//   _InforPage1State createState() => _InforPage1State();
-// }
-
 class InforPage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
