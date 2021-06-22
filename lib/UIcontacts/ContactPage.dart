@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:arretadas/helpers/contact_helper.dart';
 
@@ -18,7 +17,6 @@ class _ContactPageState extends State<ContactPage> {
 
   final _nameFocus = FocusNode();
 
-  bool _userEdited = false;
   Contact _editedContact;
 
   @override
@@ -47,14 +45,16 @@ class _ContactPageState extends State<ContactPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if (_editedContact.name != null && _editedContact.name.isNotEmpty) {
+          if (_editedContact.name != null &&
+              _editedContact.phone != null &&
+              _editedContact.name.isNotEmpty &&
+              _editedContact.phone.isNotEmpty) {
             Navigator.pop(context, _editedContact);
           } else {
             FocusScope.of(context).requestFocus(_nameFocus);
           }
         },
         child: Icon(Icons.save),
-        //TODO
         backgroundColor: Colors.redAccent,
       ),
       body: SingleChildScrollView(
@@ -81,7 +81,6 @@ class _ContactPageState extends State<ContactPage> {
               focusNode: _nameFocus,
               decoration: InputDecoration(labelText: "Nome"),
               onChanged: (text) {
-                _userEdited = true;
                 setState(() {
                   _editedContact.name = text;
                 });
@@ -100,7 +99,6 @@ class _ContactPageState extends State<ContactPage> {
               controller: _phoneController,
               decoration: InputDecoration(labelText: "Telefone"),
               onChanged: (text) {
-                _userEdited = true;
                 _editedContact.phone = text;
               },
               keyboardType: TextInputType.phone,

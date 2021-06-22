@@ -1,4 +1,3 @@
-import 'package:arretadas/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
@@ -63,7 +62,6 @@ class _MapState extends State<Map> {
   }
 
   void setUserChoice(point) {
-    //print(point);
     Navigator.pop(context);
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -71,16 +69,6 @@ class _MapState extends State<Map> {
                 point: point,
               )),
     );
-
-    /*
-    Navigator.push(
-      context,
-      new MaterialPageRoute(
-        builder: (context) => Denuncias(
-          point: point,
-        ),
-      ),
-    );*/
   }
 
   @override

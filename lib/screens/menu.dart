@@ -1,12 +1,14 @@
-import 'dart:convert';
 import 'package:arretadas/components/Header.dart';
 import 'package:arretadas/components/Button.dart';
+import 'package:arretadas/exceptions/rest_exception.dart';
+import 'package:arretadas/helpers/custom_dio.dart';
 import 'package:arretadas/mixins/messages_mixin.dart';
+import 'package:arretadas/modules/map/view/map_page.dart';
 import 'package:arretadas/modules/splash/view/splash_page.dart';
 import 'package:arretadas/modules/usefulcontacts/view/usefulcontacts_page.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Menu extends StatefulWidget {
@@ -21,35 +23,19 @@ class _MenuState extends State<Menu> with MessagesMixin {
   Future<Position> _getLocation() async {
     final location = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    print(location);
-
     return location;
   }
 
-/*
-  Future<void> _sendMessage(Position data) async {
+  Future<dynamic> _sendMessage(Position data) async {
     var dio = CustomDio().instance;
     try {
-  }
-*/
-  Future<dynamic> _sendMessage(Position data) async {
-    final url = 'https://arretadas-api.herokuapp.com/help';
-    final send = await http.post(url,
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, dynamic>{
-          'num1': '5587999980822',
-          'num2': '5587000000000',
-          'num3': '5587000000000',
-          'num4': '5581000000000',
-          'num5': '5587000000000',
-          'lat': data.latitude,
-          'long': data.longitude,
-        }));
-
-    print(send.statusCode);
-    return send.statusCode;
+      await dio.post('https://arretadas-api.herokuapp.com/alert',
+          data: {'latitude': data.latitude, 'longitude': data.longitude});
+    } on DioError catch (e) {
+      print('Erro na requisição');
+      print(e);
+      throw RestException('Erro ao enviar alerta');
+    }
   }
 
   @override
@@ -62,40 +48,47 @@ class _MenuState extends State<Menu> with MessagesMixin {
             child: Stack(
               children: <Widget>[
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Header(
-                          userName: widget.name,
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(50)),
-                            child: Image.asset('assets/icon-person.png')),
-                      ],
-                    ),
-                    Button(
-                      width: (MediaQuery.of(context).size.width * 0.95),
-                      margin: EdgeInsets.only(top: 20.0),
-                      height: 70.0,
-                      txtColor: Colors.white,
-                      btnColor: Colors.redAccent,
-                      fontSize: 20.0,
-                      child: Text(
-                        'PEDIR SOCORRO',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Header(
+                            title: 'Arretadas',
+                          ),
+                          Container(
+                              margin: EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: Image.asset('assets/icon-person.png')),
+                        ],
                       ),
-                      callback: () async {
-                        _showAlertDialog2(context);
-                      },
+                    ),
+                    Container(
+                      color: Colors.blue,
+                      child: Button(
+                        width: (MediaQuery.of(context).size.width * 0.95),
+                        margin: EdgeInsets.only(top: 20.0),
+                        height: 70.0,
+                        txtColor: Colors.white,
+                        btnColor: Colors.redAccent,
+                        fontSize: 20.0,
+                        child: Text(
+                          'PEDIR SOCORRO',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                          ),
+                        ),
+                        callback: () async {
+                          _showAlertDialog2(context);
+                        },
+                      ),
                     ),
                     //Botão denunciar
                     Button(
@@ -114,13 +107,11 @@ class _MenuState extends State<Menu> with MessagesMixin {
                         ),
                       ),
                       callback: () {
-                        Navigator.pushNamed(context, '/mapa');
+                        Navigator.pushNamed(context, MapPage.router);
                       },
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
+
+                    /*Container(
                       margin: EdgeInsets.all(10),
                       height: 200.0,
                       width: MediaQuery.of(context).size.width,
@@ -159,7 +150,7 @@ class _MenuState extends State<Menu> with MessagesMixin {
                               TextButton(
                                 onPressed: () {},
                                 child: Text(
-                                  'TUTORIAL >',
+                                  'SAIBA MAIS >',
                                   style: TextStyle(
                                     color: Colors.red[200],
                                     fontSize: 22.0,
@@ -172,10 +163,8 @@ class _MenuState extends State<Menu> with MessagesMixin {
                           ),
                         ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
+                    ),*/
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
@@ -229,7 +218,7 @@ class _MenuState extends State<Menu> with MessagesMixin {
                           width: 80.0,
                           height: 80.0,
                           callback: () {
-                            Navigator.pushNamed(context, '/map');
+                            Navigator.pushNamed(context, MapPage.router);
                           },
                         ),
                       ],
@@ -272,6 +261,7 @@ class _MenuState extends State<Menu> with MessagesMixin {
       onPressed: () async {
         Navigator.pop(context);
         var coordinators = await _getLocation();
+        //await _sendMessage(coordinators);
         await _sendMessage(coordinators);
       },
     );

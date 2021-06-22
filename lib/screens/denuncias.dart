@@ -1,11 +1,11 @@
 import 'package:arretadas/components/Button.dart';
+import 'package:arretadas/exceptions/rest_exception.dart';
+import 'package:arretadas/helpers/custom_dio.dart';
 import 'package:arretadas/mixins/messages_mixin.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'mapa.dart';
-
-import 'package:arretadas/screens/mapa.dart';
 
 class Denuncias extends StatefulWidget {
   Denuncias({Key key, this.point}) : super(key: key);
@@ -18,13 +18,24 @@ class Denuncias extends StatefulWidget {
 class _DenunciasState extends State<Denuncias> with MessagesMixin {
   DateTime pickedDate;
   TimeOfDay time;
+  String formattedDate;
+  String formattedHour;
+  String fh;
 
   @override
   void initState() {
     super.initState();
-    print(widget.point);
     pickedDate = DateTime.now();
+    formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
     time = TimeOfDay.now();
+    formattedHour = DateFormat.jms('pt').format(
+      DateTime(pickedDate.year, pickedDate.month, pickedDate.day, time.hour,
+          time.minute, 0),
+    );
+    fh = DateFormat.Hm('pt').format(
+      DateTime(pickedDate.year, pickedDate.month, pickedDate.day, time.hour,
+          time.minute, 0),
+    );
     _dropDownMenuItems = getDropDownMenuItems();
     _currentViolencia = _dropDownMenuItems[0].value;
   }
@@ -37,6 +48,28 @@ class _DenunciasState extends State<Denuncias> with MessagesMixin {
     'Psicológica',
     'Patrimonial'
   ];
+
+  Future<void> _sendMessage1(
+    dynamic local,
+    String data,
+    String hora,
+    String tipoViolencia,
+  ) async {
+    var dio = CustomDio().instance;
+    try {
+      await dio.post('https://arretadas-api.herokuapp.com/complaint', data: {
+        'latitude': local.latitude,
+        'longitude': local.longitude,
+        'date': data,
+        'hour': hora,
+        'type_complaint': tipoViolencia,
+      });
+    } on DioError catch (e) {
+      print('Erro na requisição');
+      print(e);
+      throw RestException('Erro ao enviar alerta');
+    }
+  }
 
   List<DropdownMenuItem<String>> _dropDownMenuItems;
   String _currentViolencia;
@@ -89,30 +122,10 @@ class _DenunciasState extends State<Denuncias> with MessagesMixin {
             ),
             ListTile(
               leading: Icon(Icons.access_time),
-              title: Text("Hora: ${time.hour}:${time.minute}"),
+              title: Text("Hora: $fh"),
               trailing: Icon(Icons.keyboard_arrow_down),
               onTap: _pickTime,
             ),
-
-            /*Text("Clique no mapa para adicionar a localização"),
-            SizedBox(
-              height: 20,
-            ),*/
-            /*GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SetMap(),
-                  ),
-                );
-              },
-              child: Image(
-                image: AssetImage('assets/foto_mapa.png'),
-                height: 250,
-                fit: BoxFit.contain,
-              ),
-            ),*/
             SizedBox(
               height: 20,
             ),
@@ -127,8 +140,10 @@ class _DenunciasState extends State<Denuncias> with MessagesMixin {
                 ),
               ),
               callback: () {
-                showSuccess(
-                    message: "Denúncia enviada com sucesso!", context: context);
+                _sendMessage1(widget.point, formattedDate, formattedHour,
+                    _currentViolencia);
+                /*showSuccess(
+                    message: "Denúncia enviada com sucesso!", context: context);*/
               },
             ),
           ],
@@ -154,6 +169,7 @@ class _DenunciasState extends State<Denuncias> with MessagesMixin {
     if (date != null)
       setState(() {
         pickedDate = date;
+        formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
       });
   }
 
@@ -163,36 +179,12 @@ class _DenunciasState extends State<Denuncias> with MessagesMixin {
     if (t != null)
       setState(() {
         time = t;
+        formattedHour = DateFormat.jms('pt').format(DateTime(pickedDate.year,
+            pickedDate.month, pickedDate.day, t.hour, t.minute, 0));
+        fh = DateFormat.Hm('pt').format(
+          DateTime(pickedDate.year, pickedDate.month, pickedDate.day, time.hour,
+              time.minute, 0),
+        );
       });
   }
 }
-
-  /*
-class Denuncias extends StatefulWidget {
-  Denuncias({Key key, this.point});
-  final point;
-  @override
-  _DenunciasState createState() => _DenunciasState();
-}
-
-class _DenunciasState extends State<Denuncias> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Fazer Denúncias",
-      theme: ThemeData(
-        primaryColor: Color.fromRGBO(248, 92, 104, 1),
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Fazer Denúncias"),
-        ),
-        body: MapaDenunciar(point: widget.point),
-      ),
-    );
-  }
-}
-*/
-
- 

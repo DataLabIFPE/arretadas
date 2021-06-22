@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:arretadas/UIcontacts/ContactPage.dart';
 import 'package:arretadas/helpers/contact_helper.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +23,7 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Contatos"),
+        title: Text("Amigos"),
         centerTitle: true,
       ),
       backgroundColor: Colors.white,
@@ -132,7 +131,7 @@ class _HomeContactsPageState extends State<HomeContactsPage> {
         MaterialPageRoute(builder: (context) => ContactPage(contact: contact)));
     if (recContact != null) {
       if (contact != null) {
-        await helper.updateContact(recContact);
+        helper.updateContact(recContact);
       } else {
         await helper.saveContact(recContact);
       }

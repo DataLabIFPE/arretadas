@@ -32,7 +32,6 @@ class UsefulContent extends StatefulWidget {
 class _UsefulContentState extends State<UsefulContent> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

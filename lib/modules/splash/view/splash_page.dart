@@ -1,5 +1,7 @@
+import 'package:arretadas/core/app_colors.dart';
 import 'package:arretadas/modules/auth/view/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:arretadas/modules/splash/controller/splash_controller.dart';
 
@@ -45,9 +47,14 @@ class _SplashContentState extends State<SplashContent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        backgroundColor: AppColors.primaria,
+        backwardsCompatibility: false,
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarColor: AppColors.primaria),
       ),
-      body: Container(),
+      body: Container(
+        color: AppColors.primaria,
+      ),
     );
   }
 }
