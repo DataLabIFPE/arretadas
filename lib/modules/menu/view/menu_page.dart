@@ -1,6 +1,7 @@
 import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/components/Header.dart';
 import 'package:arretadas/mixins/messages_mixin.dart';
+import 'package:arretadas/modules/complaints/view/complaints_page.dart';
 import 'package:arretadas/modules/map/view/map_page.dart';
 import 'package:arretadas/modules/splash/view/splash_page.dart';
 import 'package:arretadas/modules/usefulcontacts/view/usefulcontacts_page.dart';
@@ -107,7 +108,7 @@ class _MenuContentState extends State<MenuContent> with MessagesMixin {
                     ),
                   ),
                   callback: () {
-                    Navigator.pushNamed(context, MapPage.router);
+                    Navigator.pushNamed(context, ComplaintsPage.router);
                   },
                 ),
               ],

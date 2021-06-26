@@ -1,5 +1,6 @@
 import 'package:arretadas/core/app_colors.dart';
 import 'package:arretadas/modules/auth/view/home_page.dart';
+import 'package:arretadas/modules/menu/view/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,7 @@ class _SplashContentState extends State<SplashContent> {
       switch (controller.logged) {
         case UserLogged.authenticate:
           Navigator.of(context)
-              .pushNamedAndRemoveUntil('/menu', (route) => false);
+              .pushNamedAndRemoveUntil(MenuPage.router, (route) => false);
           break;
         case UserLogged.unauthenticate:
           Navigator.of(context)

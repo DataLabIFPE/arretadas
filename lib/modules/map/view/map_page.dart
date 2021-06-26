@@ -1,6 +1,5 @@
 import 'package:arretadas/mixins/messages_mixin.dart';
 import 'package:arretadas/modules/complaints/controller/complaints_controller.dart';
-import 'package:arretadas/modules/complaints/view/complaints_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
@@ -15,10 +14,6 @@ class MapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Selecione o local'),
-        centerTitle: true,
-      ),
       body: SafeArea(
         child: ChangeNotifierProvider(
           create: (context) => ComplaintsController()..findComplaints(),
@@ -81,7 +76,6 @@ class _MapContentState extends State<MapContent> with MessagesMixin {
                 MarkerClusterPlugin(),
               ],
               onTap: (_) => _popupController.hidePopup(),
-              onLongPress: (point) => _setUserChoice(point),
             ),
             layers: [
               TileLayerOptions(
@@ -126,16 +120,6 @@ class _MapContentState extends State<MapContent> with MessagesMixin {
             ]),
       );
     });
-  }
-
-  void _setUserChoice(point) {
-    Navigator.pop(context);
-    Navigator.of(context).push(
-      MaterialPageRoute(
-          builder: (context) => ComplaintsPage(
-                point: point,
-              )),
-    );
   }
 
   void _setMarkers(String latitude, String longitude) {
