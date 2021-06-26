@@ -47,7 +47,7 @@ class _InputState extends State<Input> {
                   : null,
               labelText: widget.labelText,
               labelStyle: TextStyle(
-                color: widget.color,
+                color: Colors.white,
               )),
         ),
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 1),

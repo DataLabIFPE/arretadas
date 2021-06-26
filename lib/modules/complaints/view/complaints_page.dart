@@ -81,6 +81,9 @@ class _ComplaintsContentState extends State<ComplaintsContent>
 
       if (controller.sendSucess) {
         showSuccess(message: 'Denúncia enviada com Sucesso', context: context);
+        Future.delayed(Duration(milliseconds: 350), () {
+          Navigator.pop(context);
+        });
       }
     });
   }
