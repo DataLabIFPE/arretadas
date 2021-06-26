@@ -2,15 +2,15 @@ import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/core/app_colors.dart';
 import 'package:arretadas/mixins/messages_mixin.dart';
 import 'package:arretadas/modules/complaints/controller/complaints_controller.dart';
+import 'package:arretadas/modules/map/view/map2_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:validators/validators.dart';
 
 class ComplaintsPage extends StatelessWidget {
-  const ComplaintsPage({Key key, this.point}) : super(key: key);
+  const ComplaintsPage({Key key}) : super(key: key);
   static const router = '/complaints';
-  final point;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,7 @@ class ComplaintsPage extends StatelessWidget {
       body: SafeArea(
         child: ChangeNotifierProvider(
           create: (context) => ComplaintsController(),
-          child: ComplaintsContent(
-            point: point,
-          ),
+          child: ComplaintsContent(),
         ),
       ),
     );
@@ -32,8 +30,7 @@ class ComplaintsPage extends StatelessWidget {
 }
 
 class ComplaintsContent extends StatefulWidget {
-  const ComplaintsContent({Key key, this.point}) : super(key: key);
-  final point;
+  const ComplaintsContent({Key key}) : super(key: key);
 
   @override
   _ComplaintsContentState createState() => _ComplaintsContentState();
@@ -45,6 +42,7 @@ class _ComplaintsContentState extends State<ComplaintsContent>
   DateTime pickedDate;
   TimeOfDay pickedTime;
   String data, hora, _df, _hf, _hmf;
+  dynamic point;
 
   @override
   void initState() {
@@ -81,7 +79,7 @@ class _ComplaintsContentState extends State<ComplaintsContent>
 
       if (controller.sendSucess) {
         showSuccess(message: 'Denúncia enviada com Sucesso', context: context);
-        Future.delayed(Duration(milliseconds: 350), () {
+        Future.delayed(Duration(milliseconds: 1000), () {
           Navigator.pop(context);
         });
       }
@@ -91,10 +89,10 @@ class _ComplaintsContentState extends State<ComplaintsContent>
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(20),
       child: Column(children: <Widget>[
         Container(
-          padding: new EdgeInsets.all(20),
+          padding: new EdgeInsets.all(10),
         ),
         Text('Selecione o tipo de violência'),
         DropdownButton<String>(
@@ -128,9 +126,6 @@ class _ComplaintsContentState extends State<ComplaintsContent>
             );
           }).toList(),
         ),
-        Container(
-          padding: new EdgeInsets.all(20),
-        ),
         ListTile(
           leading: Icon(Icons.calendar_today),
           title: Text(DateFormat("'Data:' dd/MM/yyyy").format(pickedDate)),
@@ -143,8 +138,22 @@ class _ComplaintsContentState extends State<ComplaintsContent>
           trailing: Icon(Icons.keyboard_arrow_down),
           onTap: _pickTime,
         ),
+        Text("Clique no mapa para adicionar a localização"),
         Container(
-          padding: new EdgeInsets.all(20),
+          padding: new EdgeInsets.all(10),
+        ),
+        GestureDetector(
+          onTap: () {
+            _pickLocation(context);
+          },
+          child: Image(
+            image: AssetImage('assets/foto_mapa.png'),
+            height: 250,
+            fit: BoxFit.contain,
+          ),
+        ),
+        Container(
+          padding: new EdgeInsets.all(10),
         ),
         Button(
             btnColor: AppColors.primaria,
@@ -158,10 +167,21 @@ class _ComplaintsContentState extends State<ComplaintsContent>
             callback: () {
               context
                   .read<ComplaintsController>()
-                  .sendComplaint(widget.point, data, hora, dropdownValue);
+                  .sendComplaint(point, data, hora, dropdownValue);
             }),
       ]),
     );
+  }
+
+  _pickLocation(BuildContext context) async {
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Map2Page(),
+        ));
+    setState(() {
+      point = result;
+    });
   }
 
   _pickDate() async {

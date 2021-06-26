@@ -1,4 +1,5 @@
 import 'package:arretadas/modules/complaints/view/complaints_page.dart';
+import 'package:arretadas/modules/map/view/map2_page.dart';
 import 'package:arretadas/modules/map/view/map_page.dart';
 import 'package:arretadas/modules/menu/view/menu_page.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,7 @@ class Main extends StatelessWidget {
         ComplaintsPage.router: (_) => ComplaintsPage(),
         MapPage.router: (_) => MapPage(),
         MenuPage.router: (_) => MenuPage(),
+        Map2Page.router: (_) => Map2Page(),
       },
     );
   }
