@@ -37,7 +37,6 @@ class Main extends StatelessWidget {
       ),
       initialRoute: SplashPage.router,
       routes: {
-        //'/menu': (context) => Menu(),
         '/info': (context) => Info(),
         '/contacts': (context) => HomeContactsPage(),
 
