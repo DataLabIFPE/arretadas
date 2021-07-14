@@ -1,4 +1,5 @@
 import 'package:arretadas/modules/complaints/view/complaints_page.dart';
+import 'package:arretadas/modules/contacts/view/contacts_page.dart';
 import 'package:arretadas/modules/map/view/map2_page.dart';
 import 'package:arretadas/modules/map/view/map_page.dart';
 import 'package:arretadas/modules/menu/view/menu_page.dart';
@@ -38,7 +39,7 @@ class Main extends StatelessWidget {
       initialRoute: SplashPage.router,
       routes: {
         '/info': (context) => Info(),
-        '/contacts': (context) => HomeContactsPage(),
+        //'/contacts': (context) => HomeContactsPage(),
 
         //novas rotas
         SplashPage.router: (_) => SplashPage(),
@@ -50,6 +51,7 @@ class Main extends StatelessWidget {
         MapPage.router: (_) => MapPage(),
         MenuPage.router: (_) => MenuPage(),
         Map2Page.router: (_) => Map2Page(),
+        ContactsPage.router: (_) => ContactsPage(),
       },
     );
   }
