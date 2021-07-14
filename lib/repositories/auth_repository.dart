@@ -9,7 +9,6 @@ class AuthRepository {
       final response = await Dio().post(
           'https://arretadas-api.herokuapp.com/user/authenticate',
           data: {'nickname': nickname, 'password': password});
-      print(UserModel.fromMap(response.data));
       return UserModel.fromMap(response.data);
     } on DioError catch (e) {
       print(e);
