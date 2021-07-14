@@ -73,7 +73,10 @@ class _UsefulContentState extends State<UsefulContent> {
                   trailing: IconButton(
                     icon: Icon(Icons.phone),
                     iconSize: 30,
-                    onPressed: () {},
+                    onPressed: () {
+                      launch("tel:${item.number}");
+                      Navigator.pop(context);
+                    },
                   ),
                 ),
               ),
@@ -118,12 +121,14 @@ void _showUsefulContacts(BuildContext context, number, name) {
                                                   .primaryColor,
                                               size: 40,
                                             )),
-                                        Text(name ?? "",
-                                            style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                fontSize: 20.0,
-                                                fontStyle: FontStyle.italic))
+                                        Expanded(
+                                          child: Text(name ?? "",
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  fontSize: 20.0,
+                                                  fontStyle: FontStyle.italic)),
+                                        )
                                       ]),
                                       Row(children: <Widget>[
                                         Padding(
@@ -143,61 +148,6 @@ void _showUsefulContacts(BuildContext context, number, name) {
                                     ],
                                   )),
                             ))),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        TextButton(
-                          child: Column(children: <Widget>[
-                            Icon(
-                              Icons.phone,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            Text(
-                              "Ligar",
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 20.0),
-                            )
-                          ]),
-                          onPressed: () {
-                            launch("tel:$number");
-                            Navigator.pop(context);
-                          },
-                        ),
-                        TextButton(
-                          child: Column(children: <Widget>[
-                            Icon(
-                              Icons.map, //mode_edit,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            Text(
-                              "Mapa",
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 20.0),
-                            )
-                          ]),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                        TextButton(
-                          child: Column(children: <Widget>[
-                            Icon(
-                              Icons.email, //delete,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            Text(
-                              "Email",
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 20.0),
-                            )
-                          ]),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               );

@@ -3,6 +3,8 @@ import 'package:arretadas/components/Header.dart';
 import 'package:arretadas/mixins/messages_mixin.dart';
 import 'package:arretadas/modules/complaints/view/complaints_page.dart';
 import 'package:arretadas/modules/map/view/map_page.dart';
+import 'package:arretadas/modules/menu/components/warning.dart';
+
 import 'package:arretadas/modules/splash/view/splash_page.dart';
 import 'package:arretadas/modules/usefulcontacts/view/usefulcontacts_page.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +54,7 @@ class _MenuContentState extends State<MenuContent> with MessagesMixin {
     return Container(
       width: double.infinity,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
@@ -111,6 +113,7 @@ class _MenuContentState extends State<MenuContent> with MessagesMixin {
                     Navigator.pushNamed(context, ComplaintsPage.router);
                   },
                 ),
+                Warning(),
               ],
             ),
           ),

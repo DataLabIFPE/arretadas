@@ -48,7 +48,7 @@ class MenuController extends ChangeNotifier {
         });
 
     AlertDialog alert = AlertDialog(
-      title: Text("Atenção"),
+      title: Text('Atenção'),
       content: Text("Deseja enviar o pedido de socorro?"),
       actions: [
         cancelaButton,

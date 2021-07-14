@@ -2,13 +2,17 @@ import 'package:arretadas/helpers/custom_dio.dart';
 import 'package:arretadas/exceptions/rest_exception.dart';
 import 'package:arretadas/models/complaint_model.dart';
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 
 class ComplaintRepository {
-  Future<List<ComplaintModel>> findAll() async {
+  Future<List<ComplaintModel>> findAll(DateTime data) async {
+    String initial =
+        DateFormat('yyyy-MM-dd').format(data.subtract(Duration(days: 5)));
+    String end = DateFormat('yyyy-MM-dd').format(data);
     var dio = CustomDio().instance;
     try {
-      final response =
-          await dio.get('https://arretadas-api.herokuapp.com/complaint');
+      final response = await dio.get(
+          'https://arretadas-api.herokuapp.com/complaint?init=$initial&final=$end');
       return response.data
           .map<ComplaintModel>((m) => ComplaintModel.fromMap(m))
           .toList();

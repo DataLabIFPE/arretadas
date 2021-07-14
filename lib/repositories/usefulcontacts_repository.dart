@@ -1,5 +1,6 @@
 import 'package:arretadas/helpers/custom_dio.dart';
 import 'package:arretadas/exceptions/rest_exception.dart';
+
 import 'package:arretadas/models/usefulcontact_model.dart';
 import 'package:dio/dio.dart';
 

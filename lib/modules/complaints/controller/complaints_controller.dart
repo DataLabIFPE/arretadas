@@ -8,13 +8,14 @@ class ComplaintsController extends ChangeNotifier {
   bool loading;
   String error;
   bool sendSucess = false;
+  DateTime _data = DateTime.now();
 
   Future<void> findComplaints() async {
     loading = true;
     error = null;
     notifyListeners();
     try {
-      complaints = await _repository.findAll();
+      complaints = await _repository.findAll(_data);
       sendSucess = true;
     } catch (e) {
       print(e);

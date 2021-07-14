@@ -19,8 +19,9 @@ class CustomDio {
     var user = (prefs.getString('user') ?? "");
     var userMap = json.decode(user);
     var token = userMap['token'];
-    token = 'Bearer ' + token;
-    options.headers['authorization'] = token;
+    options.headers['x-access-token'] = token;
+    var tokenBearer = 'Bearer ' + token;
+    options.headers['authorization'] = tokenBearer;
   }
 
   _onError(DioError e) {
@@ -29,5 +30,6 @@ class CustomDio {
 
   _onResponse(Response e) {
     print(e.data);
+    return e;
   }
 }
