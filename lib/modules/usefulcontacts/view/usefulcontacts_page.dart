@@ -45,7 +45,7 @@ class _UsefulContentState extends State<UsefulContent> {
       }
 
       if (!isNull(controller.error)) {
-        return Text(controller.error);
+        return Center(child: Text(controller.error));
       }
       var usefulcontacts = controller.usefulcontacts;
       print(usefulcontacts[0].name);

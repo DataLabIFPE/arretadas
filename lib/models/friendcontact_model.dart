@@ -9,7 +9,7 @@ class FriendContactModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      '_id': id,
       'name': name,
       'number': number,
     };
@@ -19,7 +19,7 @@ class FriendContactModel {
     if (map == null) return null;
 
     return FriendContactModel(
-      id: map['id'],
+      id: map['_id'],
       name: map['name'],
       number: map['number'],
     );

@@ -2,7 +2,7 @@ import 'package:arretadas/components/Button.dart';
 import 'package:arretadas/components/Header.dart';
 import 'package:arretadas/mixins/messages_mixin.dart';
 import 'package:arretadas/modules/complaints/view/complaints_page.dart';
-import 'package:arretadas/modules/contacts/view/contacts_page.dart';
+import 'package:arretadas/modules/friendcontacts/view/friendcontacts_page.dart';
 import 'package:arretadas/modules/map/view/map_page.dart';
 import 'package:arretadas/modules/menu/components/warning.dart';
 
@@ -161,7 +161,7 @@ class _MenuContentState extends State<MenuContent> with MessagesMixin {
                       width: 80.0,
                       height: 80.0,
                       callback: () {
-                        Navigator.pushNamed(context, ContactsPage.router);
+                        Navigator.pushNamed(context, FriendContactsPage.router);
                       },
                     ),
                     Button(
