@@ -21,10 +21,9 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
-
     return UserModel(
-      id: map['id'],
-      nickname: map['nickname'],
+      id: map['data']['id'],
+      nickname: map['data']['nickname'],
       token: map['token'],
     );
   }

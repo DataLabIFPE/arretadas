@@ -1,4 +1,4 @@
-import 'package:arretadas/modules/menu/controller/warning_controller.dart';
+import 'package:arretadas/modules/friendcontacts/controller/friendcontacts_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +9,7 @@ class Warning extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ChangeNotifierProvider(
-        create: (_) => WarningController()..findFriendContacts(),
+        create: (_) => FriendContactController(),
         child: WarningContent(),
       ),
     );
@@ -29,9 +29,10 @@ class _WarningContentState extends State<WarningContent> {
   @override
   void initState() {
     super.initState();
-    final controller = context.read<WarningController>();
+    context.read<FriendContactController>()..findFriendcontacts();
+    final controller = context.read<FriendContactController>();
     controller.addListener(() {
-      if (controller.isVisibility) {
+      if (controller.isVisible) {
         setState(() {
           isVisible = true;
         });

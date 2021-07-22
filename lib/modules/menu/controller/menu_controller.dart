@@ -1,12 +1,17 @@
+import 'dart:convert';
+
 import 'package:arretadas/exceptions/rest_exception.dart';
 import 'package:arretadas/repositories/alert_repository.dart';
+import 'package:arretadas/repositories/friendcontact_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuController extends ChangeNotifier {
   bool sendSuccess;
   String error;
   final AlertRepository _repository = AlertRepository();
+  final FriendContactRepository _fcRepository = FriendContactRepository();
 
   sendMessage(BuildContext context) {
     error = null;
@@ -22,6 +27,8 @@ class MenuController extends ChangeNotifier {
   }
 
   _showAlertDialog(BuildContext context) {
+    var friendcontacts = [];
+
     Widget cancelaButton = TextButton(
       child: Text("Cancelar"),
       onPressed: () {
@@ -34,8 +41,17 @@ class MenuController extends ChangeNotifier {
           Navigator.pop(context);
           try {
             var coordinators = await getLocation();
-            await _repository.sendMessage(coordinators);
-            sendSuccess = true;
+            final sp = await SharedPreferences.getInstance();
+            var valor = sp.getString("user");
+            var valorMap = json.decode(valor);
+            var id = valorMap['id'].toString();
+            friendcontacts = await _fcRepository.findAllById(id);
+            if (friendcontacts.isNotEmpty) {
+              await _repository.sendMessage(coordinators);
+              sendSuccess = true;
+            } else {
+              error = 'Erro ao enviar pedido de socorro!';
+            }
           } on RestException catch (e) {
             error = e.message;
             sendSuccess = false;
