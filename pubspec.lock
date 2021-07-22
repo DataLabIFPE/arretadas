@@ -489,7 +489,7 @@ packages:
       name: random_string
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.3.1"
   rxdart:
     dependency: transitive
     description:
@@ -704,7 +704,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.4"
+    version: "2.2.5"
   wkt_parser:
     dependency: transitive
     description:

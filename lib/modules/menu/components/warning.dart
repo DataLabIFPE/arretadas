@@ -9,7 +9,7 @@ class Warning extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ChangeNotifierProvider(
-        create: (_) => FriendContactController(),
+        create: (_) => FriendContactController()..findFriendcontacts(),
         child: WarningContent(),
       ),
     );
@@ -29,7 +29,6 @@ class _WarningContentState extends State<WarningContent> {
   @override
   void initState() {
     super.initState();
-    context.read<FriendContactController>()..findFriendcontacts();
     final controller = context.read<FriendContactController>();
     controller.addListener(() {
       if (controller.isVisible) {
