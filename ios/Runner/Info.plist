@@ -11,7 +11,7 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-		<string>hello_world</string>
+		<string>Arretadas</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
@@ -42,6 +42,6 @@
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<false/>
 		<key>UIStatusBarHidden</key>
-		<false/>
+		<true/>
 	</dict>
 </plist>
