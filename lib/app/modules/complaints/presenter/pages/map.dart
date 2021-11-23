@@ -10,12 +10,7 @@ class Mapa extends StatefulWidget {
 }
 
 class _MapState extends State<Mapa> {
-  List points = [
-    LatLng(-8.8854999, -36.4803775),
-    LatLng(-8.885310, -36.497822),
-    LatLng(-8.88439326, -36.50439262),
-    LatLng(-8.90003869, -36.49958611),
-  ];
+  LatLng point = LatLng(-7.892373849262881, -37.122802734375);
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +21,8 @@ class _MapState extends State<Mapa> {
       ),
       body: FlutterMap(
         options: MapOptions(
-            center: points[0],
-            zoom: 13.0,
+            center: point,
+            zoom: 15.0,
             onLongPress: (_, point) => _setUserChoice(point)),
         layers: [
           TileLayerOptions(
