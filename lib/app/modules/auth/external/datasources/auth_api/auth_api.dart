@@ -18,8 +18,10 @@ class AuthApi implements AuthDatasource {
       final response = await this.dio.post(
           'https://arretadas-api.herokuapp.com/user/authenticate',
           data: {'nickname': params.nickname, 'password': params.password});
+      if (response.data['data']['city'] != null) {
+        ControllerCity().setCity(response.data['data']['city']);
+      }
 
-      ControllerCity().setCity(response.data['data']['city']);
       return UserMapper.fromJson(response.data);
     } on DioError catch (e) {
       throw AuthException(e.message);
