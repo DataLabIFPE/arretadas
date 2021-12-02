@@ -29,9 +29,10 @@ class SplashController {
     String id = jso['id'];
     String nickname = jso['nickname'];
     String token = jso['token'];
+    String city = jso['city'];
     repository = SplashRepository(Dio());
     final u = await repository.refreshToken(
-      User(id: id, nickname: nickname, token: token),
+      User(id: id, nickname: nickname, city: city, token: token),
     );
     sp.setString('user', u.toJson());
   }

@@ -5,6 +5,7 @@ class UserMapper {
     return User(
         id: json['data']['id'],
         nickname: json['data']['nickname'],
+        city: json['data']['city'],
         token: json['token']
         //protectionCode: json['data']['protection_code'],
         );
