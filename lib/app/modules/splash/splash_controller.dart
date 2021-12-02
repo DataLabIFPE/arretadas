@@ -34,7 +34,10 @@ class SplashController {
     final u = await repository.refreshToken(
       User(id: id, nickname: nickname, token: token),
     );
-    ControllerCity().setCity(u.city as String);
+    if (u.city != null) {
+      ControllerCity().setCity(u.city as String);
+    }
+
     sp.setString('user', u.toJson());
   }
 }
