@@ -4,23 +4,27 @@
 
 <h1 align="center">Arretadas</h1>
 
-<p align="center">Desenvolvimento de Software de Prevenção à Violência contra as Mulheres</p>
+<p align="center">Software de Prevenção à Violência contra as Mulheres</p>
 
 <p align="center">
-  <a href="https://github.com/ssferraz/arretadas/actions">
-    <img src="https://github.com/ssferraz/arretadas/workflows/CI/badge.svg"/>
+  <a href="https://github.com/datalabifpe/arretadas/actions">
+    <img src="https://github.com/datalabifpe/arretadas/workflows/CI/badge.svg"/>
   </a>
 
-  <a href="https://coveralls.io/github/ssferraz/arretadas?branch=main">
+
+<!---
+ <a href="https://coveralls.io/github/ssferraz/arretadas?branch=main">
     <img src="https://coveralls.io/repos/github/ssferraz/arretadas/badge.svg?branch=main"/>
   </a>
-  
-  <a href="https://github.com/ssferraz/arretadas/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/ssferraz/arretadas">
+-->  
+ 
+
+  <a href="https://github.com/DataLabIFPE/arretadas/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/datalabifpe/arretadas">
   </a>
   
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ssferraz/arretadas?color=%2304D361">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/ssferraz/arretadas">  
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/datalabifpe/arretadas?color=%2304D361">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/datalabifpe/arretadas">  
 </p>
 
 <p align="center">
@@ -65,7 +69,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/ssferraz/arretadas.git
+$ git clone https://github.com/DataLabIFPE/arretadas.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd arretadas
