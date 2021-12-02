@@ -27,6 +27,7 @@ class RegisterPageState extends State<RegisterPage>
   bool obscuredTextPassword = true;
   var register = RegisterModel();
   late Disposer disposer;
+  String dropdownValue = 'Monteiro';
 
   @override
   void initState() {
@@ -169,6 +170,32 @@ class RegisterPageState extends State<RegisterPage>
                               },
                             ),
                             SizedBox(height: 15),
+                            DropdownButton<String>(
+                              isExpanded: true,
+                              value: dropdownValue,
+                              style: const TextStyle(color: Colors.black),
+                              underline: Container(
+                                height: 2,
+                                color: Colors.blue,
+                              ),
+                              onChanged: (newValue) {
+                                setState(() {
+                                  dropdownValue = newValue!;
+                                  register =
+                                      register.copyWith(city: dropdownValue);
+                                });
+                              },
+                              items: <String>[
+                                'Monteiro',
+                                'Garanhuns',
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                            SizedBox(height: 15),
                             Button(
                               width: double.infinity,
                               child: TextCustom(text: 'cadastrar'),
@@ -181,6 +208,7 @@ class RegisterPageState extends State<RegisterPage>
                                   store.cadastrar(RegisterParams(
                                       nickname: register.nickname,
                                       password: register.password,
+                                      city: register.city,
                                       roles: register.roles));
                                 }
                               },

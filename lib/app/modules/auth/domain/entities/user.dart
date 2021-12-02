@@ -3,12 +3,14 @@ import 'dart:convert';
 class User {
   final String? id;
   final String? token;
+  final String? city;
   final String? nickname;
   final String? protectionCode;
 
   User({
     this.id,
     this.token,
+    this.city,
     this.nickname,
     this.protectionCode,
   });
@@ -20,6 +22,7 @@ class User {
     return 'ID $id\n' +
         'NICKNAME: $nickname\n' +
         //'MEDIDA PROTETIVA: $protectionCode' +
+        'CITY: $city\n' +
         'TOKEN: $token';
   }
 
@@ -27,6 +30,7 @@ class User {
     return {
       'id': id,
       'nickname': nickname,
+      'city': city,
       'token': token,
     };
   }
@@ -35,6 +39,7 @@ class User {
     return User(
       id: map['data']['id'],
       nickname: map['data']['nickname'],
+      city: map['data']['nickname'],
       token: map['token'],
     );
   }
