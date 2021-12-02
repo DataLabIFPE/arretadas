@@ -39,7 +39,7 @@ class User {
     return User(
       id: map['data']['id'],
       nickname: map['data']['nickname'],
-      city: map['data']['nickname'],
+      city: map['data']['city'],
       token: map['token'],
     );
   }
