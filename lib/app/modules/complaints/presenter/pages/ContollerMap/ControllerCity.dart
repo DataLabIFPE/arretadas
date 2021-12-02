@@ -1,7 +1,3 @@
-import 'dart:convert';
-
-import 'package:shared_preferences/shared_preferences.dart';
-
 class ControllerCity {
   static final ControllerCity _singleton = ControllerCity._internal();
   String _city = '';
