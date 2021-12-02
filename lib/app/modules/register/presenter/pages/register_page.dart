@@ -31,6 +31,7 @@ class RegisterPageState extends State<RegisterPage>
 
   @override
   void initState() {
+    register = register.copyWith(city: dropdownValue);
     disposer = store.observer(
       onError: (error) {
         showSnackbar(context, error);
