@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:arretadas/app/modules/auth/domain/entities/user.dart';
+import 'package:arretadas/app/modules/complaints/presenter/pages/ContollerMap/ControllerCity.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,6 +34,7 @@ class SplashController {
     final u = await repository.refreshToken(
       User(id: id, nickname: nickname, token: token),
     );
+    ControllerCity().setCity(u.city as String);
     sp.setString('user', u.toJson());
   }
 }

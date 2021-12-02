@@ -20,6 +20,7 @@ class RegisterUsecase implements IRegisterUsecase {
 class RegisterParams {
   String nickname;
   String password;
+  String city;
   List? aleatoryQuestions;
   String? protectionCode;
   List? roles;
@@ -27,6 +28,7 @@ class RegisterParams {
   RegisterParams(
       {required this.nickname,
       required this.password,
+      required this.city,
       required this.roles,
       this.protectionCode,
       this.aleatoryQuestions});

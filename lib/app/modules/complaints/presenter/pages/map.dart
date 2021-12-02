@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import 'ContollerMap/ControllerCity.dart';
+
 class Mapa extends StatefulWidget {
   const Mapa({Key? key}) : super(key: key);
 
@@ -11,6 +13,18 @@ class Mapa extends StatefulWidget {
 
 class _MapState extends State<Mapa> {
   LatLng point = LatLng(-8.8854999, -36.4803775);
+  bool isMonteiro = false;
+
+  void initState() {
+    super.initState();
+    setState(() {
+      String city = ControllerCity().getCity();
+      if (city == 'Monteiro') {
+        point = LatLng(-7.892373849262881, -37.122802734375);
+        isMonteiro = true;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +36,7 @@ class _MapState extends State<Mapa> {
       body: FlutterMap(
         options: MapOptions(
             center: point,
-            zoom: 13.0,
+            zoom: isMonteiro ? 15.0 : 13.0,
             onLongPress: (_, point) => _setUserChoice(point)),
         layers: [
           TileLayerOptions(
