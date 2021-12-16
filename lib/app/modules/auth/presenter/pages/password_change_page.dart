@@ -1,49 +1,31 @@
+import 'package:arretadas/app/core/components/input.dart';
+import 'package:arretadas/app/core/components/logo_image.dart';
 import 'package:arretadas/app/core/constants/app_colors.dart';
-import 'package:arretadas/app/core/global/models/register_model.dart';
 import 'package:arretadas/app/core/mixins/loader_mixin.dart';
 import 'package:arretadas/app/core/mixins/messages_mixin.dart';
-import 'package:arretadas/app/modules/register/presenter/store/register_store.dart';
-import 'package:arretadas/app/modules/register/presenter/widgets/formulario.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class PasswordChangePage extends StatefulWidget {
+  const PasswordChangePage({Key? key}) : super(key: key);
+
   @override
-  RegisterPageState createState() => RegisterPageState();
+  _PasswordChangePageState createState() => _PasswordChangePageState();
 }
 
-class RegisterPageState extends State<RegisterPage>
+class _PasswordChangePageState extends State<PasswordChangePage>
     with LoaderMixin, MessagesMixin {
-  final RegisterStore store = Modular.get();
   final formKey = GlobalKey<FormState>();
   var passwordCache = "";
   var passwordCacheConfirm = "";
   bool obscuredTextPassword = true;
-  var register = RegisterModel();
+
   late Disposer disposer;
   String dropdownValue = 'Monteiro';
   int currentStep = 0;
 
   @override
   void initState() {
-    register = register.copyWith(city: dropdownValue);
-    disposer = store.observer(
-      onError: (error) {
-        showSnackbar(context, error);
-        print(error);
-      },
-      onLoading: (loading) {
-        showHideLoaderHelper(context, loading);
-        print(loading);
-      },
-      onState: (state) {
-        showSucess(context, 'Cadastrado com sucesso!');
-        Modular.to.pushNamedAndRemoveUntil('/home', ModalRoute.withName('/'));
-        print('$state');
-      },
-    );
     super.initState();
   }
 
@@ -79,8 +61,7 @@ class RegisterPageState extends State<RegisterPage>
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
                       child: Container(
-                        height: 480,
-                        child: Formulario(),
+                        height: 300,
                       ),
                     ),
                   ),
