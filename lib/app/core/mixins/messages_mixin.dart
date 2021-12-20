@@ -9,8 +9,7 @@ abstract class MessagesMixin {
       behavior: SnackBarBehavior.floating,
       content: Text(
         error.toString(),
-        style:
-            const TextStyle(color: AppColors.primaryColorAccent, fontSize: 15),
+        style: TextStyle(color: AppColors.primaryColorAccent, fontSize: 15),
         textAlign: TextAlign.center,
       ),
     );
@@ -23,8 +22,7 @@ abstract class MessagesMixin {
       behavior: SnackBarBehavior.floating,
       content: Text(
         state.toString(),
-        style:
-            const TextStyle(color: AppColors.primaryColorAccent, fontSize: 15),
+        style: TextStyle(color: AppColors.primaryColorAccent, fontSize: 15),
         textAlign: TextAlign.center,
       ),
     );

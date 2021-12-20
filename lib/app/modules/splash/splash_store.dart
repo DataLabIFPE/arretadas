@@ -8,6 +8,6 @@ class SplashStore extends NotifierStore<Exception, UserLogged> {
   SplashStore() : super(UserLogged.inative);
 
   Future<void> checkAuth() async {
-    execute(() => controller.call(), delay: const Duration(seconds: 3));
+    execute(() => controller.call(), delay: Duration(seconds: 3));
   }
 }

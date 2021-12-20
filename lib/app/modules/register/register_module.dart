@@ -20,6 +20,6 @@ class RegisterModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => const RegisterPage()),
+    ChildRoute('/', child: (_, args) => RegisterPage()),
   ];
 }

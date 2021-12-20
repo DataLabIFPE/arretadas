@@ -153,7 +153,7 @@ class _FormularioState extends State<Formulario> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(); /*Stepper(
+    return Stepper(
       type: StepperType.horizontal,
       steps: getSteps(),
       currentStep: currentStep,
@@ -209,6 +209,6 @@ class _FormularioState extends State<Formulario> {
           ),
         );
       },
-    );*/
+    );
   }
 }

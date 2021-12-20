@@ -20,6 +20,6 @@ class UsefulcontactsModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => const UsefulcontactsPage()),
+    ChildRoute('/', child: (_, args) => UsefulcontactsPage()),
   ];
 }

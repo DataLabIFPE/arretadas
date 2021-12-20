@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-import 'ContollerMap/controller_city.dart';
+import 'ContollerMap/ControllerCity.dart';
 
 class Mapa extends StatefulWidget {
   const Mapa({Key? key}) : super(key: key);
@@ -15,7 +15,6 @@ class _MapState extends State<Mapa> {
   LatLng point = LatLng(-8.8854999, -36.4803775);
   bool isMonteiro = false;
 
-  @override
   void initState() {
     super.initState();
     setState(() {
@@ -31,7 +30,7 @@ class _MapState extends State<Mapa> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Selecione o local'),
+        title: Text('Selecione o local'),
         centerTitle: true,
       ),
       body: FlutterMap(
@@ -44,7 +43,7 @@ class _MapState extends State<Mapa> {
             urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             subdomains: ['a', 'b', 'c'],
             attributionBuilder: (_) {
-              return const Text("© OpenStreetMap contributors");
+              return Text("© OpenStreetMap contributors");
             },
           ),
         ],

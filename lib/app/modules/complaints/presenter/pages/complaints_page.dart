@@ -1,11 +1,15 @@
 import 'package:arretadas/app/core/mixins/loader_mixin.dart';
 import 'package:arretadas/app/core/mixins/messages_mixin.dart';
 import 'package:arretadas/app/modules/complaints/domain/entities/complaint.dart';
+import 'package:arretadas/app/modules/complaints/domain/usecases/complaint_usecase.dart';
 import 'package:arretadas/app/modules/complaints/presenter/checkbox/checkbox_controller.dart';
 import 'package:arretadas/app/modules/complaints/presenter/store/complaints_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
+import 'package:intl/intl.dart';
+
+import 'map.dart';
 
 class ComplaintsPage extends StatefulWidget {
   final String title;
@@ -52,7 +56,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
 
   @override
   Widget build(BuildContext context) {
-    return Container(); /*Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
@@ -360,6 +364,5 @@ class _ComplaintsPageState extends State<ComplaintsPage>
     } else {
       return TimeOfDay.now();
     }
-    */
   }
 }
