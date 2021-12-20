@@ -17,6 +17,6 @@ class InfoModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => InfoPage()),
+    ChildRoute('/', child: (_, args) => const InfoPage()),
   ];
 }

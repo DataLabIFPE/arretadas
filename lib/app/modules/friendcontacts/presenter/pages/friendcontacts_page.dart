@@ -35,14 +35,14 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
       padding: const EdgeInsets.all(20.0),
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text('${error!.message}'),
-          SizedBox(
+          Text(error!.message),
+          const SizedBox(
             height: 8,
           ),
           Button(
             buttonColor: AppColors.primaryColor,
             onPressed: () => store.getFriendcontacts(),
-            child: Text('Tente novamente'),
+            child: const Text('Tente novamente'),
           ),
         ]),
       ),
@@ -65,13 +65,13 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
                 ),
                 subtitle: Text(
                   itens[index].number,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
                 trailing: IconButton(
-                  icon: Icon(Icons.phone),
+                  icon: const Icon(Icons.phone),
                   iconSize: 30,
                   onPressed: () {
                     launch("tel:${itens[index].number}");
@@ -103,17 +103,18 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ContactPage()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ContactPage()));
         },
       ),
       body: ScopedBuilder<FriendcontactsStore, Failure,
           List<Friendcontact>>.transition(
         store: store,
         onError: (context, error) => _buildError(store, error),
-        onLoading: (context) => Center(child: CircularProgressIndicator()),
+        onLoading: (context) =>
+            const Center(child: CircularProgressIndicator()),
         onState: (context, state) => _buildState(context, state),
       ),
     );

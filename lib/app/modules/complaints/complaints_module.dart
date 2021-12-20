@@ -24,6 +24,6 @@ class ComplaintsModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => ComplaintsPage()),
+    ChildRoute('/', child: (_, args) => const ComplaintsPage()),
   ];
 }

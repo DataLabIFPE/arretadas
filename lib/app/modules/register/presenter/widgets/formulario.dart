@@ -16,15 +16,15 @@ class _FormularioState extends State<Formulario> {
       Step(
         state: currentStep > 0 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 0,
-        title: Text('Credênciais'),
+        title: const Text('Credênciais'),
         content: Column(
           children: [
-            Input(
+            const Input(
               label: 'Usuário',
               hint: 'Digite seu usuário',
               icon: Icons.person,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Input(
@@ -33,10 +33,10 @@ class _FormularioState extends State<Formulario> {
               icon: Icons.vpn_key,
               suffix: IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.visibility),
+                icon: const Icon(Icons.visibility),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Input(
@@ -45,13 +45,13 @@ class _FormularioState extends State<Formulario> {
               icon: Icons.vpn_key,
               suffix: IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.visibility),
+                icon: const Icon(Icons.visibility),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Input(
+            const Input(
               textInputType: TextInputType.text,
               label: 'Medida Protetiva (OPCIONAL)',
               hint: 'Digite sua medida protetiva',
@@ -63,12 +63,12 @@ class _FormularioState extends State<Formulario> {
       Step(
         state: currentStep > 1 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 1,
-        title: Text('Segurança'),
+        title: const Text('Segurança'),
         content: Column(
           children: [
             Text(
               'Escolha a pergunta de segurança'.toUpperCase(),
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             DropdownButton<String>(
               isExpanded: true,
@@ -97,29 +97,29 @@ class _FormularioState extends State<Formulario> {
                 );
               }).toList(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
               'Escolha a resposta'.toUpperCase(),
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Input(label: 'Resposta'),
+            const Input(label: 'Resposta'),
           ],
         ),
       ),
       Step(
         state: currentStep > 2 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 2,
-        title: Text('Cidade'),
+        title: const Text('Cidade'),
         content: Column(
           children: [
             Text(
               'Escolha sua cidade '.toUpperCase(),
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             DropdownButton<String>(
               isExpanded: true,
@@ -153,7 +153,7 @@ class _FormularioState extends State<Formulario> {
 
   @override
   Widget build(BuildContext context) {
-    return Stepper(
+    return Container(); /*Stepper(
       type: StepperType.horizontal,
       steps: getSteps(),
       currentStep: currentStep,
@@ -209,6 +209,6 @@ class _FormularioState extends State<Formulario> {
           ),
         );
       },
-    );
+    );*/
   }
 }
