@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-import 'ContollerMap/ControllerCity.dart';
+import 'ContollerMap/controller_city.dart';
 
 class Mapa extends StatefulWidget {
   const Mapa({Key? key}) : super(key: key);
