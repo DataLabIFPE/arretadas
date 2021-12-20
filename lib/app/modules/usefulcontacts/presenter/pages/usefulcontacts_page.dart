@@ -32,16 +32,16 @@ class UsefulcontactsPageState extends State<UsefulcontactsPage> {
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(
-            error!.message,
+            '${error!.message}',
             textAlign: TextAlign.justify,
           ),
-          const SizedBox(
+          SizedBox(
             height: 8,
           ),
           Button(
             buttonColor: AppColors.primaryColor,
             onPressed: () => store.getUsefulcontacts(),
-            child: const Center(child: Text('Tente novamente')),
+            child: Center(child: Text('Tente novamente')),
           ),
         ]),
       ),
@@ -64,13 +64,13 @@ class UsefulcontactsPageState extends State<UsefulcontactsPage> {
                 ),
                 subtitle: Text(
                   itens[index].number,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
                 trailing: IconButton(
-                  icon: const Icon(Icons.phone),
+                  icon: Icon(Icons.phone),
                   iconSize: 30,
                   onPressed: () {
                     launch("tel:${itens[index].number}");
@@ -103,8 +103,7 @@ class UsefulcontactsPageState extends State<UsefulcontactsPage> {
           List<Usefulcontact>>.transition(
         store: store,
         onError: (context, error) => _buildError(store, error),
-        onLoading: (context) =>
-            const Center(child: CircularProgressIndicator()),
+        onLoading: (context) => Center(child: CircularProgressIndicator()),
         onState: (context, state) => _buildState(context, state),
       ),
     );

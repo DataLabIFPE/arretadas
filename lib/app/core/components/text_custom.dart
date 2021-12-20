@@ -25,10 +25,12 @@ class _TextCustomState extends State<TextCustom> {
     return Text(
       widget.text.toUpperCase(),
       style: TextStyle(
-          color: widget.color ?? AppColors.primaryColorAccent,
+          color: widget.color == null
+              ? AppColors.primaryColorAccent
+              : widget.color,
           fontWeight: FontWeight.bold,
-          fontSize: widget.fontSize ?? 15.0,
-          fontFamily: widget.fontFamily ?? 'Roboto'),
+          fontSize: widget.fontSize == null ? 15.0 : widget.fontSize,
+          fontFamily: widget.fontFamily == null ? 'Roboto' : widget.fontFamily),
     );
   }
 }

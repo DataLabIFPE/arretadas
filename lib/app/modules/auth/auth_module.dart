@@ -1,7 +1,6 @@
 import 'package:arretadas/app/modules/auth/external/datasources/auth_api/auth_api.dart';
 import 'package:arretadas/app/modules/auth/infra/repositories/auth_repository_impl.dart';
 import 'package:arretadas/app/modules/auth/presenter/pages/auth_page.dart';
-import 'package:arretadas/app/modules/auth/presenter/pages/password_change_page.dart';
 import 'package:arretadas/app/modules/auth/presenter/store/auth_store.dart';
 import 'package:dio/dio.dart';
 
@@ -23,7 +22,6 @@ class AuthModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => const AuthPage()),
-    ChildRoute('/password', child: (_, args) => const PasswordChangePage()),
+    ChildRoute('/', child: (_, args) => AuthPage()),
   ];
 }

@@ -21,7 +21,7 @@ class InfoDetailsPage extends StatefulWidget {
 class _InfoDetailsPageState extends State<InfoDetailsPage> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: MediaQuery.of(context).size.height * 0.7,
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
@@ -40,9 +40,11 @@ class _InfoDetailsPageState extends State<InfoDetailsPage> {
               initialChildSize: 0.5,
               minChildSize: 0.5,
               builder: (context, ScrollController scrollController) {
-                return DetailsBody(
-                  textos: widget.textos,
-                  controller: scrollController,
+                return Container(
+                  child: DetailsBody(
+                    textos: widget.textos,
+                    controller: scrollController,
+                  ),
                 );
               }),
         ),

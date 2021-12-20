@@ -1,8 +1,6 @@
-// ignore_for_file: invalid_use_of_protected_member
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:arretadas/app/modules/alert/alert_store.dart';
-
+ 
 void main() {
   late AlertStore store;
 

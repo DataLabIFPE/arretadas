@@ -35,14 +35,14 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
       padding: const EdgeInsets.all(20.0),
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text(error!.message),
-          const SizedBox(
+          Text('${error!.message}'),
+          SizedBox(
             height: 8,
           ),
           Button(
             buttonColor: AppColors.primaryColor,
             onPressed: () => store.getFriendcontacts(),
-            child: const Text('Tente novamente'),
+            child: Text('Tente novamente'),
           ),
         ]),
       ),
@@ -65,13 +65,13 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
                 ),
                 subtitle: Text(
                   itens[index].number,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
                 trailing: IconButton(
-                  icon: const Icon(Icons.phone),
+                  icon: Icon(Icons.phone),
                   iconSize: 30,
                   onPressed: () {
                     launch("tel:${itens[index].number}");
@@ -103,18 +103,17 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ContactPage()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ContactPage()));
         },
       ),
       body: ScopedBuilder<FriendcontactsStore, Failure,
           List<Friendcontact>>.transition(
         store: store,
         onError: (context, error) => _buildError(store, error),
-        onLoading: (context) =>
-            const Center(child: CircularProgressIndicator()),
+        onLoading: (context) => Center(child: CircularProgressIndicator()),
         onState: (context, state) => _buildState(context, state),
       ),
     );

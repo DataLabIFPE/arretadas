@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
-
 import 'package:arretadas/app/core/components/input.dart';
 import 'package:arretadas/app/modules/friendcontacts/domain/entities/friendcontact.dart';
 
@@ -46,7 +44,7 @@ class _ContactPageState extends State<ContactPage> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.save),
+        child: Icon(Icons.save),
         onPressed: () async {
           if (formKey.currentState!.validate()) {
             formKey.currentState!.save();
@@ -70,12 +68,12 @@ class _ContactPageState extends State<ContactPage> {
         },
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
         child: Column(
           children: [
             Container(
               width: MediaQuery.of(context).size.width * 0.94,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.amber,
                 borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
@@ -87,10 +85,10 @@ class _ContactPageState extends State<ContactPage> {
                       'assets/images/warning.png',
                       width: 30,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 10,
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Text(
                           'Sua localização será compartilhada com este contato ao pedir socorro.'),
                     ),
@@ -100,7 +98,7 @@ class _ContactPageState extends State<ContactPage> {
             ),
             Card(
               child: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: EdgeInsets.all(8),
                 child: Form(
                   key: formKey,
                   child: Column(
@@ -108,14 +106,14 @@ class _ContactPageState extends State<ContactPage> {
                       Container(
                         width: 150,
                         height: 60,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             image: AssetImage("assets/images/icon_person.png"),
                           ),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Input(
@@ -136,7 +134,7 @@ class _ContactPageState extends State<ContactPage> {
                           }
                         },
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Input(
@@ -150,7 +148,7 @@ class _ContactPageState extends State<ContactPage> {
                             return 'Informe o telefone.';
                           }
                           String patttern = r'(^[0-9]*$)';
-                          RegExp regExp = RegExp(patttern);
+                          RegExp regExp = new RegExp(patttern);
                           if (value.length != 10) {
                             return "O celular deve ter 10 dígitos";
                           } else if (!regExp.hasMatch(value)) {

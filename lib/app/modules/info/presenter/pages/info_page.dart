@@ -36,13 +36,13 @@ class InfoPageState extends State<InfoPage> {
             '$error',
             textAlign: TextAlign.justify,
           ),
-          const SizedBox(
+          SizedBox(
             height: 8,
           ),
           Button(
             buttonColor: AppColors.primaryColor,
             onPressed: () => store.getInfos(),
-            child: const Center(child: Text('Tente novamente')),
+            child: Center(child: Text('Tente novamente')),
           ),
         ]),
       ),
@@ -51,7 +51,7 @@ class InfoPageState extends State<InfoPage> {
 
   Widget _buildState(BuildContext context, List<Info> state) {
     return ListView.builder(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(10.0),
         itemCount: state.length,
         itemBuilder: (context, index) {
           return Card(
@@ -76,33 +76,35 @@ class InfoPageState extends State<InfoPage> {
                     Expanded(
                       flex: 2,
                       child: Container(
-                        margin: const EdgeInsets.all(10),
+                        margin: EdgeInsets.all(10),
                         child: Text(
                           state[index].title.toUpperCase(),
-                          style: const TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
-                    ButtonBar(
-                      children: <Widget>[
-                        TextButton(
-                          child: const TextCustom(
-                            text: 'Ver mais',
-                            fontFamily: 'Exo',
-                            color: AppColors.primaryColor,
+                    Container(
+                      child: ButtonBar(
+                        children: <Widget>[
+                          TextButton(
+                            child: TextCustom(
+                              text: 'Ver mais',
+                              fontFamily: 'Exo',
+                              color: AppColors.primaryColor,
+                            ),
+                            onPressed: () {
+                              showBarModalBottomSheet(
+                                context: context,
+                                builder: (context) => InfoDetailsPage(
+                                  imagePath: state[index].image,
+                                  title: state[index].title,
+                                  textos: state[index].details,
+                                ),
+                              );
+                            },
                           ),
-                          onPressed: () {
-                            showBarModalBottomSheet(
-                              context: context,
-                              builder: (context) => InfoDetailsPage(
-                                imagePath: state[index].image,
-                                title: state[index].title,
-                                textos: state[index].details,
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 )
@@ -123,8 +125,7 @@ class InfoPageState extends State<InfoPage> {
       body: ScopedBuilder<InfoStore, Failure, List<Info>>.transition(
         store: store,
         onError: (context, error) => _buildError(store, error),
-        onLoading: (context) =>
-            const Center(child: CircularProgressIndicator()),
+        onLoading: (context) => Center(child: CircularProgressIndicator()),
         onState: (context, state) => _buildState(context, state),
       ),
     );

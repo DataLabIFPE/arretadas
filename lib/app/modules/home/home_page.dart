@@ -20,8 +20,8 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: Container(
-        constraints: const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
+        constraints: BoxConstraints.expand(),
+        decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/background.png"),
             fit: BoxFit.cover,
@@ -31,7 +31,7 @@ class HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            Container(
               height: MediaQuery.of(context).size.height * 0.2,
               child: Image.asset(
                 "assets/icons/icon_white_shadow.png",
@@ -41,14 +41,14 @@ class HomePageState extends State<HomePage> {
               children: [
                 Button(
                     onPressed: () => Modular.to.pushNamed('/register'),
-                    child: const TextCustom(text: 'cadastrar')),
-                const SizedBox(
+                    child: TextCustom(text: 'cadastrar')),
+                SizedBox(
                   height: 10,
                 ),
                 Button(
                     onPressed: () => Modular.to.pushNamed('/auth'),
                     buttonColor: AppColors.primaryColorAccent,
-                    child: const TextCustom(
+                    child: TextCustom(
                       text: 'entrar',
                       color: AppColors.primaryColor,
                     )),

@@ -11,6 +11,6 @@ class AlertModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => const AlertPage()),
+    ChildRoute('/', child: (_, args) => AlertPage()),
   ];
 }

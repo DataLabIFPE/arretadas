@@ -13,7 +13,6 @@ class SplashPage extends StatefulWidget {
 }
 
 class SplashPageState extends ModularState<SplashPage, SplashStore> {
-  @override
   final SplashStore store = Modular.get();
   late Disposer disposer;
 
@@ -51,7 +50,7 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: AppColors.primaryColor,
           image: DecorationImage(
             image: AssetImage("assets/images/background.png"),
@@ -61,12 +60,12 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            Container(
               width: MediaQuery.of(context).size.width * 0.35,
               height: MediaQuery.of(context).size.height * 0.35,
               child: Image.asset("assets/icons/icon_white.png"),
             ),
-            const CircularProgressIndicator(
+            CircularProgressIndicator(
               color: Colors.white,
             )
           ],

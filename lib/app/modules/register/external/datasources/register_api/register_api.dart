@@ -8,11 +8,11 @@ class RegisterApi implements RegisterDatasource {
 
   RegisterApi(this.dio);
 
-  @override
   Future<void> cadastrar(RegisterParams params) async {
     try {
-      final response =
-          await dio.post('https://arretadas-api.herokuapp.com/user', data: {
+      final response = await this
+          .dio
+          .post('https://arretadas-api.herokuapp.com/user', data: {
         'nickname': params.nickname,
         'password': params.password,
         'city': params.city,
