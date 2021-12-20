@@ -1,5 +1,3 @@
-import 'package:arretadas/app/core/components/input.dart';
-import 'package:arretadas/app/core/components/logo_image.dart';
 import 'package:arretadas/app/core/constants/app_colors.dart';
 import 'package:arretadas/app/core/mixins/loader_mixin.dart';
 import 'package:arretadas/app/core/mixins/messages_mixin.dart';
@@ -39,8 +37,8 @@ class _PasswordChangePageState extends State<PasswordChangePage>
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.cover,
@@ -51,7 +49,7 @@ class _PasswordChangePageState extends State<PasswordChangePage>
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     height: MediaQuery.of(context).size.height * 0.10,
                     child: Image.asset(
                       "assets/icons/icon_white_shadow.png",

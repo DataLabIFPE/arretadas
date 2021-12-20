@@ -20,6 +20,7 @@ class AuthPage extends StatefulWidget {
 
 class AuthPageState extends ModularState<AuthPage, AuthStore>
     with LoaderMixin, MessagesMixin {
+  @override
   final AuthStore store = Modular.get();
   final formKey = GlobalKey<FormState>();
   bool obscuredTextPassword = true;
@@ -37,7 +38,7 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
               children: [
                 Text(
                   'Escolha a pergunta de segurança'.toUpperCase(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 DropdownButton<String>(
                   isExpanded: true,
@@ -66,17 +67,17 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                     );
                   }).toList(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
                   'Escolha a resposta'.toUpperCase(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Input(label: 'Resposta'),
+                const Input(label: 'Resposta'),
               ],
             ),
           ),
@@ -144,8 +145,8 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.cover,
@@ -155,13 +156,13 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  LogoImage(),
+                  const LogoImage(),
                   Card(
-                    margin: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
                     child: Form(
                       key: formKey,
                       child: Padding(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
                             Input(
@@ -179,7 +180,7 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 }
                               },
                             ),
-                            SizedBox(height: 15),
+                            const SizedBox(height: 15),
                             Input(
                               label: 'Senha',
                               hint: 'Digite sua senha',
@@ -207,11 +208,11 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                     : Icons.visibility_off),
                               ),
                             ),
-                            SizedBox(height: 15),
+                            const SizedBox(height: 15),
                             Align(
                               alignment: Alignment.centerRight,
                               child: GestureDetector(
-                                child: Text("Esqueci minha senha",
+                                child: const Text("Esqueci minha senha",
                                     style: TextStyle(
                                         decoration: TextDecoration.underline,
                                         fontWeight: FontWeight.bold,
@@ -219,10 +220,10 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 onTap: () => _showMyDialog(),
                               ),
                             ),
-                            SizedBox(height: 15),
+                            const SizedBox(height: 15),
                             Button(
                               width: double.infinity,
-                              child: TextCustom(
+                              child: const TextCustom(
                                 text: 'entrar',
                               ),
                               buttonColor: AppColors.primaryColor,

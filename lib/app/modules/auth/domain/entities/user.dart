@@ -19,11 +19,7 @@ class User {
 
   @override
   String toString() {
-    return 'ID $id\n' +
-        'NICKNAME: $nickname\n' +
-        //'MEDIDA PROTETIVA: $protectionCode' +
-        'CITY: $city\n' +
-        'TOKEN: $token';
+    return 'ID $id\n' 'NICKNAME: $nickname\n' 'CITY: $city\n' 'TOKEN: $token';
   }
 
   Map<String, dynamic> toMap() {

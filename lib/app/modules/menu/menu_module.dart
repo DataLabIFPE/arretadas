@@ -11,6 +11,6 @@ class MenuModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => MenuPage()),
+    ChildRoute('/', child: (_, args) => const MenuPage()),
   ];
 }

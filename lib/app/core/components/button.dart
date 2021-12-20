@@ -25,12 +25,9 @@ class Button extends StatefulWidget {
 class _ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
-    final width = widget.width != null
-        ? widget.width
-        : (MediaQuery.of(context).size.width * 0.55);
-    final height = widget.height != null ? widget.height : 50.0;
-    final btnColor =
-        widget.buttonColor != null ? widget.buttonColor : Colors.transparent;
+    final width = widget.width ?? (MediaQuery.of(context).size.width * 0.55);
+    final height = widget.height ?? 50.0;
+    final btnColor = widget.buttonColor ?? Colors.transparent;
 
     return Container(
       margin: widget.margin,
@@ -45,7 +42,7 @@ class _ButtonState extends State<Button> {
         style: ElevatedButton.styleFrom(
           shadowColor: Colors.transparent,
           primary: btnColor,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
         ),

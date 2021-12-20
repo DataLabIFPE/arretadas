@@ -57,8 +57,8 @@ class RegisterPageState extends State<RegisterPage>
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.cover,
@@ -69,16 +69,16 @@ class RegisterPageState extends State<RegisterPage>
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     height: MediaQuery.of(context).size.height * 0.10,
                     child: Image.asset(
                       "assets/icons/icon_white_shadow.png",
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Card(
-                      child: Container(
+                      child: SizedBox(
                         height: 480,
                         child: Formulario(),
                       ),

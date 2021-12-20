@@ -59,125 +59,121 @@ class MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Text(
-                            'Arretadas',
-                            style: TextStyle(
-                              color: Colors.redAccent,
-                              fontSize: 25.0,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Exo',
-                            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: const <Widget>[
+                        Text(
+                          'Arretadas',
+                          style: TextStyle(
+                            color: Colors.redAccent,
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Exo',
                           ),
-                        ],
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          store.signOut();
-                          Navigator.of(context)
-                              .pushNamedAndRemoveUntil('/', (route) => false);
-                        },
-                        child: TextCustom(
-                          text: 'sair',
-                          color: AppColors.primaryColor,
-                          fontFamily: 'Exo',
-                          fontSize: 18,
                         ),
-                      ),
-                    ],
-                  ),
-                  Button(
-                      margin: EdgeInsets.only(top: 20),
-                      width: (MediaQuery.of(context).size.width * 0.95),
-                      height: 70,
-                      buttonColor: AppColors.primaryColor.shade600,
-                      child: TextCustom(
-                        text: 'pedir socorro',
+                      ],
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        store.signOut();
+                        Navigator.of(context)
+                            .pushNamedAndRemoveUntil('/', (route) => false);
+                      },
+                      child: const TextCustom(
+                        text: 'sair',
+                        color: AppColors.primaryColor,
+                        fontFamily: 'Exo',
                         fontSize: 18,
                       ),
-                      onPressed: () => _showMyDialog()),
-                  Button(
-                    margin: EdgeInsets.only(top: 20),
+                    ),
+                  ],
+                ),
+                Button(
+                    margin: const EdgeInsets.only(top: 20),
                     width: (MediaQuery.of(context).size.width * 0.95),
                     height: 70,
                     buttonColor: AppColors.primaryColor.shade600,
-                    child: TextCustom(
-                      text: 'denunciar',
+                    child: const TextCustom(
+                      text: 'pedir socorro',
                       fontSize: 18,
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/complaints');
-                    },
+                    onPressed: () => _showMyDialog()),
+                Button(
+                  margin: const EdgeInsets.only(top: 20),
+                  width: (MediaQuery.of(context).size.width * 0.95),
+                  height: 70,
+                  buttonColor: AppColors.primaryColor.shade600,
+                  child: const TextCustom(
+                    text: 'denunciar',
+                    fontSize: 18,
                   ),
-                ],
-              ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/complaints');
+                  },
+                ),
+              ],
             ),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Button(
-                        child: Icon(
-                          Icons.import_contacts,
-                          size: 50,
-                          color: AppColors.primaryColor,
-                        ),
-                        width: 80.0,
-                        height: 80.0,
-                        buttonColor: AppColors.primaryColor.shade100,
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/info');
-                        },
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Button(
+                      child: const Icon(
+                        Icons.import_contacts,
+                        size: 50,
+                        color: AppColors.primaryColor,
                       ),
-                      Button(
-                        child: Icon(
-                          Icons.local_phone,
-                          size: 50,
-                          color: AppColors.primaryColor,
-                        ),
-                        width: 80.0,
-                        height: 80.0,
-                        buttonColor: AppColors.primaryColor.shade100,
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/usefulcontacts');
-                        },
+                      width: 80.0,
+                      height: 80.0,
+                      buttonColor: AppColors.primaryColor.shade100,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/info');
+                      },
+                    ),
+                    Button(
+                      child: const Icon(
+                        Icons.local_phone,
+                        size: 50,
+                        color: AppColors.primaryColor,
                       ),
-                      Button(
-                        child: Icon(
-                          Icons.group,
-                          size: 50,
-                          color: AppColors.primaryColor,
-                        ),
-                        width: 80.0,
-                        height: 80.0,
-                        buttonColor: AppColors.primaryColor.shade100,
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/friendcontacts');
-                        },
+                      width: 80.0,
+                      height: 80.0,
+                      buttonColor: AppColors.primaryColor.shade100,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/usefulcontacts');
+                      },
+                    ),
+                    Button(
+                      child: const Icon(
+                        Icons.group,
+                        size: 50,
+                        color: AppColors.primaryColor,
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                      width: 80.0,
+                      height: 80.0,
+                      buttonColor: AppColors.primaryColor.shade100,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/friendcontacts');
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),

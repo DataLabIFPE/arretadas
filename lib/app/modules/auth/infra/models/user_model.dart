@@ -14,6 +14,7 @@ class UserModel extends User {
       this.protectionCode,
       required this.token});
 
+  @override
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -30,6 +31,7 @@ class UserModel extends User {
     );
   }
 
+  @override
   String toJson() => json.encode(toMap());
 
   factory UserModel.fromJson(String source) =>

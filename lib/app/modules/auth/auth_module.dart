@@ -23,7 +23,7 @@ class AuthModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => AuthPage()),
-    ChildRoute('/password', child: (_, args) => PasswordChangePage()),
+    ChildRoute('/', child: (_, args) => const AuthPage()),
+    ChildRoute('/password', child: (_, args) => const PasswordChangePage()),
   ];
 }

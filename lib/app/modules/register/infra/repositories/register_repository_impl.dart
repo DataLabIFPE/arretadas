@@ -15,7 +15,7 @@ class RegisterRepositoryImpl implements RegisterRepository {
       RegisterParams params) async {
     try {
       await datasource.cadastrar(params);
-      return Right(true);
+      return const Right(true);
     } on RegisterException catch (e) {
       return Left(e);
     }

@@ -44,7 +44,7 @@ class _ContactPageState extends State<ContactPage> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save),
+        child: const Icon(Icons.save),
         onPressed: () async {
           if (formKey.currentState!.validate()) {
             formKey.currentState!.save();
@@ -68,12 +68,12 @@ class _ContactPageState extends State<ContactPage> {
         },
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             Container(
               width: MediaQuery.of(context).size.width * 0.94,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.amber,
                 borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
@@ -85,10 +85,10 @@ class _ContactPageState extends State<ContactPage> {
                       'assets/images/warning.png',
                       width: 30,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Text(
                           'Sua localização será compartilhada com este contato ao pedir socorro.'),
                     ),
@@ -98,7 +98,7 @@ class _ContactPageState extends State<ContactPage> {
             ),
             Card(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Form(
                   key: formKey,
                   child: Column(
@@ -106,14 +106,14 @@ class _ContactPageState extends State<ContactPage> {
                       Container(
                         width: 150,
                         height: 60,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             image: AssetImage("assets/images/icon_person.png"),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Input(
@@ -134,7 +134,7 @@ class _ContactPageState extends State<ContactPage> {
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Input(
@@ -148,7 +148,7 @@ class _ContactPageState extends State<ContactPage> {
                             return 'Informe o telefone.';
                           }
                           String patttern = r'(^[0-9]*$)';
-                          RegExp regExp = new RegExp(patttern);
+                          RegExp regExp = RegExp(patttern);
                           if (value.length != 10) {
                             return "O celular deve ter 10 dígitos";
                           } else if (!regExp.hasMatch(value)) {

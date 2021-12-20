@@ -15,7 +15,7 @@ class AuthApi implements AuthDatasource {
   @override
   Future<User> login(CredentialsParams params) async {
     try {
-      final response = await this.dio.post(
+      final response = await dio.post(
           'https://arretadas-api.herokuapp.com/user/authenticate',
           data: {'nickname': params.nickname, 'password': params.password});
       if (response.data['data']['city'] != null) {
