@@ -8,6 +8,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'domain/usecases/login_usecase.dart';
+import 'presenter/pages/password_change_page.dart';
 
 class AuthModule extends Module {
   @override
@@ -23,5 +24,6 @@ class AuthModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute('/', child: (_, args) => AuthPage()),
+    ChildRoute('/password', child: (_, args) => PasswordChangePage()),
   ];
 }

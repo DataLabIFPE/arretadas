@@ -26,6 +26,88 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
   var user = UserModel();
   late Disposer disposer;
 
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(
+                  'Escolha a pergunta de segurança'.toUpperCase(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                DropdownButton<String>(
+                  isExpanded: true,
+                  value: 'Qual foi seu herói de infância?',
+                  style: const TextStyle(color: Colors.black),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.red,
+                  ),
+                  onChanged: (newValue) {
+                    setState(() {
+                      //dropdownValue = newValue!;
+                      //register = register.copyWith(city: dropdownValue);
+                    });
+                  },
+                  items: <String>[
+                    'Qual foi seu herói de infância?',
+                    'Qual o nome do seu primo favorito?',
+                    'Onde o seu pai e sua mãe se conheceram?',
+                    'Qual era o nome do seu primeiro animal de estimação?',
+                    'Qual era o nome do seu melhor amigo na adolescência?',
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Escolha a resposta'.toUpperCase(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Input(label: 'Resposta'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: TextCustom(
+                text: 'cancelar',
+                fontFamily: 'Exo',
+                color: Theme.of(context).primaryColor,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: TextCustom(
+                text: 'enviar',
+                fontFamily: 'Exo',
+                color: Theme.of(context).primaryColor,
+              ),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                Modular.to.pushNamed('password');
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     disposer = store.observer(
@@ -123,6 +205,18 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 icon: Icon(obscuredTextPassword
                                     ? Icons.visibility
                                     : Icons.visibility_off),
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: GestureDetector(
+                                child: const Text("Esqueci minha senha",
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blue)),
+                                onTap: () => _showMyDialog(),
                               ),
                             ),
                             SizedBox(height: 15),
