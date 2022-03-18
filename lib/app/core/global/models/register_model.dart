@@ -2,15 +2,17 @@ class RegisterModel {
   final String nickname;
   final String password;
   final String city;
-  final List? aleatoryQuestions;
+  final int indexQuestion;
+  final String answerQuestion;
   final String? protectionCode;
   final List? roles;
 
   RegisterModel({
+    this.answerQuestion = '',
+    this.indexQuestion = 0,
     this.nickname = '',
     this.password = '',
     this.city = '',
-    this.aleatoryQuestions = const [],
     this.protectionCode = '',
     this.roles = const ['user'],
   });
@@ -19,7 +21,8 @@ class RegisterModel {
     String? nickname,
     String? password,
     String? city,
-    List? aleatoryQuestions,
+    int? indexQuestion,
+    String? answerQuestion,
     String? protectionCode,
     List? roles,
   }) {
@@ -27,8 +30,26 @@ class RegisterModel {
         nickname: nickname ?? this.nickname,
         password: password ?? this.password,
         city: city ?? this.city,
+        indexQuestion: indexQuestion ?? this.indexQuestion,
         protectionCode: protectionCode ?? this.protectionCode,
-        aleatoryQuestions: aleatoryQuestions ?? this.aleatoryQuestions,
+        answerQuestion: answerQuestion ?? this.answerQuestion,
         roles: roles ?? this.roles);
+  }
+
+  @override
+  String toString() {
+    return this.nickname +
+        "\n" +
+        this.password +
+        "\n" +
+        this.protectionCode.toString() +
+        "\n" +
+        this.roles.toString() +
+        "\n" +
+        this.indexQuestion.toString() +
+        "\n" +
+        this.city.toString() +
+        "\n" +
+        this.answerQuestion.toString();
   }
 }

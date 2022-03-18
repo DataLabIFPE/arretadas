@@ -1,12 +1,8 @@
 import 'package:arretadas/app/core/constants/app_colors.dart';
-import 'package:arretadas/app/core/global/models/register_model.dart';
 import 'package:arretadas/app/core/mixins/loader_mixin.dart';
 import 'package:arretadas/app/core/mixins/messages_mixin.dart';
-import 'package:arretadas/app/modules/register/presenter/store/register_store.dart';
 import 'package:arretadas/app/modules/register/presenter/widgets/formulario.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_triple/flutter_triple.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -16,7 +12,7 @@ class RegisterPage extends StatefulWidget {
 
 class RegisterPageState extends State<RegisterPage>
     with LoaderMixin, MessagesMixin {
-  final RegisterStore store = Modular.get();
+  /*final RegisterStore store = Modular.get();
   final formKey = GlobalKey<FormState>();
   var passwordCache = "";
   var passwordCacheConfirm = "";
@@ -24,9 +20,9 @@ class RegisterPageState extends State<RegisterPage>
   var register = RegisterModel();
   late Disposer disposer;
   String dropdownValue = 'Monteiro';
-  int currentStep = 0;
+  int currentStep = 0;*/
 
-  @override
+  /*@override
   void initState() {
     register = register.copyWith(city: dropdownValue);
     disposer = store.observer(
@@ -45,10 +41,11 @@ class RegisterPageState extends State<RegisterPage>
       },
     );
     super.initState();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: SafeArea(
@@ -75,11 +72,11 @@ class RegisterPageState extends State<RegisterPage>
                       "assets/icons/icon_white_shadow.png",
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Card(
                       child: SizedBox(
-                        height: 480,
+                        height: (height * 0.8),
                         child: Formulario(),
                       ),
                     ),

@@ -18,18 +18,28 @@ class RegisterUsecase implements IRegisterUsecase {
 }
 
 class RegisterParams {
-  String nickname;
+  /*String nickname;
   String password;
   String city;
   List? aleatoryQuestions;
   String? protectionCode;
   List? roles;
+  */
+  final String nickname;
+  final String password;
+  final String city;
+  final int indexQuestion;
+  final String answerQuestion;
+  final String? protectionCode;
+  final List? roles;
 
-  RegisterParams(
-      {required this.nickname,
-      required this.password,
-      required this.city,
-      required this.roles,
-      this.protectionCode,
-      this.aleatoryQuestions});
+  RegisterParams({
+    required this.indexQuestion,
+    required this.answerQuestion,
+    required this.nickname,
+    required this.password,
+    required this.city,
+    required this.roles,
+    this.protectionCode,
+  });
 }

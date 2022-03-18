@@ -101,7 +101,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                   },
                 );
               },
-        controlsBuilder: (context, {onStepCancel, onStepContinue}) {
+        controlsBuilder: (BuildContext context, ControlsDetails details) {
           final isLastStep = currentStep == getSteps().length - 1;
           return Container(
             margin: EdgeInsets.only(top: 20),
@@ -115,7 +115,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                       ),
                     ),
                     child: Text(isLastStep ? 'ENVIAR' : 'CONTINUAR'),
-                    onPressed: onStepContinue,
+                    onPressed: details.onStepContinue,
                   ),
                 ),
                 const SizedBox(
@@ -131,7 +131,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                         primary: Colors.grey,
                       ),
                       child: Text('VOLTAR'),
-                      onPressed: onStepCancel,
+                      onPressed: details.onStepCancel,
                     ),
                   ),
               ],

@@ -1,5 +1,12 @@
 import 'package:arretadas/app/core/components/input.dart';
+import 'package:arretadas/app/core/global/models/register_model.dart';
+import 'package:arretadas/app/core/mixins/loader_mixin.dart';
+import 'package:arretadas/app/core/mixins/messages_mixin.dart';
+import 'package:arretadas/app/modules/register/domain/usecases/register_usecase.dart';
+import 'package:arretadas/app/modules/register/presenter/store/register_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_triple/flutter_triple.dart';
 
 class Formulario extends StatefulWidget {
   const Formulario({Key? key}) : super(key: key);
@@ -8,8 +15,40 @@ class Formulario extends StatefulWidget {
   _FormularioState createState() => _FormularioState();
 }
 
-class _FormularioState extends State<Formulario> {
+class _FormularioState extends State<Formulario>
+    with LoaderMixin, MessagesMixin {
   int currentStep = 0;
+  bool obscuredTextPassword = true;
+  String questionValue = "Qual foi seu herói de infância?";
+  String cityValue = "Garanhuns";
+  var register = RegisterModel();
+  final RegisterStore store = Modular.get();
+  final formKey = GlobalKey<FormState>();
+  var passwordCache = "";
+  var passwordCacheConfirm = "";
+  late Disposer disposer;
+  var indexQuestion = 0;
+
+  @override
+  void initState() {
+    register = register.copyWith(city: cityValue);
+    disposer = store.observer(
+      onError: (error) {
+        showSnackbar(context, error);
+        print(error);
+      },
+      onLoading: (loading) {
+        showHideLoaderHelper(context, loading);
+        print(loading);
+      },
+      onState: (state) {
+        showSucess(context, 'Cadastrado com sucesso!');
+        Modular.to.pushNamedAndRemoveUntil('/home', ModalRoute.withName('/'));
+        print('$state');
+      },
+    );
+    super.initState();
+  }
 
   List<Step> getSteps() {
     return [
@@ -17,47 +56,105 @@ class _FormularioState extends State<Formulario> {
         state: currentStep > 0 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 0,
         title: const Text('Credênciais'),
-        content: Column(
-          children: [
-            const Input(
-              label: 'Usuário',
-              hint: 'Digite seu usuário',
-              icon: Icons.person,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Input(
-              label: 'Senha',
-              hint: 'Digite sua senha',
-              icon: Icons.vpn_key,
-              suffix: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.visibility),
+        content: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              Input(
+                label: 'Usuário',
+                hint: 'Digite seu usuário',
+                icon: Icons.person,
+                onSaved: (text) => register = register.copyWith(nickname: text),
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Esse campo não pode ser vazio.';
+                  }
+                  if (text.length < 3) {
+                    return 'Use 3 caracteres ou mais. (Possui ${text.length})';
+                  }
+                },
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Input(
-              label: 'Confirme sua senha',
-              hint: 'Confirme sua senha',
-              icon: Icons.vpn_key,
-              suffix: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.visibility),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Input(
-              textInputType: TextInputType.text,
-              label: 'Medida Protetiva (OPCIONAL)',
-              hint: 'Digite sua medida protetiva',
-              maxLength: 6,
-            ),
-          ],
+              Input(
+                label: 'Senha',
+                hint: 'Digite sua senha',
+                icon: Icons.vpn_key,
+                obscureText: obscuredTextPassword,
+                onChanged: (text) => passwordCache = text!,
+                onSaved: (text) => register = register.copyWith(password: text),
+                suffix: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      obscuredTextPassword = !obscuredTextPassword;
+                    });
+                  },
+                  icon: Icon(obscuredTextPassword
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                ),
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Esse campo não pode ser vazio.';
+                  }
+                  if (text.length < 6) {
+                    return 'Use 6 caracteres ou mais. (Possui ${text.length})';
+                  }
+                  if (passwordCacheConfirm != passwordCache) {
+                    return 'As senhas não são iguais.';
+                  }
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Input(
+                label: 'Confirme sua senha',
+                hint: 'Confirme sua senha',
+                icon: Icons.vpn_key,
+                obscureText: obscuredTextPassword,
+                onChanged: (text) => passwordCacheConfirm = text!,
+                suffix: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      obscuredTextPassword = !obscuredTextPassword;
+                    });
+                  },
+                  icon: Icon(obscuredTextPassword
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                ),
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Esse campo não pode ser vazio.';
+                  }
+                  if (text.length < 6) {
+                    return 'Use 6 caracteres ou mais. (Possui ${text.length})';
+                  }
+                  if (passwordCacheConfirm != passwordCache) {
+                    return 'As senhas não são iguais.';
+                  }
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Input(
+                textInputType: TextInputType.text,
+                label: 'Medida Protetiva (OPCIONAL)',
+                hint: 'Digite sua medida protetiva',
+                maxLength: 6,
+                onSaved: (text) =>
+                    register = register.copyWith(protectionCode: text),
+                validator: (text) {
+                  if (text!.isNotEmpty && text.length < 6) {
+                    return 'Medida protetiva precisa de 6 digitos';
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
       Step(
@@ -72,7 +169,7 @@ class _FormularioState extends State<Formulario> {
             ),
             DropdownButton<String>(
               isExpanded: true,
-              value: 'Qual foi seu herói de infância?',
+              value: questionValue,
               style: const TextStyle(color: Colors.black),
               underline: Container(
                 height: 2,
@@ -80,8 +177,22 @@ class _FormularioState extends State<Formulario> {
               ),
               onChanged: (newValue) {
                 setState(() {
-                  //dropdownValue = newValue!;
-                  //register = register.copyWith(city: dropdownValue);
+                  questionValue = newValue!;
+                  if (newValue == "Qual foi seu herói de infância?") {
+                    indexQuestion = 1;
+                  } else if (newValue == "Qual o nome do seu primo favorito?") {
+                    indexQuestion = 2;
+                  } else if (newValue ==
+                      "Onde o seu pai e sua mãe se conheceram?") {
+                    indexQuestion = 3;
+                  } else if (newValue ==
+                      "Qual era o nome do seu primeiro animal de estimação?") {
+                    indexQuestion = 4;
+                  } else if (newValue ==
+                      "Qual era o nome do seu melhor amigo na adolescência?") {
+                    indexQuestion = 5;
+                  }
+                  register = register.copyWith(indexQuestion: indexQuestion);
                 });
               },
               items: <String>[
@@ -107,7 +218,12 @@ class _FormularioState extends State<Formulario> {
             const SizedBox(
               height: 10,
             ),
-            const Input(label: 'Resposta'),
+            Input(
+              label: 'Resposta',
+              onChanged: (text) {
+                register = register.copyWith(answerQuestion: text);
+              },
+            ),
           ],
         ),
       ),
@@ -123,7 +239,7 @@ class _FormularioState extends State<Formulario> {
             ),
             DropdownButton<String>(
               isExpanded: true,
-              value: 'Garanhuns',
+              value: cityValue,
               style: const TextStyle(color: Colors.black),
               underline: Container(
                 height: 2,
@@ -131,8 +247,8 @@ class _FormularioState extends State<Formulario> {
               ),
               onChanged: (newValue) {
                 setState(() {
-                  //dropdownValue = newValue!;
-                  //register = register.copyWith(city: dropdownValue);
+                  cityValue = newValue!;
+                  register = register.copyWith(city: cityValue);
                 });
               },
               items: <String>[
@@ -157,7 +273,33 @@ class _FormularioState extends State<Formulario> {
       type: StepperType.horizontal,
       steps: getSteps(),
       currentStep: currentStep,
-      onStepContinue: () {},
+      onStepContinue: () {
+        final isLastStep = currentStep == getSteps().length - 1;
+        formKey.currentState?.save();
+        final isValid = register.nickname.isNotEmpty &&
+            register.password.isNotEmpty &&
+            register.indexQuestion != 0 &&
+            register.answerQuestion.isNotEmpty &&
+            register.city.isNotEmpty;
+        if (isLastStep && isValid) {
+          final params = RegisterParams(
+            nickname: register.nickname,
+            password: register.password,
+            protectionCode: register.protectionCode,
+            indexQuestion: register.indexQuestion,
+            answerQuestion: register.answerQuestion,
+            city: register.city,
+            roles: register.roles,
+          );
+          store.cadastrar(params);
+        } else if (isLastStep) {
+          showSnackbar(context, 'Campos inválidos. Preencha corretamente!');
+        } else {
+          setState(() {
+            currentStep += 1;
+          });
+        }
+      },
       onStepTapped: (value) {
         setState(() {
           currentStep = value;
@@ -172,7 +314,7 @@ class _FormularioState extends State<Formulario> {
                 },
               );
             },
-      controlsBuilder: (context, {onStepCancel, onStepContinue}) {
+      controlsBuilder: (BuildContext context, ControlsDetails details) {
         final isLastStep = currentStep == getSteps().length - 1;
         return Container(
           margin: EdgeInsets.only(top: 20),
@@ -186,7 +328,7 @@ class _FormularioState extends State<Formulario> {
                     ),
                   ),
                   child: Text(isLastStep ? 'ENVIAR' : 'CONTINUAR'),
-                  onPressed: onStepContinue,
+                  onPressed: details.onStepContinue,
                 ),
               ),
               const SizedBox(
@@ -202,7 +344,7 @@ class _FormularioState extends State<Formulario> {
                       primary: Colors.grey,
                     ),
                     child: Text('VOLTAR'),
-                    onPressed: onStepCancel,
+                    onPressed: details.onStepCancel,
                   ),
                 ),
             ],

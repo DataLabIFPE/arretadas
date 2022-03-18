@@ -15,9 +15,10 @@ class RegisterApi implements RegisterDatasource {
           .post('https://arretadas-api.herokuapp.com/user', data: {
         'nickname': params.nickname,
         'password': params.password,
+        'indexQuestion': params.indexQuestion,
+        'answerQuestion': params.answerQuestion,
         'city': params.city,
         'protection_code': params.protectionCode,
-        'aleatory_questions': params.aleatoryQuestions,
         'roles': params.roles
       });
       print(response.data);
