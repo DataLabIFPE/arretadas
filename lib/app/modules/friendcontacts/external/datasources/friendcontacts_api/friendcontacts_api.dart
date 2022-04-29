@@ -8,6 +8,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../core/constants/api_endpoint.dart';
+
 class FriendcontactsApi implements FriendcontactDatasource {
   final Dio dio;
 
@@ -22,8 +24,8 @@ class FriendcontactsApi implements FriendcontactDatasource {
     var tokenBearer = 'Bearer ' + token;
     dio.options.headers['authorization'] = tokenBearer;
     try {
-      final response = await dio
-          .get('https://arretadas-api.herokuapp.com/friendcontact/user/$id');
+      final response =
+          await dio.get('${ApiEndpoint.url_heroku}/friendcontact/user/$id');
       print(response.data);
       return response.data
           .map<Friendcontact>((m) => Friendcontact.fromMap(m))

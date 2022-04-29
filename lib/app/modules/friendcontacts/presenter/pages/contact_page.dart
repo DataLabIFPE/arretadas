@@ -132,6 +132,7 @@ class _ContactPageState extends State<ContactPage> {
                           if (text.length < 3) {
                             return 'Use 3 caracteres ou mais. (Possui ${text.length})';
                           }
+                          return null;
                         },
                       ),
                       SizedBox(
@@ -154,6 +155,7 @@ class _ContactPageState extends State<ContactPage> {
                           } else if (!regExp.hasMatch(value)) {
                             return "O número do celular so deve conter dígitos";
                           }
+                          return null;
                         },
                       ),
                     ],
