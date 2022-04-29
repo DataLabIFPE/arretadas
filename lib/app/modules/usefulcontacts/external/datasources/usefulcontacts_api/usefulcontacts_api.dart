@@ -7,6 +7,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../core/constants/api_endpoint.dart';
+
 class UsefulcontactsApi implements UsefulcontactDatasource {
   final Dio dio;
 
@@ -23,7 +25,7 @@ class UsefulcontactsApi implements UsefulcontactDatasource {
 
     try {
       final response =
-          await dio.get('https://arretadas-api.herokuapp.com/usefulcontacts');
+          await dio.get('${ApiEndpoint.url_heroku}/usefulcontacts');
 
       return response.data
           .map<Usefulcontact>((e) => Usefulcontact.fromMap(e))
