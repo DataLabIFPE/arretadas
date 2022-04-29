@@ -6,6 +6,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../core/constants/api_endpoint.dart';
+
 class FriendContactRepository {
   Future<void> removeContact(String id) async {
     var dio = Dio();
@@ -17,8 +19,7 @@ class FriendContactRepository {
     dio.options.headers['authorization'] = tokenBearer;
 
     try {
-      await dio
-          .delete("https://arretadas-api.herokuapp.com/friendcontact/id/$id");
+      await dio.delete("${ApiEndpoint.url_heroku}/friendcontact/id/$id");
     } on DioError catch (e) {
       print(e.message);
       throw Failure(e.message);
@@ -35,8 +36,7 @@ class FriendContactRepository {
     var tokenBearer = 'Bearer ' + token;
     dio.options.headers['authorization'] = tokenBearer;
     try {
-      await dio
-          .post("https://arretadas-api.herokuapp.com/friendcontact", data: {
+      await dio.post("${ApiEndpoint.url_heroku}/friendcontact", data: {
         "id": id,
         "name": friendcontact.name,
         "number": friendcontact.number,
@@ -62,7 +62,7 @@ class FriendContactRepository {
     dio.options.headers['x-access-token'] = token;
     try {
       var response = await dio.put(
-          "https://arretadas-api.herokuapp.com/friendcontact/${friendcontact.id}",
+          "${ApiEndpoint.url_heroku}/friendcontact/${friendcontact.id}",
           data: {
             "name": friendcontact.name,
             "number": friendcontact.number,
