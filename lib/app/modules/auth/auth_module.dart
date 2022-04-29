@@ -2,13 +2,13 @@ import 'package:arretadas/app/modules/auth/external/datasources/auth_api/auth_ap
 import 'package:arretadas/app/modules/auth/infra/repositories/auth_repository_impl.dart';
 import 'package:arretadas/app/modules/auth/presenter/pages/auth_page.dart';
 import 'package:arretadas/app/modules/auth/presenter/store/auth_store.dart';
+import 'package:arretadas/app/modules/recoveryQuestions/recovery_questions_module.dart';
 import 'package:dio/dio.dart';
 
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'domain/usecases/login_usecase.dart';
-import 'presenter/pages/password_change_page.dart';
 
 class AuthModule extends Module {
   @override
@@ -17,13 +17,13 @@ class AuthModule extends Module {
     Bind((i) => LoginUsecase(i.get<AuthRepositoryImpl>())),
     Bind((i) => AuthRepositoryImpl(i.get<AuthApi>())),
     Bind((i) => AuthApi(i.get<Dio>())),
-    Bind((i) => Dio()),
+    Bind(((i) => Dio())),
     AsyncBind((i) => SharedPreferences.getInstance()),
   ];
 
   @override
   final List<ModularRoute> routes = [
     ChildRoute('/', child: (_, args) => AuthPage()),
-    ChildRoute('/password', child: (_, args) => PasswordChangePage()),
+    ModuleRoute('/recovery', module: RecoveryQuestionsModule()),
   ];
 }

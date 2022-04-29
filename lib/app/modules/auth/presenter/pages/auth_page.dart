@@ -26,100 +26,9 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
   var user = UserModel();
   late Disposer disposer;
 
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        String dropdownValue = "Qual foi seu herói de infância?";
-        final respostaController = TextEditingController();
-        return StatefulBuilder(builder: (context, setState) {
-          return AlertDialog(
-            content: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text(
-                    'Informe a pergunta de segurança'.toUpperCase(),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  DropdownButton<String>(
-                    isExpanded: true,
-                    value: dropdownValue,
-                    style: const TextStyle(color: Colors.black),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.red,
-                    ),
-                    onChanged: (newValue) {
-                      setState(() {
-                        dropdownValue = newValue!;
-                        //register = register.copyWith(city: dropdownValue);
-                      });
-                    },
-                    items: <String>[
-                      'Qual foi seu herói de infância?',
-                      'Qual o nome do seu primo favorito?',
-                      'Onde o seu pai e sua mãe se conheceram?',
-                      'Qual era o nome do seu primeiro animal de estimação?',
-                      'Qual era o nome do seu melhor amigo na adolescência?',
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'Escolha a resposta'.toUpperCase(),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Input(
-                    label: 'Resposta',
-                    controller: respostaController,
-                  ),
-                ],
-              ),
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: TextCustom(
-                  text: 'cancelar',
-                  fontFamily: 'Exo',
-                  color: Theme.of(context).primaryColor,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              TextButton(
-                child: TextCustom(
-                  text: 'enviar',
-                  fontFamily: 'Exo',
-                  color: Theme.of(context).primaryColor,
-                ),
-                onPressed: () async {
-                  print(dropdownValue);
-                  print(respostaController.text);
-                  /*
-                  Navigator.of(context).pop();
-                  Modular.to.pushNamed('password');*/
-                },
-              ),
-            ],
-          );
-        });
-      },
-    );
-  }
-
   @override
   void initState() {
+    super.initState();
     disposer = store.observer(
       onError: (error) {
         showSnackbar(context, error);
@@ -134,14 +43,13 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
         print('$state');
       },
     );
-    super.initState();
   }
 
   @override
   void dispose() {
-    super.dispose();
     store.destroy();
     disposer();
+    super.dispose();
   }
 
   @override
@@ -187,6 +95,7 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 if (text.length < 3) {
                                   return 'Use 3 caracteres ou mais. (Possui ${text.length})';
                                 }
+                                return null;
                               },
                             ),
                             SizedBox(height: 15),
@@ -203,6 +112,7 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 if (text.length < 3) {
                                   return 'Use 3 caracteres ou mais. (Possui ${text.length})';
                                 }
+                                return null;
                               },
                               obscureText: obscuredTextPassword,
                               suffix: IconButton(
@@ -226,7 +136,9 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                         decoration: TextDecoration.underline,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.blue)),
-                                onTap: () => _showMyDialog(),
+                                onTap: () {
+                                  Modular.to.pushNamed('recovery');
+                                },
                               ),
                             ),
                             SizedBox(height: 15),
