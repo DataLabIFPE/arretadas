@@ -8,6 +8,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../core/constants/api_endpoint.dart';
+
 class ComplaintsApi implements ComplaintDatasource {
   final Dio dio;
 
@@ -23,8 +25,8 @@ class ComplaintsApi implements ComplaintDatasource {
     dio.options.headers['authorization'] = tokenBearer;
 
     try {
-      final response = await dio
-          .post('https://arretadas-api.herokuapp.com/complaint', data: {
+      final response =
+          await dio.post('${ApiEndpoint.url_heroku}/complaint', data: {
         'latitude': params.local!.latitude,
         'longitude': params.local!.longitude,
         'date': params.data,
