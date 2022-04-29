@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'modules/home/home_module.dart';
 import 'modules/menu/menu_module.dart';
+import 'modules/recoveryQuestions/recovery_questions_module.dart';
 import 'modules/register/register_module.dart';
 
 class AppModule extends Module {
@@ -26,5 +27,6 @@ class AppModule extends Module {
     ModuleRoute('/complaints', module: ComplaintsModule()),
     ModuleRoute('/usefulcontacts', module: UsefulcontactsModule()),
     ModuleRoute('/friendcontacts', module: FriendcontactsModule()),
+    ModuleRoute('/recovery', module: RecoveryQuestionsModule())
   ];
 }
