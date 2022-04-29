@@ -3,6 +3,8 @@ import 'package:arretadas/app/modules/register/domain/usecases/register_usecase.
 import 'package:arretadas/app/modules/register/infra/datasources/register_datasource.dart';
 import 'package:dio/dio.dart';
 
+import '../../../../../core/constants/api_endpoint.dart';
+
 class RegisterApi implements RegisterDatasource {
   final Dio dio;
 
@@ -10,9 +12,8 @@ class RegisterApi implements RegisterDatasource {
 
   Future<void> cadastrar(RegisterParams params) async {
     try {
-      final response = await this
-          .dio
-          .post('https://arretadas-api.herokuapp.com/user', data: {
+      final response =
+          await this.dio.post('${ApiEndpoint.url_heroku}/user', data: {
         'nickname': params.nickname,
         'password': params.password,
         'indexQuestion': params.indexQuestion,

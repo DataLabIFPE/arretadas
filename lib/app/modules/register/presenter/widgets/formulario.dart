@@ -72,6 +72,7 @@ class _FormularioState extends State<Formulario>
                   if (text.length < 3) {
                     return 'Use 3 caracteres ou mais. (Possui ${text.length})';
                   }
+                  return null;
                 },
               ),
               const SizedBox(
@@ -104,6 +105,7 @@ class _FormularioState extends State<Formulario>
                   if (passwordCacheConfirm != passwordCache) {
                     return 'As senhas não são iguais.';
                   }
+                  return null;
                 },
               ),
               const SizedBox(
@@ -135,6 +137,7 @@ class _FormularioState extends State<Formulario>
                   if (passwordCacheConfirm != passwordCache) {
                     return 'As senhas não são iguais.';
                   }
+                  return null;
                 },
               ),
               const SizedBox(
@@ -151,6 +154,7 @@ class _FormularioState extends State<Formulario>
                   if (text!.isNotEmpty && text.length < 6) {
                     return 'Medida protetiva precisa de 6 digitos';
                   }
+                  return null;
                 },
               ),
             ],
