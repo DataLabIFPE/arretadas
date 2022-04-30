@@ -21,7 +21,14 @@ class RecoveryPasswordApi implements RecoveryPasswordDatasource {
       String? resposta = response.statusMessage;
       return resposta!;
     } on DioError catch (e) {
-      throw RecoveryPasswordException(e.message);
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        throw RecoveryPasswordException("Sem conexão com a Internet");
+      } else if (e.type == DioErrorType.other) {
+        throw RecoveryPasswordException("Sem conexão com a Internet");
+      } else {
+        throw RecoveryPasswordException(e.message);
+      }
     }
   }
 }

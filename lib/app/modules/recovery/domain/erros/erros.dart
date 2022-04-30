@@ -4,7 +4,7 @@ class RecoveryQuestionsException implements Exception {
   RecoveryQuestionsException(this.message);
 
   @override
-  String toString() => 'RecoveryQuestionsException(message: $message)';
+  String toString() => '$message';
 }
 
 class RecoveryPasswordException implements Exception {
@@ -13,5 +13,5 @@ class RecoveryPasswordException implements Exception {
   RecoveryPasswordException(this.message);
 
   @override
-  String toString() => 'RecoveryPasswordException(message: $message)';
+  String toString() => '$message';
 }

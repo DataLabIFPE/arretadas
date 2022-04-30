@@ -21,8 +21,14 @@ class FriendContactRepository {
     try {
       await dio.delete("${ApiEndpoint.url_heroku}/friendcontact/id/$id");
     } on DioError catch (e) {
-      print(e.message);
-      throw Failure(e.message);
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        throw Failure("Sem conexão com a Internet");
+      } else if (e.type == DioErrorType.other) {
+        throw Failure("Sem conexão com a Internet");
+      } else {
+        throw Failure(e.message);
+      }
     }
   }
 
@@ -42,8 +48,14 @@ class FriendContactRepository {
         "number": friendcontact.number,
       });
     } on DioError catch (e) {
-      print(e.message);
-      throw Failure(e.message);
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        throw Failure("Sem conexão com a Internet");
+      } else if (e.type == DioErrorType.other) {
+        throw Failure("Sem conexão com a Internet");
+      } else {
+        throw Failure(e.message);
+      }
     }
   }
 
@@ -70,8 +82,14 @@ class FriendContactRepository {
 
       print(response);
     } on DioError catch (e) {
-      print(e.message);
-      throw Failure(e.message);
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        throw Failure("Sem conexão com a Internet");
+      } else if (e.type == DioErrorType.other) {
+        throw Failure("Sem conexão com a Internet");
+      } else {
+        throw Failure(e.message);
+      }
     }
   }
 }

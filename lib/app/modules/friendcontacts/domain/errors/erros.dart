@@ -4,5 +4,5 @@ class Failure implements Exception {
   Failure(this.message);
 
   @override
-  String toString() => 'Failure(message: $message)';
+  String toString() => '$message';
 }

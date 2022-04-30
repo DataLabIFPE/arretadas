@@ -34,6 +34,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
 
   @override
   void initState() {
+    super.initState();
     data = DateTime.now();
     hora = TimeOfDay.now();
     disposer = store.observer(
@@ -51,7 +52,6 @@ class _ComplaintsPageState extends State<ComplaintsPage>
         print('$state');
       },
     );
-    super.initState();
   }
 
   @override

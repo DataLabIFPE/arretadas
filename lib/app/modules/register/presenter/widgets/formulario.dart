@@ -27,10 +27,11 @@ class _FormularioState extends State<Formulario>
   var passwordCache = "";
   var passwordCacheConfirm = "";
   late Disposer disposer;
-  var indexQuestion = 0;
+  var indexQuestion = 1;
 
   @override
   void initState() {
+    super.initState();
     register = register.copyWith(city: cityValue);
     disposer = store.observer(
       onError: (error) {
@@ -47,7 +48,6 @@ class _FormularioState extends State<Formulario>
         print('$state');
       },
     );
-    super.initState();
   }
 
   List<Step> getSteps() {

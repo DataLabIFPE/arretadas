@@ -24,7 +24,14 @@ class RegisterApi implements RegisterDatasource {
       });
       print(response.data);
     } on DioError catch (e) {
-      throw RegisterException(e.message);
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        throw RegisterException("Sem conexão com a Internet");
+      } else if (e.type == DioErrorType.other) {
+        throw RegisterException("Sem conexão com a Internet");
+      } else {
+        throw RegisterException(e.message);
+      }
     }
   }
 }

@@ -4,5 +4,5 @@ class RegisterException implements Exception {
   RegisterException(this.message);
 
   @override
-  String toString() => 'RegisterException(message: $message)';
+  String toString() => '$message';
 }

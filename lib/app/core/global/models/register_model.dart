@@ -9,7 +9,7 @@ class RegisterModel {
 
   RegisterModel({
     this.answerQuestion = '',
-    this.indexQuestion = 0,
+    this.indexQuestion = 1,
     this.nickname = '',
     this.password = '',
     this.city = '',

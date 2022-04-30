@@ -12,37 +12,6 @@ class RegisterPage extends StatefulWidget {
 
 class RegisterPageState extends State<RegisterPage>
     with LoaderMixin, MessagesMixin {
-  /*final RegisterStore store = Modular.get();
-  final formKey = GlobalKey<FormState>();
-  var passwordCache = "";
-  var passwordCacheConfirm = "";
-  bool obscuredTextPassword = true;
-  var register = RegisterModel();
-  late Disposer disposer;
-  String dropdownValue = 'Monteiro';
-  int currentStep = 0;*/
-
-  /*@override
-  void initState() {
-    register = register.copyWith(city: dropdownValue);
-    disposer = store.observer(
-      onError: (error) {
-        showSnackbar(context, error);
-        print(error);
-      },
-      onLoading: (loading) {
-        showHideLoaderHelper(context, loading);
-        print(loading);
-      },
-      onState: (state) {
-        showSucess(context, 'Cadastrado com sucesso!');
-        Modular.to.pushNamedAndRemoveUntil('/home', ModalRoute.withName('/'));
-        print('$state');
-      },
-    );
-    super.initState();
-  }*/
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;

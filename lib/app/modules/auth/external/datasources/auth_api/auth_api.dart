@@ -22,24 +22,16 @@ class AuthApi implements AuthDatasource {
       if (response.data['data']['city'] != null) {
         ControllerCity().setCity(response.data['data']['city']);
       }
-
       return UserMapper.fromJson(response.data);
     } on DioError catch (e) {
-      throw AuthException(e.message);
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        throw AuthException("Sem conexão com a Internet");
+      } else if (e.type == DioErrorType.other) {
+        throw AuthException("Sem conexão com a Internet");
+      } else {
+        throw AuthException(e.message);
+      }
     }
   }
-
-  /*Future<void> verifyQuestions() async {
-    try {
-      final response = await this
-          .dio
-          .post('${ApiEndpoint.url_heroku}/user/recover-questions', data: {
-            'nickname': ,
-            'indexQuestion': ,
-            'answerQuestion': ,
-          });
-    } on DioError catch (e) {
-      throw AuthException(e.message);
-    }
-  }*/
 }

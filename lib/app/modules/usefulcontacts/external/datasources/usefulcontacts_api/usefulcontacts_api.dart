@@ -31,7 +31,14 @@ class UsefulcontactsApi implements UsefulcontactDatasource {
           .map<Usefulcontact>((e) => Usefulcontact.fromMap(e))
           .toList();
     } on DioError catch (e) {
-      throw Failure(e.message);
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        throw Failure("Sem conexão com a Internet");
+      } else if (e.type == DioErrorType.other) {
+        throw Failure("Sem conexão com a Internet");
+      } else {
+        throw Failure(e.message);
+      }
     }
   }
 }

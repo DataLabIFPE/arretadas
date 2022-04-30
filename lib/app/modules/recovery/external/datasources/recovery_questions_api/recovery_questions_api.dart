@@ -24,7 +24,14 @@ class RecoveryQuestionsApi implements RecoveryQuestionsDatasource {
       });
       return UserMapper.fromJson(response.data);
     } on DioError catch (e) {
-      throw RecoveryQuestionsException(e.message);
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
+        throw RecoveryQuestionsException("Sem conexão com a Internet");
+      } else if (e.type == DioErrorType.other) {
+        throw RecoveryQuestionsException("Sem conexão com a Internet");
+      } else {
+        throw RecoveryQuestionsException(e.message);
+      }
     }
   }
 }
