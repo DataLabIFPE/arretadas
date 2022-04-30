@@ -52,17 +52,17 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <h2 id="funcionalidades"> ⚙️ Funcionalidades </h2>
 
-- [ ] SplashPage
-- [ ] Home
-- [ ] Auth
-- [ ] Register
-- [ ] Menu
+- [x] SplashPage
+- [x] Home
+- [x] Auth
+- [x] Register
+- [x] Menu
 - [ ] Alert
-- [ ] Complaints
-- [ ] Info
-- [ ] UsefulContacts
-- [ ] FriendContacts
-- [ ] Map
+- [x] Complaints
+- [x] Info
+- [x] UsefulContacts
+- [x] FriendContacts
+- [x] RevoverPassword
 
 <h2 id="contribuicao"> 🤔 Como contribuir? </h2>
 
