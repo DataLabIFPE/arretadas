@@ -2,7 +2,7 @@ import 'package:arretadas/app/modules/auth/external/datasources/auth_api/auth_ap
 import 'package:arretadas/app/modules/auth/infra/repositories/auth_repository_impl.dart';
 import 'package:arretadas/app/modules/auth/presenter/pages/auth_page.dart';
 import 'package:arretadas/app/modules/auth/presenter/store/auth_store.dart';
-import 'package:arretadas/app/modules/recoveryQuestions/recovery_questions_module.dart';
+import 'package:arretadas/app/modules/recovery/recovery_module.dart';
 import 'package:dio/dio.dart';
 
 import 'package:flutter_modular/flutter_modular.dart';

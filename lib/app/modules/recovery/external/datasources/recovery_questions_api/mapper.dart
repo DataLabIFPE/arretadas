@@ -1,4 +1,4 @@
-import 'package:arretadas/app/modules/recoveryQuestions/domain/entities/user.dart';
+import 'package:arretadas/app/modules/recovery/domain/entities/user.dart';
 
 class UserMapper {
   static User fromJson(Map<String, dynamic> json) {

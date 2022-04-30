@@ -4,8 +4,8 @@ import 'package:arretadas/app/core/components/text_custom.dart';
 import 'package:arretadas/app/core/constants/app_colors.dart';
 import 'package:arretadas/app/core/mixins/loader_mixin.dart';
 import 'package:arretadas/app/core/mixins/messages_mixin.dart';
-import 'package:arretadas/app/modules/recoveryQuestions/domain/usecases/recovery_usecase.dart';
-import 'package:arretadas/app/modules/recoveryQuestions/presenter/store/recovery_questions_store.dart';
+import 'package:arretadas/app/modules/recovery/domain/usecases/recovery_questions_usecase.dart';
+import 'package:arretadas/app/modules/recovery/presenter/store/recovery_questions_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
@@ -208,19 +208,21 @@ class _RecoveryQuestionsPageState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/background.png"),
-            fit: BoxFit.cover,
+      body: SafeArea(
+        child: Container(
+          constraints: BoxConstraints.expand(),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background.png"),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            LogoImage(),
-          ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              LogoImage(),
+            ],
+          ),
         ),
       ),
     );

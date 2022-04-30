@@ -1,7 +1,7 @@
-import 'package:arretadas/app/modules/recoveryQuestions/domain/entities/user.dart';
-import 'package:arretadas/app/modules/recoveryQuestions/domain/erros/erros.dart';
-import 'package:arretadas/app/modules/recoveryQuestions/domain/repositories/recovery_repository.dart';
-import 'package:arretadas/app/modules/recoveryQuestions/domain/usecases/recovery_usecase.dart';
+import 'package:arretadas/app/modules/recovery/domain/entities/user.dart';
+import 'package:arretadas/app/modules/recovery/domain/erros/erros.dart';
+import 'package:arretadas/app/modules/recovery/domain/repositories/recovery_questions_repository.dart';
+import 'package:arretadas/app/modules/recovery/domain/usecases/recovery_questions_usecase.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../datasources/recovery_questions_datasource.dart';

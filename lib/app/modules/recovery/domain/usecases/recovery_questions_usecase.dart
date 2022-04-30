@@ -1,14 +1,14 @@
-import 'package:arretadas/app/modules/recoveryQuestions/domain/entities/user.dart';
-import 'package:arretadas/app/modules/recoveryQuestions/domain/erros/erros.dart';
-import 'package:arretadas/app/modules/recoveryQuestions/domain/repositories/recovery_repository.dart';
+import 'package:arretadas/app/modules/recovery/domain/entities/user.dart';
+import 'package:arretadas/app/modules/recovery/domain/erros/erros.dart';
+import 'package:arretadas/app/modules/recovery/domain/repositories/recovery_questions_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
-abstract class IRecoveryUsecase {
+abstract class IRecoveryQuestionsUsecase {
   Future<Either<RecoveryQuestionsException, User>> call(
       RecoveryQuestionsParams params);
 }
 
-class RecoveryQuestionsUsecase implements IRecoveryUsecase {
+class RecoveryQuestionsUsecase implements IRecoveryQuestionsUsecase {
   final RecoveryQuestionsRepository repository;
 
   RecoveryQuestionsUsecase(this.repository);
