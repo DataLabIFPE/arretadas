@@ -22,10 +22,6 @@ jobs:
       - run: flutter format --dry-run --set-exit-if-changed lib/
       - run: flutter format --dry-run --set-exit-if-changed test/
       - run: flutter test --coverage
-      - name: Upload coverage to Codecov
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: flutter test --machine > test-results.json
       - uses: dorny/test-reporter@v1.4.2
         with:
