@@ -8,8 +8,8 @@ import 'package:arretadas/app/core/mixins/loader_mixin.dart';
 import 'package:arretadas/app/core/mixins/messages_mixin.dart';
 import 'package:arretadas/app/modules/auth/domain/usecases/login_usecase.dart';
 import 'package:arretadas/app/modules/auth/presenter/store/auth_store.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
 class AuthPage extends StatefulWidget {
@@ -20,6 +20,7 @@ class AuthPage extends StatefulWidget {
 
 class AuthPageState extends ModularState<AuthPage, AuthStore>
     with LoaderMixin, MessagesMixin {
+  @override
   final AuthStore store = Modular.get();
   final formKey = GlobalKey<FormState>();
   bool obscuredTextPassword = true;
@@ -62,8 +63,8 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.cover,
@@ -73,13 +74,13 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  LogoImage(),
+                  const LogoImage(),
                   Card(
-                    margin: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
                     child: Form(
                       key: formKey,
                       child: Padding(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
                             Input(
@@ -98,7 +99,7 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 return null;
                               },
                             ),
-                            SizedBox(height: 15),
+                            const SizedBox(height: 15),
                             Input(
                               label: 'Senha',
                               hint: 'Digite sua senha',
@@ -141,10 +142,10 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 },
                               ),
                             ),
-                            SizedBox(height: 15),
+                            const SizedBox(height: 15),
                             Button(
                               width: double.infinity,
-                              child: TextCustom(
+                              child: const TextCustom(
                                 text: 'entrar',
                               ),
                               buttonColor: AppColors.primaryColor,

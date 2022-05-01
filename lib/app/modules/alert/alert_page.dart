@@ -1,5 +1,3 @@
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:arretadas/app/modules/alert/alert_store.dart';
 import 'package:flutter/material.dart';
 
 class AlertPage extends StatefulWidget {
@@ -8,9 +6,8 @@ class AlertPage extends StatefulWidget {
   @override
   AlertPageState createState() => AlertPageState();
 }
-class AlertPageState extends State<AlertPage> {
-  final AlertStore store = Modular.get();
 
+class AlertPageState extends State<AlertPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +15,7 @@ class AlertPageState extends State<AlertPage> {
         title: Text(widget.title),
       ),
       body: Column(
-        children: <Widget>[],
+        children: const <Widget>[],
       ),
     );
   }

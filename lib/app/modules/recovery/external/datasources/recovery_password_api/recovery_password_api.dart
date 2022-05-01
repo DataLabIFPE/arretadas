@@ -12,9 +12,8 @@ class RecoveryPasswordApi implements RecoveryPasswordDatasource {
   @override
   Future<String> recover(RecoveryPasswordParams params) async {
     try {
-      final response = await this
-          .dio
-          .patch('${ApiEndpoint.url_heroku}/user/recover-password', data: {
+      final response = await dio
+          .patch('${ApiEndpoint.urlHeroku}/user/recover-password', data: {
         'id': params.id,
         'newPassword': params.newPassword,
       });

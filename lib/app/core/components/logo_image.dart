@@ -6,7 +6,7 @@ class LogoImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10),
       height: MediaQuery.of(context).size.height * 0.15,
       child: Image.asset(
         "assets/icons/icon_white_shadow.png",

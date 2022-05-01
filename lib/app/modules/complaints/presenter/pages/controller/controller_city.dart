@@ -7,11 +7,11 @@ class ControllerCity {
   }
 
   void setCity(String city) {
-    this._city = city;
+    _city = city;
   }
 
   String getCity() {
-    return this._city;
+    return _city;
   }
 
   ControllerCity._internal();

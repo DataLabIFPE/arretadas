@@ -4,7 +4,6 @@ import 'package:arretadas/app/modules/auth/presenter/pages/auth_page.dart';
 import 'package:arretadas/app/modules/auth/presenter/store/auth_store.dart';
 import 'package:arretadas/app/modules/recovery/recovery_module.dart';
 import 'package:dio/dio.dart';
-
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,7 +22,7 @@ class AuthModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => AuthPage()),
+    ChildRoute('/', child: (_, args) => const AuthPage()),
     ModuleRoute('/recovery', module: RecoveryQuestionsModule()),
   ];
 }

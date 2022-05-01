@@ -3,11 +3,9 @@ import 'package:arretadas/app/core/constants/app_colors.dart';
 import 'package:arretadas/app/modules/friendcontacts/domain/entities/friendcontact.dart';
 import 'package:arretadas/app/modules/friendcontacts/domain/errors/erros.dart';
 import 'package:arretadas/app/modules/friendcontacts/presenter/pages/details.dart';
-
 import 'package:arretadas/app/modules/friendcontacts/presenter/store/friendcontacts_store.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -35,14 +33,14 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
       padding: const EdgeInsets.all(20.0),
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text('${error!.message}'),
-          SizedBox(
+          Text(error!.message),
+          const SizedBox(
             height: 8,
           ),
           Button(
             buttonColor: AppColors.primaryColor,
             onPressed: () => store.getFriendcontacts(),
-            child: Text('Tente novamente'),
+            child: const Text('Tente novamente'),
           ),
         ]),
       ),
@@ -65,13 +63,13 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
                 ),
                 subtitle: Text(
                   itens[index].number,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
                 trailing: IconButton(
-                  icon: Icon(Icons.phone),
+                  icon: const Icon(Icons.phone),
                   iconSize: 30,
                   onPressed: () {
                     launch("tel:${itens[index].number}");
@@ -103,17 +101,18 @@ class FriendcontactsPageState extends State<FriendcontactsPage> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ContactPage()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ContactPage()));
         },
       ),
       body: ScopedBuilder<FriendcontactsStore, Failure,
           List<Friendcontact>>.transition(
         store: store,
         onError: (context, error) => _buildError(store, error),
-        onLoading: (context) => Center(child: CircularProgressIndicator()),
+        onLoading: (context) =>
+            const Center(child: CircularProgressIndicator()),
         onState: (context, state) => _buildState(context, state),
       ),
     );

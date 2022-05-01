@@ -38,18 +38,18 @@ class RegisterModel {
 
   @override
   String toString() {
-    return this.nickname +
+    return nickname +
         "\n" +
-        this.password +
+        password +
         "\n" +
-        this.protectionCode.toString() +
+        protectionCode.toString() +
         "\n" +
-        this.roles.toString() +
+        roles.toString() +
         "\n" +
-        this.indexQuestion.toString() +
+        indexQuestion.toString() +
         "\n" +
-        this.city.toString() +
+        city.toString() +
         "\n" +
-        this.answerQuestion.toString();
+        answerQuestion.toString();
   }
 }

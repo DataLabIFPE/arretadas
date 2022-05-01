@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:arretadas/app/modules/friendcontacts/domain/entities/friendcontact.dart';
 import 'package:arretadas/app/modules/friendcontacts/domain/errors/erros.dart';
 import 'package:arretadas/app/modules/friendcontacts/infra/datasources/friendcontact_datasource.dart';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,7 +24,7 @@ class FriendcontactsApi implements FriendcontactDatasource {
     dio.options.headers['authorization'] = tokenBearer;
     try {
       final response =
-          await dio.get('${ApiEndpoint.url_heroku}/friendcontact/user/$id');
+          await dio.get('${ApiEndpoint.urlHeroku}/friendcontact/user/$id');
       print(response.data);
       return response.data
           .map<Friendcontact>((m) => Friendcontact.fromMap(m))

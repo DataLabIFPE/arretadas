@@ -4,7 +4,6 @@ import 'package:arretadas/app/modules/usefulcontacts/infra/repositories/usefulco
 import 'package:arretadas/app/modules/usefulcontacts/presenter/pages/usefulcontacts_page.dart';
 import 'package:arretadas/app/modules/usefulcontacts/presenter/store/usefulcontacts_store.dart';
 import 'package:dio/dio.dart';
-
 import 'package:flutter_modular/flutter_modular.dart';
 
 class UsefulcontactsModule extends Module {
@@ -20,6 +19,6 @@ class UsefulcontactsModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => UsefulcontactsPage()),
+    ChildRoute('/', child: (_, args) => const UsefulcontactsPage()),
   ];
 }

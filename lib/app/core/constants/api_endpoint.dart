@@ -1,4 +1,4 @@
 class ApiEndpoint {
-  static const String url_heroku = "https://arretadas-api.herokuapp.com";
-  static const String url_producao = "https://arretadas-api.tk";
+  static const String urlHeroku = "https://arretadas-api.herokuapp.com";
+  static const String urlProducao = "https://arretadas-api.tk";
 }

@@ -1,8 +1,7 @@
 import 'package:arretadas/app/modules/register/domain/erros/erros.dart';
 import 'package:arretadas/app/modules/register/domain/repositories/register_repository.dart';
-import 'package:arretadas/app/modules/register/infra/datasources/register_datasource.dart';
-
 import 'package:arretadas/app/modules/register/domain/usecases/register_usecase.dart';
+import 'package:arretadas/app/modules/register/infra/datasources/register_datasource.dart';
 import 'package:fpdart/fpdart.dart';
 
 class RegisterRepositoryImpl implements RegisterRepository {
@@ -15,7 +14,7 @@ class RegisterRepositoryImpl implements RegisterRepository {
       RegisterParams params) async {
     try {
       await datasource.cadastrar(params);
-      return Right(true);
+      return const Right(true);
     } on RegisterException catch (e) {
       return Left(e);
     }
