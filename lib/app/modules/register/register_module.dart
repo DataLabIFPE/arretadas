@@ -1,6 +1,5 @@
 import 'package:arretadas/app/modules/register/domain/usecases/register_usecase.dart';
 import 'package:arretadas/app/modules/register/external/datasources/register_api/register_api.dart';
-
 import 'package:arretadas/app/modules/register/infra/repositories/register_repository_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -20,6 +19,6 @@ class RegisterModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => RegisterPage()),
+    ChildRoute('/', child: (_, args) => const RegisterPage()),
   ];
 }

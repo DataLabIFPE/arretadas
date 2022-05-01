@@ -20,6 +20,7 @@ class RecoveryQuestionsPage extends StatefulWidget {
 class _RecoveryQuestionsPageState
     extends ModularState<RecoveryQuestionsPage, RecoveryQuestionsStore>
     with LoaderMixin, MessagesMixin {
+  @override
   final RecoveryQuestionsStore store = Modular.get();
   late Disposer disposer;
   final formKey = GlobalKey<FormState>();
@@ -65,7 +66,7 @@ class _RecoveryQuestionsPageState
                           'Informe o usuário'.toUpperCase(),
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Input(
@@ -81,7 +82,7 @@ class _RecoveryQuestionsPageState
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Text(
@@ -210,8 +211,8 @@ class _RecoveryQuestionsPageState
       backgroundColor: AppColors.primaryColor,
       body: SafeArea(
         child: Container(
-          constraints: BoxConstraints.expand(),
-          decoration: BoxDecoration(
+          constraints: const BoxConstraints.expand(),
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/background.png"),
               fit: BoxFit.cover,
@@ -219,7 +220,7 @@ class _RecoveryQuestionsPageState
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: const [
               LogoImage(),
             ],
           ),

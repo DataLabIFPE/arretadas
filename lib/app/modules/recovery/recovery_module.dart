@@ -27,7 +27,7 @@ class RecoveryQuestionsModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => RecoveryQuestionsPage()),
+    ChildRoute('/', child: (_, args) => const RecoveryQuestionsPage()),
     ChildRoute('/recoverPassword',
         child: (_, args) => PasswordChangePage(id: args.data)),
   ];

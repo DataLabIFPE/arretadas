@@ -1,8 +1,8 @@
 import 'package:arretadas/app/core/constants/app_colors.dart';
 import 'package:arretadas/app/modules/splash/splash_controller.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:arretadas/app/modules/splash/splash_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
 class SplashPage extends StatefulWidget {
@@ -13,6 +13,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class SplashPageState extends ModularState<SplashPage, SplashStore> {
+  @override
   final SplashStore store = Modular.get();
   late Disposer disposer;
 
@@ -50,7 +51,7 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColors.primaryColor,
           image: DecorationImage(
             image: AssetImage("assets/images/background.png"),
@@ -60,12 +61,12 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.35,
               height: MediaQuery.of(context).size.height * 0.35,
               child: Image.asset("assets/icons/icon_white.png"),
             ),
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               color: Colors.white,
             )
           ],

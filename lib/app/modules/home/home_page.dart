@@ -1,9 +1,8 @@
 import 'package:arretadas/app/core/components/button.dart';
 import 'package:arretadas/app/core/components/text_custom.dart';
 import 'package:arretadas/app/core/constants/app_colors.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:arretadas/app/modules/home/home_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -13,15 +12,13 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final HomeStore store = Modular.get();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
+        constraints: const BoxConstraints.expand(),
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/background.png"),
             fit: BoxFit.cover,
@@ -31,7 +28,7 @@ class HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.2,
               child: Image.asset(
                 "assets/icons/icon_white_shadow.png",
@@ -41,14 +38,14 @@ class HomePageState extends State<HomePage> {
               children: [
                 Button(
                     onPressed: () => Modular.to.pushNamed('/register'),
-                    child: TextCustom(text: 'cadastrar')),
-                SizedBox(
+                    child: const TextCustom(text: 'cadastrar')),
+                const SizedBox(
                   height: 10,
                 ),
                 Button(
                     onPressed: () => Modular.to.pushNamed('/auth'),
                     buttonColor: AppColors.primaryColorAccent,
-                    child: TextCustom(
+                    child: const TextCustom(
                       text: 'entrar',
                       color: AppColors.primaryColor,
                     )),

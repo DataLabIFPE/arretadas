@@ -19,11 +19,11 @@ abstract class LoaderMixin {
           context: context,
           barrierDismissible: false,
           builder: (_) {
-            return Container(
+            return SizedBox(
               width: 20,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [CircularProgressIndicator()],
+                children: const [CircularProgressIndicator()],
               ),
             );
           },

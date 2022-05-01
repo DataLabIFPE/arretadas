@@ -12,7 +12,7 @@ class SplashRepository {
   Future<User> refreshToken(User user) async {
     try {
       final response =
-          await dio.post("${ApiEndpoint.url_heroku}/user/refresh-token", data: {
+          await dio.post("${ApiEndpoint.urlHeroku}/user/refresh-token", data: {
         'token': user.token,
         'id': user.id,
         'nickname': user.nickname,

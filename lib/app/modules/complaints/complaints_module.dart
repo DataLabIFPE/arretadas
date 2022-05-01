@@ -4,7 +4,6 @@ import 'package:arretadas/app/modules/complaints/infra/repositories/complaint_re
 import 'package:arretadas/app/modules/complaints/presenter/complaints_controller.dart';
 import 'package:arretadas/app/modules/complaints/presenter/store/complaints_store.dart';
 import 'package:dio/dio.dart';
-
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'presenter/pages/complaints_page.dart';
@@ -24,6 +23,6 @@ class ComplaintsModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => ComplaintsPage()),
+    ChildRoute('/', child: (_, args) => const ComplaintsPage()),
   ];
 }

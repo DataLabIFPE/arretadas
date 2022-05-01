@@ -1,6 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'package:dio/dio.dart';
 import 'domain/usecases/friendcontact_usecase.dart';
 import 'external/datasources/friendcontacts_api/friendcontacts_api.dart';
 import 'infra/repositories/friendcontact_repository_impl.dart';
@@ -20,6 +20,6 @@ class FriendcontactsModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => FriendcontactsPage()),
+    ChildRoute('/', child: (_, args) => const FriendcontactsPage()),
   ];
 }

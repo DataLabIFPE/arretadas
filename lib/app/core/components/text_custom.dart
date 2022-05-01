@@ -1,5 +1,4 @@
 import 'package:arretadas/app/core/constants/app_colors.dart';
-
 import 'package:flutter/material.dart';
 
 class TextCustom extends StatefulWidget {
@@ -25,12 +24,10 @@ class _TextCustomState extends State<TextCustom> {
     return Text(
       widget.text.toUpperCase(),
       style: TextStyle(
-          color: widget.color == null
-              ? AppColors.primaryColorAccent
-              : widget.color,
+          color: widget.color ?? AppColors.primaryColorAccent,
           fontWeight: FontWeight.bold,
-          fontSize: widget.fontSize == null ? 15.0 : widget.fontSize,
-          fontFamily: widget.fontFamily == null ? 'Roboto' : widget.fontFamily),
+          fontSize: widget.fontSize ?? 15.0,
+          fontFamily: widget.fontFamily ?? 'Roboto'),
     );
   }
 }

@@ -321,13 +321,13 @@ class _FormularioState extends State<Formulario>
       controlsBuilder: (BuildContext context, ControlsDetails details) {
         final isLastStep = currentStep == getSteps().length - 1;
         return Container(
-          margin: EdgeInsets.only(top: 20),
+          margin: const EdgeInsets.only(top: 20),
           child: Row(
             children: [
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                   ),
@@ -342,12 +342,12 @@ class _FormularioState extends State<Formulario>
                 Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                       primary: Colors.grey,
                     ),
-                    child: Text('VOLTAR'),
+                    child: const Text('VOLTAR'),
                     onPressed: details.onStepCancel,
                   ),
                 ),

@@ -19,7 +19,7 @@ class FriendContactRepository {
     dio.options.headers['authorization'] = tokenBearer;
 
     try {
-      await dio.delete("${ApiEndpoint.url_heroku}/friendcontact/id/$id");
+      await dio.delete("${ApiEndpoint.urlHeroku}/friendcontact/id/$id");
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
@@ -42,7 +42,7 @@ class FriendContactRepository {
     var tokenBearer = 'Bearer ' + token;
     dio.options.headers['authorization'] = tokenBearer;
     try {
-      await dio.post("${ApiEndpoint.url_heroku}/friendcontact", data: {
+      await dio.post("${ApiEndpoint.urlHeroku}/friendcontact", data: {
         "id": id,
         "name": friendcontact.name,
         "number": friendcontact.number,
@@ -74,7 +74,7 @@ class FriendContactRepository {
     dio.options.headers['x-access-token'] = token;
     try {
       var response = await dio.put(
-          "${ApiEndpoint.url_heroku}/friendcontact/${friendcontact.id}",
+          "${ApiEndpoint.urlHeroku}/friendcontact/${friendcontact.id}",
           data: {
             "name": friendcontact.name,
             "number": friendcontact.number,
