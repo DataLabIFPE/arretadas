@@ -13,9 +13,7 @@
 
 
 <!---
- <a href="https://coveralls.io/github/ssferraz/arretadas?branch=main">
-    <img src="https://coveralls.io/repos/github/ssferraz/arretadas/badge.svg?branch=main"/>
-  </a>
+ <a href='https://coveralls.io/github/DataLabIFPE/arretadas?branch=master'><img src='https://coveralls.io/repos/github/DataLabIFPE/arretadas/badge.svg?branch=master' alt='Coverage Status' /></a>
 -->  
  
 
