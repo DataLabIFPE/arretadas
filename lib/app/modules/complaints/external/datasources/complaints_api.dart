@@ -26,7 +26,7 @@ class ComplaintsApi implements ComplaintDatasource {
 
     try {
       final response =
-          await dio.post('${ApiEndpoint.url_heroku}/complaint', data: {
+          await dio.post('${ApiEndpoint.urlHeroku}/complaint', data: {
         'latitude': params.local!.latitude,
         'longitude': params.local!.longitude,
         'date': params.data,

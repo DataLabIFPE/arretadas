@@ -20,6 +20,6 @@ class FriendcontactsModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => FriendcontactsPage()),
+    ChildRoute('/', child: (_, args) => const FriendcontactsPage()),
   ];
 }

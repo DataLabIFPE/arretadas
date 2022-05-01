@@ -42,11 +42,11 @@ class RegisterPageState extends State<RegisterPage>
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Card(
                       child: SizedBox(
                         height: (height * 0.8),
-                        child: Formulario(),
+                        child: const Formulario(),
                       ),
                     ),
                   ),

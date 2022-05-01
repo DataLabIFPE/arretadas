@@ -10,10 +10,10 @@ class RegisterApi implements RegisterDatasource {
 
   RegisterApi(this.dio);
 
+  @override
   Future<void> cadastrar(RegisterParams params) async {
     try {
-      final response =
-          await this.dio.post('${ApiEndpoint.url_heroku}/user', data: {
+      await dio.post('${ApiEndpoint.urlHeroku}/user', data: {
         'nickname': params.nickname,
         'password': params.password,
         'indexQuestion': params.indexQuestion,
@@ -22,7 +22,6 @@ class RegisterApi implements RegisterDatasource {
         'protection_code': params.protectionCode,
         'roles': params.roles
       });
-      print(response.data);
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {

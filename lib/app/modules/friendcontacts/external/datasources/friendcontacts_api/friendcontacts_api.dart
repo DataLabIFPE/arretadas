@@ -25,8 +25,8 @@ class FriendcontactsApi implements FriendcontactDatasource {
     dio.options.headers['authorization'] = tokenBearer;
     try {
       final response =
-          await dio.get('${ApiEndpoint.url_heroku}/friendcontact/user/$id');
-      print(response.data);
+          await dio.get('${ApiEndpoint.urlHeroku}/friendcontact/user/$id');
+
       return response.data
           .map<Friendcontact>((m) => Friendcontact.fromMap(m))
           .toList();

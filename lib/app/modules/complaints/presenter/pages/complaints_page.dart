@@ -40,16 +40,13 @@ class _ComplaintsPageState extends State<ComplaintsPage>
     disposer = store.observer(
       onError: (error) {
         showSnackbar(context, error);
-        print(error);
       },
       onLoading: (loading) {
         showHideLoaderHelper(context, loading);
-        print(loading);
       },
       onState: (state) {
         showSnackbar(context, state.hora);
         Navigator.pop(context);
-        print('$state');
       },
     );
   }
@@ -71,7 +68,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
               complaint.data.isNotEmpty &&
               complaint.hora.isNotEmpty &&
               complaint.tipoViolencia != null &&
-              complaint.tipoViolencia!.length != 0;
+              complaint.tipoViolencia!.isNotEmpty;
           if (isLastStep && isValid) {
             final params = ComplaintParams(
                 tipoViolencia: complaint.tipoViolencia,
@@ -104,13 +101,13 @@ class _ComplaintsPageState extends State<ComplaintsPage>
         controlsBuilder: (BuildContext context, ControlsDetails details) {
           final isLastStep = currentStep == getSteps().length - 1;
           return Container(
-            margin: EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(top: 20),
             child: Row(
               children: [
                 Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                     ),
@@ -125,12 +122,12 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                         primary: Colors.grey,
                       ),
-                      child: Text('VOLTAR'),
+                      child: const Text('VOLTAR'),
                       onPressed: details.onStepCancel,
                     ),
                   ),
@@ -147,13 +144,13 @@ class _ComplaintsPageState extends State<ComplaintsPage>
       Step(
         state: currentStep > 0 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 0,
-        title: Text('Tipo'),
+        title: const Text('Tipo'),
         content: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               'Escolha um ou mais tipos'.toUpperCase(),
-              style: TextStyle(fontSize: 16.0),
+              style: const TextStyle(fontSize: 16.0),
             ),
             Row(
               children: [
@@ -180,7 +177,6 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                                 complaint.tipoViolencia = list;
                               }
                             }
-                            print(complaint.tipoViolencia);
                           });
                         },
                       );
@@ -197,7 +193,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                       return CheckboxListTile(
                         title: Text(
                           todo.name,
-                          style: TextStyle(fontSize: 15),
+                          style: const TextStyle(fontSize: 15),
                         ),
                         controlAffinity: ListTileControlAffinity.leading,
                         value: todo.selected,
@@ -213,7 +209,6 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                                 complaint.tipoViolencia = list;
                               }
                             }
-                            print(complaint.tipoViolencia);
                           });
                         },
                       );
@@ -228,13 +223,13 @@ class _ComplaintsPageState extends State<ComplaintsPage>
       Step(
         state: currentStep > 1 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 1,
-        title: Text('Quando'),
+        title: const Text('Quando'),
         content: Column(
           children: [
             ListTile(
               title: Text('Data: $df'),
-              leading: Icon(Icons.calendar_today),
-              trailing: Icon(Icons.keyboard_arrow_down),
+              leading: const Icon(Icons.calendar_today),
+              trailing: const Icon(Icons.keyboard_arrow_down),
               onTap: () async {
                 data = await pickDate(context);
                 setState(() {
@@ -245,8 +240,8 @@ class _ComplaintsPageState extends State<ComplaintsPage>
             ),
             ListTile(
               title: Text('Hora: $hf'),
-              leading: Icon(Icons.access_time),
-              trailing: Icon(Icons.keyboard_arrow_down),
+              leading: const Icon(Icons.access_time),
+              trailing: const Icon(Icons.keyboard_arrow_down),
               onTap: () async {
                 hora = await pickTime(context);
                 setState(() {
@@ -267,12 +262,12 @@ class _ComplaintsPageState extends State<ComplaintsPage>
       Step(
         state: currentStep > 2 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 2,
-        title: Text('Local'),
+        title: const Text('Local'),
         content: Column(
           children: [
-            Text('Clique no mapa para adicionar a localização'),
-            SizedBox(height: 10),
-            Container(
+            const Text('Clique no mapa para adicionar a localização'),
+            const SizedBox(height: 10),
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.3,
               width: MediaQuery.of(context).size.width * 0.8,
               child: GestureDetector(
@@ -280,14 +275,14 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                   final result = await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Mapa(),
+                      builder: (context) => const Mapa(),
                     ),
                   );
                   setState(() {
                     complaint.local = result;
                   });
                 },
-                child: Image(
+                child: const Image(
                   image: AssetImage('assets/images/map.png'),
                   fit: BoxFit.cover,
                 ),
@@ -299,12 +294,12 @@ class _ComplaintsPageState extends State<ComplaintsPage>
       Step(
         state: currentStep > 3 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 3,
-        title: Text(''),
+        title: const Text(''),
         content: Card(
           child: Column(
             children: [
               ListTile(
-                leading: Text(
+                leading: const Text(
                   'Tipo de Violência:',
                   style: TextStyle(fontSize: 17),
                 ),
@@ -313,21 +308,21 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                     : 'Inválido'),
               ),
               ListTile(
-                leading: Text(
+                leading: const Text(
                   'Data:',
                   style: TextStyle(fontSize: 17),
                 ),
-                title: Text(complaint.data.isNotEmpty ? '$df' : 'Inválida'),
+                title: Text(complaint.data.isNotEmpty ? df : 'Inválida'),
               ),
               ListTile(
-                leading: Text(
+                leading: const Text(
                   'Hora:',
                   style: TextStyle(fontSize: 17),
                 ),
-                title: Text(complaint.hora.isNotEmpty ? '$hf' : 'Inválida'),
+                title: Text(complaint.hora.isNotEmpty ? hf : 'Inválida'),
               ),
               ListTile(
-                leading: Text(
+                leading: const Text(
                   'Local:',
                   style: TextStyle(fontSize: 17),
                 ),

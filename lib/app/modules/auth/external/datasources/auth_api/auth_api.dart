@@ -3,7 +3,7 @@ import 'package:arretadas/app/modules/auth/domain/entities/user.dart';
 import 'package:arretadas/app/modules/auth/domain/erros/erros.dart';
 import 'package:arretadas/app/modules/auth/domain/usecases/login_usecase.dart';
 import 'package:arretadas/app/modules/auth/infra/datasources/auth_datasource.dart';
-import 'package:arretadas/app/modules/complaints/presenter/pages/ContollerMap/ControllerCity.dart';
+import 'package:arretadas/app/modules/complaints/presenter/pages/controller/controller_city.dart';
 import 'package:dio/dio.dart';
 
 import 'mapper.dart';
@@ -16,8 +16,8 @@ class AuthApi implements AuthDatasource {
   @override
   Future<User> login(CredentialsParams params) async {
     try {
-      final response = await this.dio.post(
-          '${ApiEndpoint.url_heroku}/user/authenticate',
+      final response = await dio.post(
+          '${ApiEndpoint.urlHeroku}/user/authenticate',
           data: {'nickname': params.nickname, 'password': params.password});
       if (response.data['data']['city'] != null) {
         ControllerCity().setCity(response.data['data']['city']);

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:arretadas/app/core/components/input.dart';
 import 'package:arretadas/app/core/global/models/register_model.dart';
 import 'package:arretadas/app/core/mixins/loader_mixin.dart';
@@ -36,16 +38,13 @@ class _FormularioState extends State<Formulario>
     disposer = store.observer(
       onError: (error) {
         showSnackbar(context, error);
-        print(error);
       },
       onLoading: (loading) {
         showHideLoaderHelper(context, loading);
-        print(loading);
       },
       onState: (state) {
         showSucess(context, 'Cadastrado com sucesso!');
         Modular.to.pushNamedAndRemoveUntil('/home', ModalRoute.withName('/'));
-        print('$state');
       },
     );
   }
@@ -321,14 +320,15 @@ class _FormularioState extends State<Formulario>
       controlsBuilder: (BuildContext context, ControlsDetails details) {
         final isLastStep = currentStep == getSteps().length - 1;
         return Container(
-          margin: EdgeInsets.only(top: 20),
+          margin: const EdgeInsets.only(top: 20),
           child: Row(
             children: [
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(10)),
                     ),
                   ),
                   child: Text(isLastStep ? 'ENVIAR' : 'CONTINUAR'),
@@ -342,12 +342,12 @@ class _FormularioState extends State<Formulario>
                 Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                       primary: Colors.grey,
                     ),
-                    child: Text('VOLTAR'),
+                    child: const Text('VOLTAR'),
                     onPressed: details.onStepCancel,
                   ),
                 ),

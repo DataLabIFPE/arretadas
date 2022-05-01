@@ -20,6 +20,7 @@ class RecoveryQuestionsPage extends StatefulWidget {
 class _RecoveryQuestionsPageState
     extends ModularState<RecoveryQuestionsPage, RecoveryQuestionsStore>
     with LoaderMixin, MessagesMixin {
+  @override
   final RecoveryQuestionsStore store = Modular.get();
   late Disposer disposer;
   final formKey = GlobalKey<FormState>();
@@ -30,15 +31,12 @@ class _RecoveryQuestionsPageState
     disposer = store.observer(
       onError: (error) {
         showSnackbar(context, error);
-        print(error);
       },
       onLoading: (loading) {
         showHideLoaderHelper(context, loading);
-        print(loading);
       },
       onState: (state) {
         Modular.to.pushReplacementNamed('recoverPassword', arguments: state.id);
-        print('$state');
       },
     );
     WidgetsBinding.instance?.addPostFrameCallback((_) async {
@@ -65,7 +63,7 @@ class _RecoveryQuestionsPageState
                           'Informe o usuário'.toUpperCase(),
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Input(
@@ -81,7 +79,7 @@ class _RecoveryQuestionsPageState
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Text(
@@ -177,10 +175,7 @@ class _RecoveryQuestionsPageState
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          print(dropdownValue);
-                          print(indexQuestion);
-                          print(respostaController.text);
-                          print(usuarioController.text);
+
                           store.recovery(RecoveryQuestionsParams(
                               nickname: usuarioController.text,
                               indexQuestion: indexQuestion,
@@ -210,8 +205,8 @@ class _RecoveryQuestionsPageState
       backgroundColor: AppColors.primaryColor,
       body: SafeArea(
         child: Container(
-          constraints: BoxConstraints.expand(),
-          decoration: BoxDecoration(
+          constraints: const BoxConstraints.expand(),
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/background.png"),
               fit: BoxFit.cover,
@@ -219,7 +214,7 @@ class _RecoveryQuestionsPageState
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: const [
               LogoImage(),
             ],
           ),

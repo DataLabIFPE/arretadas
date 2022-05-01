@@ -24,14 +24,14 @@ class _DetailsBodyState extends State<DetailsBody> {
             controller: widget.controller,
             itemBuilder: (context, index) {
               return Card(
-                margin: EdgeInsets.only(bottom: 10),
+                margin: const EdgeInsets.only(bottom: 10),
                 elevation: 4,
                 child: ListTile(
                   leading: widget.textos[index].leading == null
                       ? null
                       : Text(
                           widget.textos[index].leading.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                   title: Text(

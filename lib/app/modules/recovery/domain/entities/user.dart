@@ -13,7 +13,7 @@ class User {
 
   @override
   String toString() {
-    return 'ID $id\n' + 'NICKNAME: $nickname\n';
+    return 'ID $id\n' 'NICKNAME: $nickname\n';
   }
 
   Map<String, dynamic> toMap() {

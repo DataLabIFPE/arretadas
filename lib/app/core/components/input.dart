@@ -40,9 +40,9 @@ class Input extends StatelessWidget {
       obscureText: obscureText,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
-        labelText: this.label,
-        hintText: this.hint,
-        border: OutlineInputBorder(),
+        labelText: label,
+        hintText: hint,
+        border: const OutlineInputBorder(),
         suffixIcon: suffix,
         prefixIcon: icon == null ? null : Icon(icon),
       ),

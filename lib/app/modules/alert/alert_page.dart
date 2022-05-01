@@ -8,6 +8,7 @@ class AlertPage extends StatefulWidget {
   @override
   AlertPageState createState() => AlertPageState();
 }
+
 class AlertPageState extends State<AlertPage> {
   final AlertStore store = Modular.get();
 
@@ -18,7 +19,7 @@ class AlertPageState extends State<AlertPage> {
         title: Text(widget.title),
       ),
       body: Column(
-        children: <Widget>[],
+        children: const <Widget>[],
       ),
     );
   }

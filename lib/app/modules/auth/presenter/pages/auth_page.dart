@@ -20,6 +20,7 @@ class AuthPage extends StatefulWidget {
 
 class AuthPageState extends ModularState<AuthPage, AuthStore>
     with LoaderMixin, MessagesMixin {
+  @override
   final AuthStore store = Modular.get();
   final formKey = GlobalKey<FormState>();
   bool obscuredTextPassword = true;
@@ -32,15 +33,13 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
     disposer = store.observer(
       onError: (error) {
         showSnackbar(context, error);
-        print(error);
+        debugPrint(error.message);
       },
       onLoading: (loading) {
         showHideLoaderHelper(context, loading);
-        print(loading);
       },
       onState: (state) {
-        Modular.to.pushNamedAndRemoveUntil('/menu', ModalRoute.withName('/'));
-        print('$state');
+        Modular.to.pushNamedAndRemoveUntil('/menu/', ModalRoute.withName('/'));
       },
     );
   }
@@ -62,8 +61,8 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.cover,
@@ -73,13 +72,13 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  LogoImage(),
+                  const LogoImage(),
                   Card(
-                    margin: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
                     child: Form(
                       key: formKey,
                       child: Padding(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
                             Input(
@@ -98,7 +97,7 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 return null;
                               },
                             ),
-                            SizedBox(height: 15),
+                            const SizedBox(height: 15),
                             Input(
                               label: 'Senha',
                               hint: 'Digite sua senha',
@@ -137,14 +136,14 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                         fontWeight: FontWeight.bold,
                                         color: Colors.blue)),
                                 onTap: () {
-                                  Modular.to.pushNamed('recovery');
+                                  Modular.to.pushNamed('recovery/');
                                 },
                               ),
                             ),
-                            SizedBox(height: 15),
+                            const SizedBox(height: 15),
                             Button(
                               width: double.infinity,
-                              child: TextCustom(
+                              child: const TextCustom(
                                 text: 'entrar',
                               ),
                               buttonColor: AppColors.primaryColor,

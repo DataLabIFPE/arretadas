@@ -19,7 +19,7 @@ class FriendContactRepository {
     dio.options.headers['authorization'] = tokenBearer;
 
     try {
-      await dio.delete("${ApiEndpoint.url_heroku}/friendcontact/id/$id");
+      await dio.delete("${ApiEndpoint.urlHeroku}/friendcontact/id/$id");
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
@@ -42,7 +42,7 @@ class FriendContactRepository {
     var tokenBearer = 'Bearer ' + token;
     dio.options.headers['authorization'] = tokenBearer;
     try {
-      await dio.post("${ApiEndpoint.url_heroku}/friendcontact", data: {
+      await dio.post("${ApiEndpoint.urlHeroku}/friendcontact", data: {
         "id": id,
         "name": friendcontact.name,
         "number": friendcontact.number,
@@ -60,10 +60,6 @@ class FriendContactRepository {
   }
 
   Future<void> updateContact(Friendcontact friendcontact) async {
-    print('editado');
-    print(friendcontact.id);
-    print(friendcontact.name);
-    print(friendcontact.number);
     var dio = Dio();
     var shared = await Modular.getAsync<SharedPreferences>();
     var user = (shared.getString('user') ?? "");
@@ -73,14 +69,12 @@ class FriendContactRepository {
     dio.options.headers['authorization'] = tokenBearer;
     dio.options.headers['x-access-token'] = token;
     try {
-      var response = await dio.put(
-          "${ApiEndpoint.url_heroku}/friendcontact/${friendcontact.id}",
+      await dio.put(
+          "${ApiEndpoint.urlHeroku}/friendcontact/${friendcontact.id}",
           data: {
             "name": friendcontact.name,
             "number": friendcontact.number,
           });
-
-      print(response);
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {

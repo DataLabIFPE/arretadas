@@ -7,6 +7,7 @@ import 'package:arretadas/app/modules/usefulcontacts/usefulcontacts_module.dart'
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/pages/not_found_page.dart';
 import 'modules/home/home_module.dart';
 import 'modules/menu/menu_module.dart';
 import 'modules/register/register_module.dart';
@@ -26,5 +27,6 @@ class AppModule extends Module {
     ModuleRoute('/complaints', module: ComplaintsModule()),
     ModuleRoute('/usefulcontacts', module: UsefulcontactsModule()),
     ModuleRoute('/friendcontacts', module: FriendcontactsModule()),
+    WildcardRoute(child: (context, args) => const NotFoundPage()),
   ];
 }

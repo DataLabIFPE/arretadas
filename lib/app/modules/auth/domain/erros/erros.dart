@@ -4,5 +4,5 @@ class AuthException implements Exception {
   AuthException(this.message);
 
   @override
-  String toString() => '$message';
+  String toString() => message;
 }

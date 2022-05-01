@@ -21,11 +21,7 @@ class CustomDio {
     options.connectTimeout = 20000;
   }
 
-  void _onResponse(Response e, ResponseInterceptorHandler handler) {
-    print(e);
-  }
+  void _onResponse(Response e, ResponseInterceptorHandler handler) {}
 
-  void _onError(DioError e, ErrorInterceptorHandler handler) {
-    print(e);
-  }
+  void _onError(DioError e, ErrorInterceptorHandler handler) {}
 }

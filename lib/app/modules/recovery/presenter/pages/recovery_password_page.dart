@@ -35,17 +35,13 @@ class _PasswordChangePageState extends State<PasswordChangePage>
     disposer = store.observer(
       onError: (error) {
         showSnackbar(context, error);
-        print(error);
       },
       onLoading: (loading) {
         showHideLoaderHelper(context, loading);
-        print(loading);
       },
       onState: (state) {
-        //Modular.to.pushNamedAndRemoveUntil('/menu', ModalRoute.withName('/'));
         showSucess(context, 'Senha alterada com sucesso!');
         Modular.to.pop();
-        print('$state');
       },
     );
   }
@@ -88,12 +84,12 @@ class _PasswordChangePageState extends State<PasswordChangePage>
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
-                      child: Container(
+                      child: SizedBox(
                         height: MediaQuery.of(context).size.height * 0.3,
                         child: Form(
                           key: formKey,
                           child: Padding(
-                            padding: EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(15),
                             child: Column(
                               children: [
                                 Input(
@@ -123,10 +119,10 @@ class _PasswordChangePageState extends State<PasswordChangePage>
                                         : Icons.visibility_off),
                                   ),
                                 ),
-                                SizedBox(height: 15),
+                                const SizedBox(height: 15),
                                 Button(
                                   width: double.infinity,
-                                  child: TextCustom(
+                                  child: const TextCustom(
                                     text: 'alterar senha',
                                   ),
                                   buttonColor: AppColors.primaryColor,
