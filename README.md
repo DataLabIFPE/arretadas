@@ -60,7 +60,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [x] Info
 - [x] UsefulContacts
 - [x] FriendContacts
-- [x] RevoverPassword
+- [x] RecoverPassword
 
 <h2 id="contribuicao"> 🤔 Como contribuir? </h2>
 
