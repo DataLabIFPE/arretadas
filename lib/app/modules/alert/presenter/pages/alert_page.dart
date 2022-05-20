@@ -103,7 +103,7 @@ class AlertPageState extends State<AlertPage> with LoaderMixin, MessagesMixin {
                   print(id);
                   store.sendAlert(
                     AlertParams(
-                        userId: id ?? '',
+                        userId: id,
                         latitude: coordinations.latitude.toString(),
                         longitude: coordinations.longitude.toString(),
                         date: date,
