@@ -29,6 +29,8 @@ class RegisterApi implements RegisterDatasource {
         throw RegisterException("Sem conexão com a Internet");
       } else if (e.type == DioErrorType.other) {
         throw RegisterException("Sem conexão com a Internet");
+      } else if (e.response?.statusCode == 500) {
+        throw RegisterException("Usuário já cadastrado. Tente outro!");
       } else {
         throw RegisterException(e.message);
       }

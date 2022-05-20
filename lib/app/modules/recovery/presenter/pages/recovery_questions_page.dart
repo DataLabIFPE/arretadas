@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
+// ignore_for_file: unnecessary_non_null_assertion
+
 class RecoveryQuestionsPage extends StatefulWidget {
   const RecoveryQuestionsPage({Key? key}) : super(key: key);
 
@@ -42,7 +44,7 @@ class _RecoveryQuestionsPageState
         print('$state');
       },
     );
-    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {
       await showDialog<void>(
         context: context,
         barrierDismissible: false, // user must tap button!
@@ -51,149 +53,155 @@ class _RecoveryQuestionsPageState
           var indexQuestion = 1;
           final respostaController = TextEditingController();
           final usuarioController = TextEditingController();
-          return StatefulBuilder(builder: (context, setState) {
-            return GestureDetector(
-              onTap: () {
-                FocusScope.of(context).requestFocus(FocusNode());
-              },
-              child: Form(
-                key: formKey,
-                child: AlertDialog(
-                  content: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Text(
-                          'Informe o usuário'.toUpperCase(),
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Input(
-                          label: 'Usuário',
-                          controller: usuarioController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Informe o usuário.';
-                            }
-                            if (value.length < 3) {
-                              return 'Nickname inválido';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          'Informe a pergunta de segurança'.toUpperCase(),
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        DropdownButton<String>(
-                          isExpanded: true,
-                          value: dropdownValue,
-                          style: const TextStyle(color: Colors.black),
-                          underline: Container(
-                            height: 2,
-                            color: Colors.red,
+          return WillPopScope(
+            onWillPop: () async {
+              return false;
+            },
+            child: StatefulBuilder(builder: (context, setState) {
+              return GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
+                child: Form(
+                  key: formKey,
+                  child: AlertDialog(
+                    content: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Text(
+                            'Informe o usuário'.toUpperCase(),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          onChanged: (newValue) {
-                            setState(() {
-                              dropdownValue = newValue!;
-                              if (newValue ==
-                                  "Qual foi seu herói de infância?") {
-                                indexQuestion = 1;
-                              } else if (newValue ==
-                                  "Qual o nome do seu primo favorito?") {
-                                indexQuestion = 2;
-                              } else if (newValue ==
-                                  "Onde o seu pai e sua mãe se conheceram?") {
-                                indexQuestion = 3;
-                              } else if (newValue ==
-                                  "Qual era o nome do seu primeiro animal de estimação?") {
-                                indexQuestion = 4;
-                              } else if (newValue ==
-                                  "Qual era o nome do seu melhor amigo na adolescência?") {
-                                indexQuestion = 5;
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Input(
+                            label: 'Usuário',
+                            controller: usuarioController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Informe o usuário.';
                               }
-                            });
-                          },
-                          items: <String>[
-                            'Qual foi seu herói de infância?',
-                            'Qual o nome do seu primo favorito?',
-                            'Onde o seu pai e sua mãe se conheceram?',
-                            'Qual era o nome do seu primeiro animal de estimação?',
-                            'Qual era o nome do seu melhor amigo na adolescência?',
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          'Escolha a resposta'.toUpperCase(),
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Input(
-                          label: 'Resposta',
-                          controller: respostaController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Informe a resposta.';
-                            }
-                            if (value.length < 3) {
-                              return 'Resposta inválida';
-                            }
-                            return null;
-                          },
-                        ),
-                      ],
+                              if (value.length < 3) {
+                                return 'Nickname inválido';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            'Informe a pergunta de segurança'.toUpperCase(),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          DropdownButton<String>(
+                            isExpanded: true,
+                            value: dropdownValue,
+                            style: const TextStyle(color: Colors.black),
+                            underline: Container(
+                              height: 2,
+                              color: Colors.red,
+                            ),
+                            onChanged: (newValue) {
+                              setState(() {
+                                dropdownValue = newValue!;
+                                if (newValue ==
+                                    "Qual foi seu herói de infância?") {
+                                  indexQuestion = 1;
+                                } else if (newValue ==
+                                    "Qual o nome do seu primo favorito?") {
+                                  indexQuestion = 2;
+                                } else if (newValue ==
+                                    "Onde o seu pai e sua mãe se conheceram?") {
+                                  indexQuestion = 3;
+                                } else if (newValue ==
+                                    "Qual era o nome do seu primeiro animal de estimação?") {
+                                  indexQuestion = 4;
+                                } else if (newValue ==
+                                    "Qual era o nome do seu melhor amigo na adolescência?") {
+                                  indexQuestion = 5;
+                                }
+                              });
+                            },
+                            items: <String>[
+                              'Qual foi seu herói de infância?',
+                              'Qual o nome do seu primo favorito?',
+                              'Onde o seu pai e sua mãe se conheceram?',
+                              'Qual era o nome do seu primeiro animal de estimação?',
+                              'Qual era o nome do seu melhor amigo na adolescência?',
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            'Escolha a resposta'.toUpperCase(),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Input(
+                            label: 'Resposta',
+                            controller: respostaController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Informe a resposta.';
+                              }
+                              if (value.length < 3) {
+                                return 'Resposta inválida';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
                     ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: TextCustom(
+                          text: 'cancelar',
+                          fontFamily: 'Exo',
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        onPressed: () {
+                          Modular.to.pop();
+                          Modular.to.pop();
+                        },
+                      ),
+                      TextButton(
+                        child: TextCustom(
+                          text: 'enviar',
+                          fontFamily: 'Exo',
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        onPressed: () async {
+                          FocusScope.of(context).requestFocus(FocusNode());
+                          if (formKey.currentState!.validate()) {
+                            formKey.currentState!.save();
+                            print(dropdownValue);
+                            print(indexQuestion);
+                            print(respostaController.text);
+                            print(usuarioController.text);
+                            store.recovery(RecoveryQuestionsParams(
+                                nickname: usuarioController.text,
+                                indexQuestion: indexQuestion,
+                                answerQuestion: respostaController.text));
+                          }
+                        },
+                      ),
+                    ],
                   ),
-                  actions: <Widget>[
-                    TextButton(
-                      child: TextCustom(
-                        text: 'cancelar',
-                        fontFamily: 'Exo',
-                        color: Theme.of(context).primaryColor,
-                      ),
-                      onPressed: () {
-                        Modular.to.pop();
-                        Modular.to.pop();
-                      },
-                    ),
-                    TextButton(
-                      child: TextCustom(
-                        text: 'enviar',
-                        fontFamily: 'Exo',
-                        color: Theme.of(context).primaryColor,
-                      ),
-                      onPressed: () async {
-                        if (formKey.currentState!.validate()) {
-                          formKey.currentState!.save();
-                          print(dropdownValue);
-                          print(indexQuestion);
-                          print(respostaController.text);
-                          print(usuarioController.text);
-                          store.recovery(RecoveryQuestionsParams(
-                              nickname: usuarioController.text,
-                              indexQuestion: indexQuestion,
-                              answerQuestion: respostaController.text));
-                        }
-                      },
-                    ),
-                  ],
                 ),
-              ),
-            );
-          });
+              );
+            }),
+          );
         },
       );
     });

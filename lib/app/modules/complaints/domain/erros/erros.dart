@@ -4,5 +4,5 @@ class ComplaintException implements Exception {
   ComplaintException(this.message);
 
   @override
-  String toString() => 'ComplaintException(message: $message)';
+  String toString() => message;
 }

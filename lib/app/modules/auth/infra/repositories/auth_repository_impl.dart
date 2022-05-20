@@ -3,7 +3,6 @@ import 'package:arretadas/app/modules/auth/domain/erros/erros.dart';
 import 'package:arretadas/app/modules/auth/domain/repositories/auth_repository.dart';
 import 'package:arretadas/app/modules/auth/domain/usecases/login_usecase.dart';
 import 'package:arretadas/app/modules/auth/infra/datasources/auth_datasource.dart';
-
 import 'package:fpdart/fpdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
