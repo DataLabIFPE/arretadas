@@ -16,7 +16,7 @@ class RecoveryQuestionsApi implements RecoveryQuestionsDatasource {
   Future<User> verify(RecoveryQuestionsParams params) async {
     try {
       final response = await dio
-          .post('${ApiEndpoint.urlHeroku}/user/recover-questions', data: {
+          .post('${ApiEndpoint.urlProducao}/user/recover-questions', data: {
         'nickname': params.nickname,
         'indexQuestion': params.indexQuestion,
         'answerQuestion': params.answerQuestion,

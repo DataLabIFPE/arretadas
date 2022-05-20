@@ -94,18 +94,15 @@ class AlertPageState extends State<AlertPage> with LoaderMixin, MessagesMixin {
                 final controller = AlertController();
                 try {
                   final id = await controller.getUserId();
+                  final token = await controller.getToken();
                   var coordinations = await getLocation();
                   var dt = DateTime.now();
                   var date = DateFormat("yyyy-MM-dd").format(dt);
                   var hour = DateFormat("HH:mm").format(dt);
-                  print(coordinations.latitude);
-                  print(coordinations.longitude);
-                  print(date);
-                  print(hour);
-                  print(id);
                   store.sendAlert(
                     AlertParams(
                         userId: id,
+                        token: token,
                         latitude: coordinations.latitude.toString(),
                         longitude: coordinations.longitude.toString(),
                         date: date,
