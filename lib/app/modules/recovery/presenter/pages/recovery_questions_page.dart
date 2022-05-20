@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 
+// ignore_for_file: unnecessary_non_null_assertion
+
 class RecoveryQuestionsPage extends StatefulWidget {
   const RecoveryQuestionsPage({Key? key}) : super(key: key);
 

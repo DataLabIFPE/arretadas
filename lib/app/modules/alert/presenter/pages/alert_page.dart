@@ -10,6 +10,8 @@ import 'package:flutter_triple/flutter_triple.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 
+// ignore_for_file: unnecessary_non_null_assertion
+
 class AlertPage extends StatefulWidget {
   final String title;
   const AlertPage({Key? key, this.title = 'AlertPage'}) : super(key: key);
