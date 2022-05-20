@@ -24,7 +24,7 @@ class AlertPageState extends State<AlertPage> with LoaderMixin, MessagesMixin {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {
       _showMyDialog().then((value) => Navigator.of(context).pop());
     });
     disposer = store.observer(
