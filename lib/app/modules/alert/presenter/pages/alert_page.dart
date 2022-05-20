@@ -38,7 +38,6 @@ class AlertPageState extends State<AlertPage> with LoaderMixin, MessagesMixin {
         print(loading);
       },
       onState: (state) {
-        //Modular.to.pushNamedAndRemoveUntil('/menu', ModalRoute.withName('/'));
         showSucess(context, state);
         Navigator.of(context).pop();
       },
