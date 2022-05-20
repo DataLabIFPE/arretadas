@@ -28,6 +28,10 @@ class RecoveryQuestionsApi implements RecoveryQuestionsDatasource {
         throw RecoveryQuestionsException("Sem conexão com a Internet");
       } else if (e.type == DioErrorType.other) {
         throw RecoveryQuestionsException("Sem conexão com a Internet");
+      } else if (e.response?.statusCode == 404) {
+        throw RecoveryQuestionsException("Usuário não encontrado!");
+      } else if (e.response?.statusCode == 401) {
+        throw RecoveryQuestionsException("Resposta incorreta!");
       } else {
         throw RecoveryQuestionsException(e.message);
       }

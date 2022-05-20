@@ -19,8 +19,9 @@ class ComplaintsPage extends StatefulWidget {
   _ComplaintsPageState createState() => _ComplaintsPageState();
 }
 
-class _ComplaintsPageState extends State<ComplaintsPage>
+class _ComplaintsPageState extends ModularState<ComplaintsPage, ComplaintsStore>
     with MessagesMixin, LoaderMixin {
+  @override
   final ComplaintsStore store = Modular.get();
   final complaint = Complaint();
   int currentStep = 0;
@@ -29,7 +30,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
   String df = '';
   String hf = '';
   late Disposer disposer;
-  final controller = CheckboxController();
+  final controller1 = CheckboxController();
   var list = <String>[];
 
   @override
@@ -47,11 +48,16 @@ class _ComplaintsPageState extends State<ComplaintsPage>
         print(loading);
       },
       onState: (state) {
-        showSnackbar(context, state.hora);
+        showSucess(context, state);
         Navigator.pop(context);
-        print('$state');
+        print('state');
       },
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -161,9 +167,9 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                   flex: 2,
                   child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: (controller.itens1.length),
+                    itemCount: (controller1.itens1.length),
                     itemBuilder: (context, index) {
-                      var todo = controller.itens1[index];
+                      var todo = controller1.itens1[index];
                       return CheckboxListTile(
                         title: Text(todo.name),
                         controlAffinity: ListTileControlAffinity.leading,
@@ -191,9 +197,9 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                   flex: 2,
                   child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: (controller.itens2.length),
+                    itemCount: (controller1.itens2.length),
                     itemBuilder: (context, index) {
-                      var todo = controller.itens2[index];
+                      var todo = controller1.itens2[index];
                       return CheckboxListTile(
                         title: Text(
                           todo.name,

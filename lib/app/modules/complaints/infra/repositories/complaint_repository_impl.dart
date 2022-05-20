@@ -1,4 +1,3 @@
-import 'package:arretadas/app/modules/complaints/domain/entities/complaint.dart';
 import 'package:arretadas/app/modules/complaints/domain/erros/erros.dart';
 import 'package:arretadas/app/modules/complaints/domain/repositories/complaint_repository.dart';
 import 'package:arretadas/app/modules/complaints/domain/usecases/complaint_usecase.dart';
@@ -11,7 +10,7 @@ class ComplaintRepositoryImpl implements ComplaintRepository {
   ComplaintRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<ComplaintException, Complaint>> sendComplaint(
+  Future<Either<ComplaintException, String>> sendComplaint(
       ComplaintParams params) async {
     try {
       final response = await datasource.sendComplaint(params);

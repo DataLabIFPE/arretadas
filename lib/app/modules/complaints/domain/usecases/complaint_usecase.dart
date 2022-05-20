@@ -1,11 +1,10 @@
-import 'package:arretadas/app/modules/complaints/domain/entities/complaint.dart';
 import 'package:arretadas/app/modules/complaints/domain/erros/erros.dart';
 import 'package:arretadas/app/modules/complaints/domain/repositories/complaint_repository.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:latlong2/latlong.dart';
 
 abstract class IComplaintUsecase {
-  Future<Either<ComplaintException, Complaint>> call(ComplaintParams params);
+  Future<Either<ComplaintException, String>> call(ComplaintParams params);
 }
 
 class ComplaintUsecase implements IComplaintUsecase {
@@ -14,7 +13,7 @@ class ComplaintUsecase implements IComplaintUsecase {
   ComplaintUsecase(this.repository);
 
   @override
-  Future<Either<ComplaintException, Complaint>> call(
+  Future<Either<ComplaintException, String>> call(
       ComplaintParams params) async {
     return await repository.sendComplaint(params);
   }

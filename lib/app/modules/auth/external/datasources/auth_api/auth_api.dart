@@ -29,6 +29,8 @@ class AuthApi implements AuthDatasource {
         throw AuthException("Sem conexão com a Internet");
       } else if (e.type == DioErrorType.other) {
         throw AuthException("Sem conexão com a Internet");
+      } else if (e.response?.statusCode == 404) {
+        throw (AuthException("Usuário ou senha inválidos"));
       } else {
         throw AuthException(e.message);
       }

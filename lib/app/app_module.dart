@@ -1,3 +1,4 @@
+import 'package:arretadas/app/modules/alert/alert_module.dart';
 import 'package:arretadas/app/modules/auth/auth_module.dart';
 import 'package:arretadas/app/modules/complaints/complaints_module.dart';
 import 'package:arretadas/app/modules/friendcontacts/friendcontacts_module.dart';
@@ -18,6 +19,7 @@ class AppModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ModuleRoute(Modular.initialRoute, module: SplashModule()),
+    ModuleRoute('/alert', module: AlertModule()),
     ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/auth', module: AuthModule()),
     ModuleRoute('/register', module: RegisterModule()),
