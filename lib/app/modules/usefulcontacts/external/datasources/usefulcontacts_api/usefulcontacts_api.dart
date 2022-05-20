@@ -24,7 +24,8 @@ class UsefulcontactsApi implements UsefulcontactDatasource {
     dio.options.headers['authorization'] = tokenBearer;
 
     try {
-      final response = await dio.get('${ApiEndpoint.urlHeroku}/usefulcontacts');
+      final response =
+          await dio.get('${ApiEndpoint.urlProducao}/usefulcontacts');
 
       return response.data
           .map<Usefulcontact>((e) => Usefulcontact.fromMap(e))

@@ -33,6 +33,7 @@ class AlertUsecase implements IAlertUsecase {
 
 class AlertParams {
   final String userId;
+  final String token;
   final String latitude;
   final String longitude;
   final String date;
@@ -40,6 +41,7 @@ class AlertParams {
 
   AlertParams(
       {required this.userId,
+      required this.token,
       required this.latitude,
       required this.longitude,
       required this.date,
