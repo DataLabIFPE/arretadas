@@ -13,7 +13,7 @@ class RegisterApi implements RegisterDatasource {
   @override
   Future<void> cadastrar(RegisterParams params) async {
     try {
-      final response = await dio.post('${ApiEndpoint.urlProducao}/user', data: {
+      final response = await dio.post('${ApiEndpoint.urlHeroku}/user', data: {
         'nickname': params.nickname,
         'password': params.password,
         'indexQuestion': params.indexQuestion,

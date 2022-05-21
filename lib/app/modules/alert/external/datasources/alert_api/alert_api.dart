@@ -13,8 +13,7 @@ class AlertApi implements AlertDatasource {
   Future<String> sendAlert(AlertParams params) async {
     dio.options.headers['authorization'] = 'Bearer ${params.token}';
     try {
-      final response =
-          await dio.post('${ApiEndpoint.urlProducao}/alert', data: {
+      final response = await dio.post('${ApiEndpoint.urlHeroku}/alert', data: {
         'id': params.userId,
         'latitude': params.latitude,
         'longitude': params.longitude,

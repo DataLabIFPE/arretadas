@@ -17,7 +17,7 @@ class AuthApi implements AuthDatasource {
   Future<User> login(CredentialsParams params) async {
     try {
       final response = await dio.post(
-          '${ApiEndpoint.urlProducao}/user/authenticate',
+          '${ApiEndpoint.urlHeroku}/user/authenticate',
           data: {'nickname': params.nickname, 'password': params.password});
       if (response.data['data']['city'] != null) {
         ControllerCity().setCity(response.data['data']['city']);
