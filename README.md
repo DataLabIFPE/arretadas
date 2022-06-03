@@ -55,7 +55,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [x] Auth
 - [x] Register
 - [x] Menu
-- [ ] Alert
+- [x] Alert
 - [x] Complaints
 - [x] Info
 - [x] UsefulContacts
