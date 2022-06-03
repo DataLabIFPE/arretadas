@@ -19,8 +19,8 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
 
   @override
   void initState() {
+    super.initState();
     store.checkAuth();
-
     disposer = store.observer(
       onState: (state) {
         switch (state) {
@@ -37,14 +37,12 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
         }
       },
     );
-
-    super.initState();
   }
 
   @override
   void dispose() {
-    super.dispose();
     disposer();
+    super.dispose();
   }
 
   @override

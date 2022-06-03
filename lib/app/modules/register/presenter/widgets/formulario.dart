@@ -55,7 +55,7 @@ class _FormularioState extends State<Formulario>
       Step(
         state: currentStep > 0 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 0,
-        title: const Text('Credênciais'),
+        title: const Text('Credenciais'),
         content: Form(
           key: formKey,
           child: Column(
