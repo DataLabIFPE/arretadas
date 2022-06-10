@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.datalabifpe.arretadas.arretadas">
+    package="com.github.datalabifpe.arretadas">
    <application
         android:label="Arretadas"
         android:icon="@mipmap/ic_launcher">

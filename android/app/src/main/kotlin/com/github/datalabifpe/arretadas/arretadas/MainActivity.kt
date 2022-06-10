@@ -1,4 +1,4 @@
-package com.github.datalabifpe.arretadas.arretadas
+package com.github.datalabifpe.arretadas
 
 import io.flutter.embedding.android.FlutterActivity
 
