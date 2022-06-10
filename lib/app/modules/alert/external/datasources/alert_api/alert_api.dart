@@ -11,6 +11,7 @@ class AlertApi implements AlertDatasource {
 
   @override
   Future<String> sendAlert(AlertParams params) async {
+    dio.options.connectTimeout = 5000;
     dio.options.headers['authorization'] = 'Bearer ${params.token}';
     try {
       final response = await dio.post('${ApiEndpoint.urlHeroku}/alert', data: {

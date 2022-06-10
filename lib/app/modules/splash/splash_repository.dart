@@ -10,6 +10,7 @@ class SplashRepository {
   SplashRepository(this.dio);
 
   Future<User> refreshToken(User user) async {
+    dio.options.connectTimeout = 5000;
     try {
       final response =
           await dio.post("${ApiEndpoint.urlHeroku}/user/refresh-token", data: {

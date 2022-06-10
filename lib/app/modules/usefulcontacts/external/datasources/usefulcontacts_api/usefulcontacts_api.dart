@@ -22,6 +22,7 @@ class UsefulcontactsApi implements UsefulcontactDatasource {
     var token = userMap['token'];
     var tokenBearer = 'Bearer ' + token;
     dio.options.headers['authorization'] = tokenBearer;
+    dio.options.connectTimeout = 5000;
 
     try {
       final response = await dio.get('${ApiEndpoint.urlHeroku}/usefulcontacts');
