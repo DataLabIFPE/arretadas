@@ -84,12 +84,14 @@ $ git push origin minha-feature
 Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
 
 <h2 id="contribuidores"> 👷 Contribuidores </h2>
+
 - [@ssferraz](https://github.com/ssferraz) como Samuel Ferraz (Desenvolvedor)
 - [@victoorraphael](https://github.com/victoorraphael) como Victor Raphael (Desenvolvedor)
 - [@lyra-solfieri](https://github.com/lyra-solfieri) como Bruno Lyra (Desenvolvedor)
 - [@jerickleandro](https://github.com/jerickleandro) como Erick Leandro (Desenvolvedor)
 - [@raffaelcsar](https://github.com/jerickleandro) como Raffael César (Desenvolvedor)
 - [@JoaoVictorLacerda](https://github.com/JoaoVictorLacerda) como João Victor Lacerda (Desenvolvedor)
+
 <h2 id="licenca">  📝 Licença </h2>
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
