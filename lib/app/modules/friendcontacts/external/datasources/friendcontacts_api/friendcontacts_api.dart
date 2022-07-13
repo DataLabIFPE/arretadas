@@ -33,7 +33,7 @@ class FriendcontactsApi implements FriendcontactDatasource {
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
-        throw Failure("Sem conexão com a Internet");
+        throw Failure("Servidor FORA DO AR! Tente novamente mais tarde!");
       } else if (e.type == DioErrorType.other) {
         throw Failure("Sem conexão com a Internet");
       } else {

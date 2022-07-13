@@ -26,7 +26,8 @@ class RecoveryQuestionsApi implements RecoveryQuestionsDatasource {
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
-        throw RecoveryQuestionsException("Sem conexão com a Internet");
+        throw RecoveryQuestionsException(
+            "Servidor FORA DO AR! Tente novamente mais tarde!");
       } else if (e.type == DioErrorType.other) {
         throw RecoveryQuestionsException("Sem conexão com a Internet");
       } else if (e.response?.statusCode == 404) {

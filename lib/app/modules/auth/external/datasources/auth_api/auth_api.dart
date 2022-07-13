@@ -27,7 +27,7 @@ class AuthApi implements AuthDatasource {
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
-        throw AuthException("Sem conexão com a Internet");
+        throw AuthException("Servidor FORA DO AR! Tente novamente mais tarde!");
       } else if (e.type == DioErrorType.other) {
         throw AuthException("Sem conexão com a Internet");
       } else if (e.response?.statusCode == 404) {

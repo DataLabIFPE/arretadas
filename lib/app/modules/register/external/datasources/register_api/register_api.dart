@@ -27,7 +27,8 @@ class RegisterApi implements RegisterDatasource {
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
-        throw RegisterException("Sem conexão com a Internet");
+        throw RegisterException(
+            "Servidor FORA DO AR! Tente novamente mais tarde!");
       } else if (e.type == DioErrorType.other) {
         throw RegisterException("Sem conexão com a Internet");
       } else if (e.response?.statusCode == 500) {

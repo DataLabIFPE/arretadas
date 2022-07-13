@@ -37,7 +37,8 @@ class ComplaintsApi implements ComplaintDatasource {
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
-        throw ComplaintException("Sem conexão com a Internet");
+        throw ComplaintException(
+            "Servidor FORA DO AR! Tente novamente mais tarde!");
       } else if (e.type == DioErrorType.other) {
         throw ComplaintException("Sem conexão com a Internet");
       } else {

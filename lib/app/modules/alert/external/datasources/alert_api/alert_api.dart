@@ -25,7 +25,8 @@ class AlertApi implements AlertDatasource {
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
-        throw AlertException("Sem conexão com a Internet");
+        throw AlertException(
+            "Servidor FORA DO AR! Tente novamente mais tarde!");
       } else if (e.type == DioErrorType.other) {
         throw AlertException("Sem conexão com a Internet");
       } else {

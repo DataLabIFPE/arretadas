@@ -23,7 +23,8 @@ class RecoveryPasswordApi implements RecoveryPasswordDatasource {
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
-        throw RecoveryPasswordException("Sem conexão com a Internet");
+        throw RecoveryPasswordException(
+            "Servidor FORA DO AR! Tente novamente mais tarde!");
       } else if (e.type == DioErrorType.other) {
         throw RecoveryPasswordException("Sem conexão com a Internet");
       } else {
