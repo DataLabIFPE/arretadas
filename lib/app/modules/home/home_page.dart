@@ -37,18 +37,20 @@ class HomePageState extends State<HomePage> {
             Column(
               children: [
                 Button(
-                    onPressed: () => Modular.to.pushNamed('/register'),
-                    child: const TextCustom(text: 'cadastrar')),
+                  onPressed: () => Modular.to.pushNamed('/register'),
+                  child: const TextCustom(text: 'cadastrar'),
+                ),
                 const SizedBox(
                   height: 10,
                 ),
                 Button(
-                    onPressed: () => Modular.to.pushNamed('/auth'),
-                    buttonColor: AppColors.primaryColorAccent,
-                    child: const TextCustom(
-                      text: 'entrar',
-                      color: AppColors.primaryColor,
-                    )),
+                  onPressed: () => Modular.to.pushNamed('/auth'),
+                  buttonColor: AppColors.primaryColorAccent,
+                  child: const TextCustom(
+                    text: 'entrar',
+                    color: AppColors.primaryColor,
+                  ),
+                ),
               ],
             ),
           ],
