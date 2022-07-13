@@ -149,25 +149,31 @@ class _ContactPageState extends State<ContactPage> {
                       const SizedBox(
                         height: 10,
                       ),
-                      Input(
-                        maxLength: 10,
+                      TextFormField(
                         controller: _phoneController,
-                        label: 'Telefone',
-                        hint: 'DDXXXXXXXX',
-                        textInputType: TextInputType.number,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        inputFormatters: [
+                          MaskTextInputFormatter(
+                            mask: '(##)####-####',
+                            filter: {"#": RegExp(r'[0-9]')},
+                            type: MaskAutoCompletionType.lazy,
+                          ),
+                        ],
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Telefone',
+                          hintText: '(XX)XXXX-XXXX',
+                        ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Informe o telefone.';
                           }
-                          String patttern = r'(^[0-9]*$)';
-                          RegExp regExp = RegExp(patttern);
-                          if (value.length != 10) {
-                            return "O celular deve ter 10 dígitos";
-                          } else if (!regExp.hasMatch(value)) {
-                            return "O número do celular so deve conter dígitos";
-                          }
                           return null;
                         },
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                     ],
                   ),
