@@ -160,6 +160,20 @@ class AuthPageState extends ModularState<AuthPage, AuthStore>
                                 }
                               },
                             ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Button(
+                              buttonColor: AppColors.primaryColor.shade100,
+                              width: double.infinity,
+                              child: const TextCustom(
+                                text: 'voltar',
+                                color: AppColors.primaryColor,
+                              ),
+                              onPressed: () {
+                                Modular.to.pop();
+                              },
+                            ),
                           ],
                         ),
                       ),
