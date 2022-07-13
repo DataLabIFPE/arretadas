@@ -34,10 +34,11 @@ class _ButtonState extends State<Button> {
       width: width,
       height: height,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(
-            color: Colors.white,
-          )),
+        borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(
+          color: Colors.white,
+        ),
+      ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shadowColor: Colors.transparent,
