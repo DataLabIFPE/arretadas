@@ -113,20 +113,21 @@ class _ComplaintsPageState extends ModularState<ComplaintsPage, ComplaintsStore>
             margin: const EdgeInsets.only(top: 20),
             child: Row(
               children: [
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                if (currentStep == 0)
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        primary: Colors.grey,
                       ),
+                      child: const Text('SAIR'),
+                      onPressed: () {
+                        Modular.to.pop();
+                      },
                     ),
-                    child: Text(isLastStep ? 'ENVIAR' : 'CONTINUAR'),
-                    onPressed: details.onStepContinue,
                   ),
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
                 if (currentStep != 0)
                   Expanded(
                     child: ElevatedButton(
@@ -140,6 +141,20 @@ class _ComplaintsPageState extends ModularState<ComplaintsPage, ComplaintsStore>
                       onPressed: details.onStepCancel,
                     ),
                   ),
+                const SizedBox(
+                  width: 12,
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                    child: Text(isLastStep ? 'ENVIAR' : 'CONTINUAR'),
+                    onPressed: details.onStepContinue,
+                  ),
+                ),
               ],
             ),
           );
