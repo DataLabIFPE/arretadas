@@ -44,7 +44,7 @@ class _RecoveryQuestionsPageState
         print('$state');
       },
     );
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       await showDialog<void>(
         context: context,
         barrierDismissible: false, // user must tap button!
