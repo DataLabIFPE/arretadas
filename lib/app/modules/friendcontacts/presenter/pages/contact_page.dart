@@ -1,8 +1,9 @@
 // ignore_for_file: unnecessary_const, prefer_typing_uninitialized_variables
 import 'package:arretadas/app/core/components/input.dart';
-import 'package:arretadas/app/modules/friendcontacts/domain/entities/friendcontact.dart';
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
+import '../../domain/entities/friendcontact.dart';
 import '../friendcontacts_controller.dart';
 
 class ContactPage extends StatefulWidget {
@@ -23,12 +24,14 @@ class _ContactPageState extends State<ContactPage> {
   final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  late bool isButtonDisabled;
 
   var nome;
 
   @override
   void initState() {
     super.initState();
+    isButtonDisabled = false;
     if (widget.name != null && widget.number != null) {
       _nameController.text = widget.name;
       _phoneController.text = widget.number;
@@ -45,27 +48,35 @@ class _ContactPageState extends State<ContactPage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.save),
-        onPressed: () async {
-          if (formKey.currentState!.validate()) {
-            formKey.currentState!.save();
-            if (widget.id != null &&
-                widget.name != null &&
-                widget.number != null) {
-              await controller.updateContact(Friendcontact(
-                  id: widget.id,
-                  name: _nameController.text,
-                  number: _phoneController.text));
-            } else {
-              await controller.addContact(Friendcontact(
-                  id: '',
-                  name: _nameController.text,
-                  number: _phoneController.text));
-            }
-            Navigator.pop(context);
-            Navigator.pop(context);
-            Navigator.pushNamed(context, '/friendcontacts');
-          }
-        },
+        onPressed: isButtonDisabled
+            ? null
+            : () async {
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState!.save();
+                  setState(() {
+                    isButtonDisabled = true;
+                  });
+
+                  if (widget.id != null &&
+                      widget.name != null &&
+                      widget.number != null) {
+                    await controller.updateContact(Friendcontact(
+                        id: widget.id,
+                        name: _nameController.text,
+                        number: _phoneController.text
+                            .replaceAll(RegExp(r'\D'), '')));
+                  } else {
+                    await controller.addContact(Friendcontact(
+                        id: '',
+                        name: _nameController.text,
+                        number: _phoneController.text
+                            .replaceAll(RegExp(r'\D'), '')));
+                  }
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/friendcontacts');
+                }
+              },
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10),
