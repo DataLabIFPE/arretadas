@@ -36,7 +36,7 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
       }
     }, onError: (e) {
       print(e);
-      Modular.to.pushReplacementNamed('/error', arguments: store);
+      Modular.to.pushReplacementNamed('/error');
     });
   }
 
