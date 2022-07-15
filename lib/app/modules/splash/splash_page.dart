@@ -21,22 +21,23 @@ class SplashPageState extends ModularState<SplashPage, SplashStore> {
   void initState() {
     super.initState();
     store.checkAuth();
-    disposer = store.observer(
-      onState: (state) {
-        switch (state) {
-          case UserLogged.authenticate:
-            Modular.to.pushReplacementNamed('/menu');
-            print(state);
-            break;
-          case UserLogged.unauthenticate:
-            Modular.to.pushReplacementNamed('/home');
-            print(state);
-            break;
-          default:
-            break;
-        }
-      },
-    );
+    disposer = store.observer(onState: (state) {
+      switch (state) {
+        case UserLogged.authenticate:
+          Modular.to.pushReplacementNamed('/menu');
+          print(state);
+          break;
+        case UserLogged.unauthenticate:
+          Modular.to.pushReplacementNamed('/home');
+          print(state);
+          break;
+        default:
+          break;
+      }
+    }, onError: (e) {
+      print(e);
+      Modular.to.pushReplacementNamed('/error');
+    });
   }
 
   @override
