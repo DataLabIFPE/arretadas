@@ -120,7 +120,7 @@ class _ContactPageState extends State<ContactPage> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: AssetImage("assets/images/icon_person.png"),
+                            image: AssetImage("assets/images/icon_friend.png"),
                           ),
                         ),
                       ),

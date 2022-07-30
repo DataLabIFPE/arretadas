@@ -15,10 +15,89 @@ class MenuPage extends StatefulWidget {
 
 class MenuPageState extends State<MenuPage> {
   final MenuStore store = Modular.get();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: Drawer(
+        width: MediaQuery.of(context).size.width * 0.45,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                color: AppColors.primaryColor,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    height: 80,
+                    margin: const EdgeInsets.only(top: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Image.asset('assets/images/icon_person.png',
+                        color: AppColors.primaryColorAccent),
+                  ),
+                  const TextCustom(
+                    text: 'Configurações',
+                    fontFamily: 'exo',
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              title: const TextCustom(
+                text: 'mudar senha',
+                color: Colors.black54,
+                fontFamily: 'Exo',
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const TextCustom(
+                text: 'apagar conta',
+                color: Colors.black54,
+                fontFamily: 'Exo',
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              contentPadding: const EdgeInsets.only(left: 15),
+              title: const TextCustom(
+                text: 'Termos e Condições',
+                color: Colors.black54,
+                fontFamily: 'Exo',
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            TextButton(
+              onPressed: () {
+                store.signOut();
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/', (route) => false);
+              },
+              child: const TextCustom(
+                text: 'sair',
+                color: AppColors.primaryColor,
+                fontFamily: 'Exo',
+                fontSize: 18,
+              ),
+            )
+          ],
+        ),
+      ),
+      key: _scaffoldKey,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -32,22 +111,31 @@ class MenuPageState extends State<MenuPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const <Widget>[
-                        Text(
-                          'Arretadas',
-                          style: TextStyle(
-                            color: Colors.redAccent,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Exo',
-                          ),
-                        ),
-                      ],
+                    const Text(
+                      'Arretadas',
+                      style: TextStyle(
+                        color: Colors.redAccent,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Exo',
+                      ),
                     ),
-                    TextButton(
+                    GestureDetector(
+                      onTap: () {
+                        _scaffoldKey.currentState?.openEndDrawer();
+                      },
+                      child: Container(
+                        height: 75,
+                        margin: const EdgeInsets.only(top: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white70,
+                            borderRadius: BorderRadius.circular(50)),
+                        child: Image.asset('assets/images/icon_person.png',
+                            color: AppColors.primaryColor),
+                      ),
+                    ),
+
+                    /*TextButton(
                       onPressed: () {
                         store.signOut();
                         Navigator.of(context)
@@ -59,7 +147,7 @@ class MenuPageState extends State<MenuPage> {
                         fontFamily: 'Exo',
                         fontSize: 18,
                       ),
-                    ),
+                    ),*/
                   ],
                 ),
                 Button(
@@ -77,7 +165,6 @@ class MenuPageState extends State<MenuPage> {
                           pageBuilder: (BuildContext context, _, __) {
                             return AlertModule();
                           }));
-                      //Modular.to.pushNamed('/alert');
                     }),
                 Button(
                   margin: const EdgeInsets.only(top: 20),
