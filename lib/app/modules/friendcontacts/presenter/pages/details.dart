@@ -11,6 +11,7 @@ class FriendcontactDetails extends StatefulWidget {
   final String name;
   final String number;
   final int index;
+
   const FriendcontactDetails(
       {Key? key,
       required this.id,
@@ -26,6 +27,7 @@ class FriendcontactDetails extends StatefulWidget {
 class _FriendcontactDetailsState extends State<FriendcontactDetails> {
   final FriendcontactsStore store = Modular.get();
   final controller = FriendContactController();
+
   @override
   Widget build(BuildContext context) {
     return Container(

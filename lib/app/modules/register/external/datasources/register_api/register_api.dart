@@ -14,7 +14,7 @@ class RegisterApi implements RegisterDatasource {
   Future<void> cadastrar(RegisterParams params) async {
     dio.options.connectTimeout = 5000;
     try {
-      final response = await dio.post('${ApiEndpoint.urlHeroku}/user', data: {
+      final response = await dio.post('${ApiEndpoint.urlProducao}/user', data: {
         'nickname': params.nickname,
         'password': params.password,
         'indexQuestion': params.indexQuestion,

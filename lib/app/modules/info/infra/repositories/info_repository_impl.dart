@@ -1,5 +1,5 @@
-import 'package:arretadas/app/modules/info/domain/errors/erros.dart';
 import 'package:arretadas/app/modules/info/domain/entities/info.dart';
+import 'package:arretadas/app/modules/info/domain/errors/erros.dart';
 import 'package:arretadas/app/modules/info/domain/repositories/info_repository.dart';
 import 'package:arretadas/app/modules/info/infra/datasources/info_datasource.dart';
 import 'package:fpdart/fpdart.dart';

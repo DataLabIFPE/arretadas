@@ -14,7 +14,9 @@ import 'contact_page.dart';
 
 class FriendcontactsPage extends StatefulWidget {
   final String title;
+
   const FriendcontactsPage({Key? key, this.title = 'Amigos'}) : super(key: key);
+
   @override
   FriendcontactsPageState createState() => FriendcontactsPageState();
 }

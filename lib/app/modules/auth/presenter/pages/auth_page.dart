@@ -14,6 +14,7 @@ import 'package:flutter_triple/flutter_triple.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
+
   @override
   AuthPageState createState() => AuthPageState();
 }

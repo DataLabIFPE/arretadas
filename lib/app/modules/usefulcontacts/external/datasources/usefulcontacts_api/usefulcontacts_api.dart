@@ -20,13 +20,14 @@ class UsefulcontactsApi implements UsefulcontactDatasource {
     var user = (shared.getString('user') ?? "");
     var userMap = json.decode(user);
     var token = userMap['token'];
+    //var city = userMap['city'];
     var tokenBearer = 'Bearer ' + token;
     dio.options.headers['authorization'] = tokenBearer;
     dio.options.connectTimeout = 5000;
 
     try {
-      final response = await dio.get('${ApiEndpoint.urlHeroku}/usefulcontacts');
-
+      final response =
+          await dio.get('${ApiEndpoint.urlProducao}/usefulcontacts');
       return response.data
           .map<Usefulcontact>((e) => Usefulcontact.fromMap(e))
           .toList();

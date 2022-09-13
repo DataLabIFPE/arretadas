@@ -11,6 +11,7 @@ class ContactPage extends StatefulWidget {
   final id;
   final name;
   final number;
+
   const ContactPage(
       {Key? key, this.title = 'Novo contato', this.name, this.number, this.id})
       : super(key: key);
@@ -120,7 +121,7 @@ class _ContactPageState extends State<ContactPage> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: AssetImage("assets/images/icon_person.png"),
+                            image: AssetImage("assets/images/icon_friend.png"),
                           ),
                         ),
                       ),

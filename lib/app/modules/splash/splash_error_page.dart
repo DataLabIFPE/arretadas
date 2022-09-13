@@ -19,6 +19,7 @@ class _SplashErrorPageState extends State<SplashErrorPage>
     with LoaderMixin, MessagesMixin {
   final SplashStore store = Modular.get();
   late bool isButtonDisabled = false;
+
   @override
   void initState() {
     super.initState();
@@ -62,6 +63,10 @@ class _SplashErrorPageState extends State<SplashErrorPage>
               width: MediaQuery.of(context).size.width * 0.35,
               height: MediaQuery.of(context).size.height * 0.35,
               child: Image.asset("assets/icons/icon_white.png"),
+            ),
+            const TextCustom(text: "Sem conexão com a internet"),
+            const SizedBox(
+              height: 15,
             ),
             Button(
               buttonColor: AppColors.primaryColorAccent,

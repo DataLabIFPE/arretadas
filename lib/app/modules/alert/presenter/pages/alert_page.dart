@@ -14,7 +14,9 @@ import 'package:intl/intl.dart';
 
 class AlertPage extends StatefulWidget {
   final String title;
+
   const AlertPage({Key? key, this.title = 'AlertPage'}) : super(key: key);
+
   @override
   AlertPageState createState() => AlertPageState();
 }

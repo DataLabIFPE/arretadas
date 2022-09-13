@@ -18,7 +18,7 @@ class AuthApi implements AuthDatasource {
     dio.options.connectTimeout = 5000;
     try {
       final response = await dio.post(
-          '${ApiEndpoint.urlHeroku}/user/authenticate',
+          '${ApiEndpoint.urlProducao}/user/authenticate',
           data: {'nickname': params.nickname, 'password': params.password});
       if (response.data['data']['city'] != null) {
         ControllerCity().setCity(response.data['data']['city']);

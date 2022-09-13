@@ -17,7 +17,7 @@ class RecoveryQuestionsApi implements RecoveryQuestionsDatasource {
     dio.options.connectTimeout = 5000;
     try {
       final response = await dio
-          .post('${ApiEndpoint.urlHeroku}/user/recover-questions', data: {
+          .post('${ApiEndpoint.urlProducao}/user/recover-questions', data: {
         'nickname': params.nickname,
         'indexQuestion': params.indexQuestion,
         'answerQuestion': params.answerQuestion,

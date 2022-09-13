@@ -3,10 +3,13 @@ import 'package:arretadas/app/core/global/models/register_model.dart';
 import 'package:arretadas/app/core/mixins/loader_mixin.dart';
 import 'package:arretadas/app/core/mixins/messages_mixin.dart';
 import 'package:arretadas/app/modules/register/domain/usecases/register_usecase.dart';
+import 'package:arretadas/app/modules/register/presenter/controller/register_controller.dart';
 import 'package:arretadas/app/modules/register/presenter/store/register_store.dart';
+import 'package:arretadas/app/modules/register/presenter/widgets/term_conditionals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
+import 'package:provider/provider.dart';
 
 class Formulario extends StatefulWidget {
   const Formulario({Key? key}) : super(key: key);
@@ -28,10 +31,20 @@ class _FormularioState extends State<Formulario>
   var passwordCacheConfirm = "";
   late Disposer disposer;
   var indexQuestion = 1;
+  late double height = 480;
+  bool isCheckboxAccept = false;
+  final wid = const TermConditionalsWidget();
 
   @override
   void initState() {
     super.initState();
+    final controller = context.read<RegisterController>();
+
+    controller.addListener(() {
+      isCheckboxAccept = controller.isAccepted;
+      setState(() {});
+    });
+
     register = register.copyWith(city: cityValue);
     disposer = store.observer(
       onError: (error) {
@@ -265,6 +278,16 @@ class _FormularioState extends State<Formulario>
                 );
               }).toList(),
             ),
+            CheckboxListTile(
+                contentPadding: EdgeInsets.zero,
+                controlAffinity: ListTileControlAffinity.leading,
+                title: wid,
+                value: isCheckboxAccept,
+                onChanged: (value) {
+                  setState(() {
+                    isCheckboxAccept = value!;
+                  });
+                }),
           ],
         ),
       ),
@@ -273,103 +296,132 @@ class _FormularioState extends State<Formulario>
 
   @override
   Widget build(BuildContext context) {
-    return Stepper(
-      type: StepperType.horizontal,
-      steps: getSteps(),
-      currentStep: currentStep,
-      onStepContinue: () {
-        final isLastStep = currentStep == getSteps().length - 1;
-        formKey.currentState?.save();
-        final isValid = register.nickname.isNotEmpty &&
-            register.password.isNotEmpty &&
-            register.indexQuestion != 0 &&
-            register.answerQuestion.isNotEmpty &&
-            register.city.isNotEmpty;
-        if (isLastStep && isValid) {
-          final params = RegisterParams(
-            nickname: register.nickname,
-            password: register.password,
-            protectionCode: register.protectionCode,
-            indexQuestion: register.indexQuestion,
-            answerQuestion: register.answerQuestion,
-            city: register.city,
-            roles: register.roles,
-          );
-          store.cadastrar(params);
-        } else if (isLastStep) {
-          showSnackbar(context, 'Campos inválidos. Preencha corretamente!');
-        } else {
-          setState(() {
-            currentStep += 1;
-          });
-        }
-      },
-      onStepTapped: (value) {
-        setState(() {
-          currentStep = value;
-        });
-      },
-      onStepCancel: currentStep == 0
-          ? null
-          : () {
-              setState(
-                () {
-                  currentStep -= 1;
-                },
+    return Card(
+      child: SizedBox(
+        height: height,
+        child: Stepper(
+          type: StepperType.horizontal,
+          steps: getSteps(),
+          currentStep: currentStep,
+          onStepContinue: () {
+            final isLastStep = currentStep == getSteps().length - 1;
+            formKey.currentState?.save();
+            final isValid = register.nickname.isNotEmpty &&
+                register.password.isNotEmpty &&
+                register.indexQuestion != 0 &&
+                register.answerQuestion.isNotEmpty &&
+                register.city.isNotEmpty;
+
+            if (isLastStep && isValid && isCheckboxAccept) {
+              final params = RegisterParams(
+                nickname: register.nickname,
+                password: register.password,
+                protectionCode: register.protectionCode,
+                indexQuestion: register.indexQuestion,
+                answerQuestion: register.answerQuestion,
+                city: register.city,
+                roles: register.roles,
               );
-            },
-      controlsBuilder: (BuildContext context, ControlsDetails details) {
-        final isLastStep = currentStep == getSteps().length - 1;
-        return Container(
-          margin: const EdgeInsets.only(top: 20),
-          child: Row(
-            children: [
-              if (currentStep == 0)
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      primary: Colors.grey,
-                    ),
-                    child: const Text('SAIR'),
-                    onPressed: () {
-                      Modular.to.pop();
+              store.cadastrar(params);
+            } else if (!isCheckboxAccept && isLastStep) {
+              showSnackbar(context, 'Aceite os termos e condições!');
+            } else if (isLastStep) {
+              showSnackbar(context, 'Campos inválidos. Preencha corretamente!');
+            } else {
+              setState(() {
+                currentStep += 1;
+                if (currentStep == 0) {
+                  height = 480;
+                } else if (currentStep == 1) {
+                  height = 380;
+                } else if (currentStep == 2) {
+                  height = 320;
+                }
+              });
+            }
+          },
+          onStepTapped: (value) {
+            setState(() {
+              currentStep = value;
+              if (currentStep == 0) {
+                height = 480;
+              } else if (currentStep == 1) {
+                height = 380;
+              } else if (currentStep == 2) {
+                height = 320;
+              }
+            });
+          },
+          onStepCancel: currentStep == 0
+              ? null
+              : () {
+                  setState(
+                    () {
+                      currentStep -= 1;
+                      if (currentStep == 0) {
+                        height = 480;
+                      } else if (currentStep == 1) {
+                        height = 380;
+                      } else if (currentStep == 2) {
+                        height = 320;
+                      }
                     },
-                  ),
-                ),
-              if (currentStep != 0)
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                  );
+                },
+          controlsBuilder: (BuildContext context, ControlsDetails details) {
+            final isLastStep = currentStep == getSteps().length - 1;
+            return Container(
+              margin: const EdgeInsets.only(top: 20),
+              child: Row(
+                children: [
+                  if (currentStep == 0)
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          backgroundColor: Colors.grey,
+                        ),
+                        child: const Text('SAIR'),
+                        onPressed: () {
+                          Modular.to.pop();
+                        },
                       ),
-                      primary: Colors.grey,
                     ),
-                    child: const Text('VOLTAR'),
-                    onPressed: details.onStepCancel,
+                  if (currentStep != 0)
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          backgroundColor: Colors.grey,
+                        ),
+                        child: const Text('VOLTAR'),
+                        onPressed: details.onStepCancel,
+                      ),
+                    ),
+                  const SizedBox(
+                    width: 12,
                   ),
-                ),
-              const SizedBox(
-                width: 12,
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                      ),
+                      child: Text(isLastStep ? 'ENVIAR' : 'CONTINUAR'),
+                      onPressed: details.onStepContinue,
                     ),
                   ),
-                  child: Text(isLastStep ? 'ENVIAR' : 'CONTINUAR'),
-                  onPressed: details.onStepContinue,
-                ),
+                ],
               ),
-            ],
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
 }

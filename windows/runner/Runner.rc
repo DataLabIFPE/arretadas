@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.github.datalabifpe" "\0"
+            VALUE "CompanyName", "com.github.datalab.ifpe" "\0"
             VALUE "FileDescription", "arretadas" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "arretadas" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.github.datalabifpe. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.github.datalab.ifpe. All rights reserved." "\0"
             VALUE "OriginalFilename", "arretadas.exe" "\0"
             VALUE "ProductName", "arretadas" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

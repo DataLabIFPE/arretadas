@@ -14,14 +14,16 @@ class AlertApi implements AlertDatasource {
     dio.options.connectTimeout = 5000;
     dio.options.headers['authorization'] = 'Bearer ${params.token}';
     try {
-      final response = await dio.post('${ApiEndpoint.urlHeroku}/alert', data: {
+      //final response =
+      await dio.post('${ApiEndpoint.urlProducao}/alert', data: {
         'id': params.userId,
         'latitude': params.latitude,
         'longitude': params.longitude,
         'date': params.date,
         'hour': params.hour,
       });
-      return response.data['message'];
+      //return response.data['message'];
+      return "Pedido de socorro enviado";
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
