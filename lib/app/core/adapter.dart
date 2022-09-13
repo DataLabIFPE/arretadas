@@ -4,6 +4,7 @@ import 'package:fpdart/fpdart.dart';
 class EitherAdapterImpl<L, R> implements EitherAdapter<L, R> {
   // receive an usecase in constructor
   final Either<L, R> usecase;
+
   EitherAdapterImpl(this.usecase);
 
   @override

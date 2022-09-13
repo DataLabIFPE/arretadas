@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
+
   @override
   RegisterPageState createState() => RegisterPageState();
 }

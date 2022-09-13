@@ -13,6 +13,7 @@ import 'map.dart';
 
 class ComplaintsPage extends StatefulWidget {
   final String title;
+
   const ComplaintsPage({Key? key, this.title = 'Denúncia'}) : super(key: key);
 
   @override

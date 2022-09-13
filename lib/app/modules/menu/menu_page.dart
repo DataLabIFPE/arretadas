@@ -2,20 +2,41 @@ import 'package:arretadas/app/core/components/button.dart';
 import 'package:arretadas/app/core/components/text_custom.dart';
 import 'package:arretadas/app/core/constants/app_colors.dart';
 import 'package:arretadas/app/modules/alert/alert_module.dart';
+import 'package:arretadas/app/modules/change_password/change_password_module.dart';
+import 'package:arretadas/app/modules/menu/dialogs/policy_dialog.dart';
+import 'package:arretadas/app/modules/menu/menu_controller.dart';
 import 'package:arretadas/app/modules/menu/menu_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../delete_account/delete_account_module.dart';
+
 class MenuPage extends StatefulWidget {
   final String title;
+
   const MenuPage({Key? key, this.title = 'MenuPage'}) : super(key: key);
+
   @override
   MenuPageState createState() => MenuPageState();
 }
 
 class MenuPageState extends State<MenuPage> {
   final MenuStore store = Modular.get();
+  final controller = MenuController();
+  late String id;
+  late String nickname;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<void> getProps() async {
+    id = await controller.getId();
+    nickname = await controller.getNickname();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getProps();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +75,14 @@ class MenuPageState extends State<MenuPage> {
                 fontFamily: 'Exo',
               ),
               onTap: () {
-                Navigator.pop(context);
+                Modular.to.push(PageRouteBuilder(
+                    opaque: false,
+                    pageBuilder: (BuildContext context, _, __) {
+                      return ChangePasswordModule(
+                        id: id,
+                        nickname: nickname,
+                      );
+                    }));
               },
             ),
             ListTile(
@@ -64,7 +92,11 @@ class MenuPageState extends State<MenuPage> {
                 fontFamily: 'Exo',
               ),
               onTap: () {
-                Navigator.pop(context);
+                Modular.to.push(PageRouteBuilder(
+                    opaque: false,
+                    pageBuilder: (BuildContext context, _, __) {
+                      return DeleteAccountModule();
+                    }));
               },
             ),
             ListTile(
@@ -75,7 +107,12 @@ class MenuPageState extends State<MenuPage> {
                 fontFamily: 'Exo',
               ),
               onTap: () {
-                Navigator.pop(context);
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return PolicyDialog(mdFileName: 'privacy_policy.md');
+                  },
+                );
               },
             ),
             const SizedBox(
@@ -134,20 +171,6 @@ class MenuPageState extends State<MenuPage> {
                             color: AppColors.primaryColor),
                       ),
                     ),
-
-                    /*TextButton(
-                      onPressed: () {
-                        store.signOut();
-                        Navigator.of(context)
-                            .pushNamedAndRemoveUntil('/', (route) => false);
-                      },
-                      child: const TextCustom(
-                        text: 'sair',
-                        color: AppColors.primaryColor,
-                        fontFamily: 'Exo',
-                        fontSize: 18,
-                      ),
-                    ),*/
                   ],
                 ),
                 Button(

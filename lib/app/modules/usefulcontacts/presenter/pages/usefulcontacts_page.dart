@@ -12,7 +12,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class UsefulcontactsPage extends StatefulWidget {
   final String title;
+
   const UsefulcontactsPage({Key? key, this.title = 'Agenda'}) : super(key: key);
+
   @override
   UsefulcontactsPageState createState() => UsefulcontactsPageState();
 }

@@ -15,12 +15,12 @@
 <!---
  <a href='https://coveralls.io/github/DataLabIFPE/arretadas?branch=master'><img src='https://coveralls.io/repos/github/DataLabIFPE/arretadas/badge.svg?branch=master' alt='Coverage Status' /></a>
 -->  
- 
+
 
   <a href="https://github.com/DataLabIFPE/arretadas/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/datalabifpe/arretadas">
   </a>
-  
+
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/datalabifpe/arretadas?color=%2304D361">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/datalabifpe/arretadas">  
 </p>
@@ -39,7 +39,8 @@
 
 <h2 id="sobre"> 💻 Sobre o projeto </h2>
 
-Projeto desenvolvido pelo laboratório de estudo DataLab do IFPE - campus Garanhuns em parceria com a Secretaria da mulher do município.
+Projeto desenvolvido pelo laboratório de estudo DataLab do IFPE - campus Garanhuns em parceria com a
+Secretaria da mulher do município.
 
 <h2 id="tecnologias"> :rocket: Tecnologias </h2>
 
@@ -81,6 +82,7 @@ $ git commit -m 'feat: Minha nova feature'
 # Faça push para a sua branch 
 $ git push origin minha-feature
 ```
+
 Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
 
 <h2 id="contribuidores"> 👷 Contribuidores </h2>
@@ -90,7 +92,8 @@ Depois que o merge da sua pull request for feito, você pode deletar a sua branc
 - [@lyra-solfieri](https://github.com/lyra-solfieri) como Bruno Lyra (Desenvolvedor)
 - [@jerickleandro](https://github.com/jerickleandro) como Erick Leandro (Desenvolvedor)
 - [@raffaelcsar](https://github.com/jerickleandro) como Raffael César (Desenvolvedor)
-- [@JoaoVictorLacerda](https://github.com/JoaoVictorLacerda) como João Victor Lacerda (Desenvolvedor)
+- [@JoaoVictorLacerda](https://github.com/JoaoVictorLacerda) como João Victor Lacerda (
+  Desenvolvedor)
 
 <h2 id="licenca">  📝 Licença </h2>
 

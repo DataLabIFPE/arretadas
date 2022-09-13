@@ -4,7 +4,6 @@ import 'package:arretadas/app/modules/friendcontacts/domain/entities/friendconta
 import 'package:arretadas/app/modules/friendcontacts/domain/errors/erros.dart';
 import 'package:arretadas/app/modules/friendcontacts/domain/repositories/friendcontact_repository.dart';
 import 'package:arretadas/app/modules/friendcontacts/infra/datasources/friendcontact_datasource.dart';
-
 import 'package:fpdart/fpdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

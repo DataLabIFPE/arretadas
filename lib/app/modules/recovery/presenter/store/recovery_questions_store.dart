@@ -1,5 +1,4 @@
 import 'package:arretadas/app/core/adapter.dart';
-
 import 'package:flutter_triple/flutter_triple.dart';
 
 import '../../domain/entities/user.dart';

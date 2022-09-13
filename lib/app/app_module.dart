@@ -8,6 +8,7 @@ import 'package:arretadas/app/modules/usefulcontacts/usefulcontacts_module.dart'
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'modules/delete_account/delete_account_module.dart';
 import 'modules/home/home_module.dart';
 import 'modules/menu/menu_module.dart';
 import 'modules/register/register_module.dart';
@@ -20,6 +21,7 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ModuleRoute(Modular.initialRoute, module: SplashModule()),
     ModuleRoute('/alert', module: AlertModule()),
+    ModuleRoute('/delete', module: DeleteAccountModule()),
     ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/auth', module: AuthModule()),
     ModuleRoute('/register', module: RegisterModule()),

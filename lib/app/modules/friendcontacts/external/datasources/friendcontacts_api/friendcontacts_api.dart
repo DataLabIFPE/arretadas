@@ -25,7 +25,7 @@ class FriendcontactsApi implements FriendcontactDatasource {
     dio.options.connectTimeout = 5000;
     try {
       final response =
-          await dio.get('${ApiEndpoint.urlHeroku}/friendcontact/user/$id');
+          await dio.get('${ApiEndpoint.urlProducao}/friendcontact/user/$id');
       print(response.data);
       return response.data
           .map<Friendcontact>((m) => Friendcontact.fromMap(m))

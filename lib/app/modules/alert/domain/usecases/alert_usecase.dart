@@ -10,6 +10,7 @@ class AlertUsecase implements IAlertUsecase {
   final AlertRepository repository;
 
   AlertUsecase(this.repository);
+
   @override
   Future<Either<AlertException, String>> call(AlertParams params) async {
     if (params.userId.isEmpty) {

@@ -13,7 +13,9 @@ import 'info_details_page.dart';
 
 class InfoPage extends StatefulWidget {
   final String title;
+
   const InfoPage({Key? key, this.title = 'Informações'}) : super(key: key);
+
   @override
   InfoPageState createState() => InfoPageState();
 }

@@ -14,7 +14,7 @@ class RecoveryPasswordApi implements RecoveryPasswordDatasource {
     dio.options.connectTimeout = 5000;
     try {
       final response = await dio
-          .patch('${ApiEndpoint.urlHeroku}/user/recover-password', data: {
+          .patch('${ApiEndpoint.urlProducao}/user/recover-password', data: {
         'id': params.id,
         'newPassword': params.newPassword,
       });

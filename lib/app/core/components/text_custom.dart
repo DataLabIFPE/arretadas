@@ -6,6 +6,7 @@ class TextCustom extends StatefulWidget {
   final double? fontSize;
   final Color? color;
   final String? fontFamily;
+
   const TextCustom(
       {Key? key,
       required this.text,

@@ -34,14 +34,14 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.github.datalabifpe.arretadas"
+        applicationId "com.github.datalab.ifpe.arretadas"
         minSdkVersion 16
         targetSdkVersion 32
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         signingConfigs {
             release {
-                storeFile file("C:/Users/samue/keystores/upload-keystore.jks")
+                storeFile file("C:/Users/Samuel/keystores/upload-keystore.jks")
                 storePassword "arretadas123"
                 keyAlias "upload"
                 keyPassword "arretadas123"

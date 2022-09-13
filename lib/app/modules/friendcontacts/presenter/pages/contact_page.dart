@@ -11,6 +11,7 @@ class ContactPage extends StatefulWidget {
   final id;
   final name;
   final number;
+
   const ContactPage(
       {Key? key, this.title = 'Novo contato', this.name, this.number, this.id})
       : super(key: key);

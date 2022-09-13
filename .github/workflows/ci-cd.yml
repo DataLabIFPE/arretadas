@@ -31,7 +31,7 @@ jobs:
 
   build_ios:
     name: Build Flutter (iOS)
-    needs: [flutter_test]
+    needs: [ flutter_test ]
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -43,11 +43,11 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter clean
-      - run: flutter build ios --release --no-codesign    
+      - run: flutter build ios --release --no-codesign
 
   build_appbundle:
     name: Build Flutter (Android)
-    needs: [flutter_test]
+    needs: [ flutter_test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
