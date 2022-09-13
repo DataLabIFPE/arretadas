@@ -20,7 +20,7 @@ dependencies:
   flutter_modular: ^3.3.1
   flutter_triple: ^1.2.4+3
   dio: ^4.0.0
-  fpdart: ^0.0.10
+  fpdart: ^0.2.0
   shared_preferences: ^2.0.7
   url_launcher: ^6.0.9
   modal_bottom_sheet: ^2.0.0

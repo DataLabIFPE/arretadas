@@ -40,13 +40,20 @@ class PolicyDialog extends StatelessWidget {
               },
             ),
           ),
-          FlatButton(
-            color: AppColors.primaryColor,
-            padding: const EdgeInsets.all(0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(radius),
-                bottomRight: Radius.circular(radius),
+          TextButton(
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all(
+                const EdgeInsets.all(0),
+              ),
+              backgroundColor:
+                  MaterialStateProperty.all(AppColors.primaryColor),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(radius),
+                    bottomRight: Radius.circular(radius),
+                  ),
+                ),
               ),
             ),
             onPressed: () {
@@ -67,7 +74,7 @@ class PolicyDialog extends StatelessWidget {
                 style: const TextStyle(color: Colors.white),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
