@@ -12,7 +12,7 @@ class RegisterApi implements RegisterDatasource {
 
   @override
   Future<void> cadastrar(RegisterParams params) async {
-    dio.options.connectTimeout = 5000;
+    dio.options.connectTimeout = 10000;
     try {
       final response = await dio.post('${ApiEndpoint.urlProducao}/user', data: {
         'nickname': params.nickname,

@@ -12,7 +12,7 @@ class UserApi implements DeleteAccountDatasource {
 
   @override
   Future<String> deleteAccount(DeleteAccountParams params) async {
-    dio.options.connectTimeout = 5000;
+    dio.options.connectTimeout = 10000;
     dio.options.headers['authorization'] = 'Bearer ${params.token}';
     try {
       final response =
@@ -28,7 +28,7 @@ class UserApi implements DeleteAccountDatasource {
       } else if (e.type == DioErrorType.other) {
         throw DeleteAccountException("Sem conexão com a Internet");
       } else {
-        throw DeleteAccountException(e.response?.data);
+        throw DeleteAccountException(e.message);
       }
     }
   }
