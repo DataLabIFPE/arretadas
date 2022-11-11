@@ -1,6 +1,7 @@
 import 'package:arretadas/app/core/components/text_custom.dart';
 import 'package:arretadas/app/core/mixins/loader_mixin.dart';
 import 'package:arretadas/app/core/mixins/messages_mixin.dart';
+import 'package:arretadas/app/modules/menu/menu_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
@@ -25,6 +26,7 @@ class DeleteAccountPageState extends State<DeleteAccountPage>
     with LoaderMixin, MessagesMixin {
   final DeleteAccountStore store = Modular.get();
   late Disposer disposer;
+  final MenuStore menuStore = Modular.get();
 
   @override
   void initState() {
@@ -44,9 +46,8 @@ class DeleteAccountPageState extends State<DeleteAccountPage>
         print(loading);
       },
       onState: (state) {
-        Navigator.of(context).pop();
-        Navigator.of(context).pop();
-        Modular.to.navigate('/home');
+        menuStore.signOut();
+        Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
         showSucess(context, state);
       },
     );
