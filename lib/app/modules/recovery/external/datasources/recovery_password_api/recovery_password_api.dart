@@ -11,7 +11,7 @@ class RecoveryPasswordApi implements RecoveryPasswordDatasource {
 
   @override
   Future<String> recover(RecoveryPasswordParams params) async {
-    dio.options.connectTimeout = 5000;
+    dio.options.connectTimeout = 10000;
     try {
       final response = await dio
           .patch('${ApiEndpoint.urlProducao}/user/recover-password', data: {

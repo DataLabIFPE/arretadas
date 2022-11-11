@@ -37,7 +37,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage>
   @override
   void initState() {
     super.initState();
-
     disposer = store.observer(
       onError: (error) {
         FocusScope.of(context).requestFocus(FocusNode());

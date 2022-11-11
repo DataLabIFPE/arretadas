@@ -14,7 +14,7 @@ class RecoveryQuestionsApi implements RecoveryQuestionsDatasource {
 
   @override
   Future<User> verify(RecoveryQuestionsParams params) async {
-    dio.options.connectTimeout = 5000;
+    dio.options.connectTimeout = 10000;
     try {
       final response = await dio
           .post('${ApiEndpoint.urlProducao}/user/recover-questions', data: {

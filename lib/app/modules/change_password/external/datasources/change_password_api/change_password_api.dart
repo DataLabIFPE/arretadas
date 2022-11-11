@@ -11,7 +11,7 @@ class ChangePasswordApi implements ChangePasswordDatasource {
 
   @override
   Future<String> change(ChangePasswordParams params) async {
-    dio.options.connectTimeout = 5000;
+    dio.options.connectTimeout = 10000;
     dio.options.headers['authorization'] = 'Bearer ${params.token}';
     try {
       final response = await dio
