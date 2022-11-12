@@ -1,9 +1,8 @@
+import 'package:arretadas/app/core/constants/api_endpoint.dart';
 import 'package:arretadas/app/modules/register/domain/erros/erros.dart';
 import 'package:arretadas/app/modules/register/domain/usecases/register_usecase.dart';
 import 'package:arretadas/app/modules/register/infra/datasources/register_datasource.dart';
 import 'package:dio/dio.dart';
-
-import '../../../../../core/constants/api_endpoint.dart';
 
 class RegisterApi implements RegisterDatasource {
   final Dio dio;
@@ -33,6 +32,8 @@ class RegisterApi implements RegisterDatasource {
         throw RegisterException("Sem conexão com a Internet");
       } else if (e.response?.statusCode == 500) {
         throw RegisterException("Usuário já cadastrado. Tente outro!");
+      } else if (e.response?.statusCode == 400) {
+        throw RegisterException("Medida protetiva inválida");
       } else {
         throw RegisterException(e.message);
       }
