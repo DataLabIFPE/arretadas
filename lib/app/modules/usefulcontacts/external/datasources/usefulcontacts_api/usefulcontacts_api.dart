@@ -20,7 +20,7 @@ class UsefulcontactsApi implements UsefulcontactDatasource {
     var user = (shared.getString('user') ?? "");
     var userMap = json.decode(user);
     var token = userMap['token'];
-    var city = userMap['city'];
+    var city = userMap['city'] ?? "Garanhuns";
     var tokenBearer = 'Bearer ' + token;
     dio.options.headers['Authorization'] = tokenBearer;
     dio.options.connectTimeout = 10000;

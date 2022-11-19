@@ -23,7 +23,7 @@ class AlertApi implements AlertDatasource {
         'hour': params.hour,
       });
       //return response.data['message'];
-      return "Pedido de socorro enviado";
+      return "Pedido de socorro enviado com sucesso!";
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {

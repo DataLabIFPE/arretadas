@@ -15,11 +15,10 @@ class UserApi implements DeleteAccountDatasource {
     dio.options.connectTimeout = 10000;
     dio.options.headers['authorization'] = 'Bearer ${params.token}';
     try {
-      final response =
-          await dio.delete('${ApiEndpoint.urlProducao}/user', data: {
+      await dio.delete('${ApiEndpoint.urlProducao}/user', data: {
         'id': params.id,
       });
-      return response.data['message'];
+      return "Usuário removido com sucesso!";
     } on DioError catch (e) {
       if (e.type == DioErrorType.connectTimeout ||
           e.type == DioErrorType.receiveTimeout) {
