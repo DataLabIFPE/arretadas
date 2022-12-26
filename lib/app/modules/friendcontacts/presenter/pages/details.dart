@@ -103,8 +103,12 @@ class _FriendcontactDetailsState extends State<FriendcontactDetails> {
                     ),
                   ],
                 ),
-                onPressed: () {
-                  launch("tel:$widget.number");
+                onPressed: () async {
+                  String _url = "tel:$widget.number";
+                  final Uri _uri = Uri.parse(_url);
+                  if (!await launchUrl(_uri)) {
+                    throw 'Could not launch $_url';
+                  }
                   Navigator.pop(context);
                 },
               ),

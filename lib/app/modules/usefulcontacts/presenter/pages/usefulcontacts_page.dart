@@ -74,8 +74,12 @@ class UsefulcontactsPageState extends State<UsefulcontactsPage> {
                 trailing: IconButton(
                   icon: const Icon(Icons.phone),
                   iconSize: 30,
-                  onPressed: () {
-                    launch("tel:${itens[index].number}");
+                  onPressed: () async {
+                    String _url = "tel:${itens[index].number}";
+                    final Uri _uri = Uri.parse(_url);
+                    if (!await launchUrl(_uri)) {
+                      throw 'Could not launch $_url';
+                    }
                     Navigator.pop(context);
                   },
                 ),

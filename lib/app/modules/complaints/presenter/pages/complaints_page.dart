@@ -121,7 +121,7 @@ class _ComplaintsPageState extends ModularState<ComplaintsPage, ComplaintsStore>
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        primary: Colors.grey,
+                        backgroundColor: Colors.grey,
                       ),
                       child: const Text('SAIR'),
                       onPressed: () {
@@ -136,7 +136,7 @@ class _ComplaintsPageState extends ModularState<ComplaintsPage, ComplaintsStore>
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        onPrimary: Colors.grey,
+                        backgroundColor: Colors.grey,
                       ),
                       child: const Text('VOLTAR'),
                       onPressed: details.onStepCancel,
