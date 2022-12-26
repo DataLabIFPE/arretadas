@@ -42,7 +42,7 @@ class _ButtonState extends State<Button> {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shadowColor: Colors.transparent,
-          backgroundColor: btnColor,
+          primary: btnColor,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),

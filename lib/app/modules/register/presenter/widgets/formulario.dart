@@ -381,7 +381,7 @@ class _FormularioState extends State<Formulario>
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          backgroundColor: Colors.grey,
+                          primary: Colors.grey,
                         ),
                         child: const Text('SAIR'),
                         onPressed: () {
@@ -396,7 +396,7 @@ class _FormularioState extends State<Formulario>
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          backgroundColor: Colors.grey,
+                          primary: Colors.grey,
                         ),
                         child: const Text('VOLTAR'),
                         onPressed: details.onStepCancel,
