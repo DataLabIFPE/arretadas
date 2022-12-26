@@ -30,6 +30,7 @@ dependencies:
   mask_text_input_formatter: ^2.3.0
   flutter_google_places: ^0.3.0
   flutter_markdown: ^0.6.10+5
+  package_info_plus_web: ^2.0.0
 
 
 dev_dependencies:
